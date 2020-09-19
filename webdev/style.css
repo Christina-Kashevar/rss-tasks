@@ -1,0 +1,197 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 1600px;
+    margin: 0 auto;
+    background: url(./assets/bg-image.png) no-repeat;
+    background-size: 1600px 744px;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    color: #FFFFFF;
+}
+li {
+    list-style-type: none;
+}
+
+
+/* header */
+header h1{
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    color: black;
+}
+
+header {
+    font-family: 'Roboto', sans-serif;
+    /* font-size: 14px;
+    line-height: 140%; */
+    padding: 37px 0;
+    margin-bottom: 103px;
+}
+.main_nav {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    font-size: 14px;
+    line-height: 140%;
+}
+
+header a {
+    display: inline-block;
+    color: #FFFFFF;
+    text-decoration: none;
+    margin: 1px 0px;
+    opacity: 0.8;
+    position: relative;
+}
+
+header a:hover {
+    opacity: 1;
+    color: #2632cc;
+}
+
+.nav_about {
+    left: 270px;
+}
+
+.nav_syllabus {
+    left: 124px;
+}
+
+.nav_img {
+    top: -14px;
+    left: -7px;
+    opacity: 1;
+}
+
+.nav_projects {
+    left: -137px;
+}
+
+.nav_faq{
+    left: -285px;
+} 
+
+a.active {
+    font-style: normal;
+    font-weight: 500;
+    line-height: 19.6px;
+    opacity: 1;
+    border-bottom: 1px solid white;
+}
+
+
+/* second part; section promo */
+.promo {
+    text-align: center;
+    margin-bottom: 86px;
+}
+
+.promo_slogon{
+    margin-right: -4px;
+    margin-bottom: 22px;
+    font-weight: bold;
+    font-size: 64px;
+    line-height: 75px;
+    letter-spacing: 4.5px;
+    text-transform: uppercase;
+}
+
+.promo_text {
+    font-size: 18px;
+    width: 480px;
+    margin: 0 auto;
+    line-height: 140%;
+    margin-bottom: 29px;
+}
+
+
+.promo button,
+.presentation_info button {
+    font-size: 14px;
+    line-height: 16px;
+    background: #00AFDB;
+    border: none;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+}
+
+.promo button {
+    padding: 16px 48px 14px 47px;
+    margin-right: 2px;
+    margin-bottom: 182px;
+}
+
+.presentation_info button {
+    padding: 16px 47px 14px;
+}
+
+.promo button:hover,
+.presentation_info button:hover {
+    cursor: pointer;
+    background: #FFC107;
+    color: #2632cc;
+}
+.promo ul {
+    display: flex;
+    width: 170px;
+    margin: 0 auto;
+}
+
+.promo ul li {
+    margin-right: 30px;
+}
+.promo img:hover {
+    transform: scale(2);
+}
+
+/* third part; section rappresent */
+.presentation {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    color: black;
+    padding: 120px 270px;
+}
+
+.presentation_info {
+    width: 407px;
+    margin-left: -2px;
+    
+}
+
+.presentation_info p:first-child {
+    width: 391px;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #373737;
+    margin-top: 174px;
+}
+
+.presentation_info p:nth-child(2n) {
+    font-size: 14px;
+    line-height: 143%;
+    color: #4E4E4E;
+    margin-top: 22px;
+    margin-bottom: 28px;
+    font-style: normal;
+    font-weight: normal;
+}
+
+/* forth part; section community */
+
+.community {
+    display: flex;
+}
