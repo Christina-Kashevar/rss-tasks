@@ -92,7 +92,7 @@ a.active {
 /* second part; section promo */
 .promo {
     text-align: center;
-    margin-bottom: 86px;
+    margin-bottom: 85px;
 }
 
 .promo_slogon{
@@ -115,7 +115,8 @@ a.active {
 
 
 .promo button,
-.presentation_info button {
+.presentation_info button,
+.implement button {
     font-size: 14px;
     line-height: 16px;
     background: #00AFDB;
@@ -128,11 +129,15 @@ a.active {
 .promo button {
     padding: 16px 48px 14px 47px;
     margin-right: 2px;
-    margin-bottom: 182px;
+    margin-bottom: 183px;
 }
 
 .presentation_info button {
     padding: 16px 47px 14px;
+}
+
+.implement button{
+    padding: 16px 48px 14px 46px;
 }
 
 .promo button:hover,
@@ -169,7 +174,7 @@ a.active {
     
 }
 
-.presentation_info p:first-child {
+.presentation_info h3{
     width: 391px;
     font-weight: bold;
     font-size: 24px;
@@ -180,7 +185,7 @@ a.active {
     margin-top: 174px;
 }
 
-.presentation_info p:nth-child(2n) {
+.presentation_info p {
     font-size: 14px;
     line-height: 143%;
     color: #4E4E4E;
@@ -194,4 +199,124 @@ a.active {
 
 .community {
     display: flex;
+    text-align: center;
+    padding-top: 79px;
+    padding-bottom: 136px;
+    padding-left: 268px;
+    background-color: #F5F6F7;
 }
+
+.community h3 {
+    padding-left: 2px;
+    padding-top: 15px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+    color: #373737;
+    overflow: hidden;
+
+}
+
+.community p {
+    font-size: 14px;
+    line-height: 143%;
+    padding-top: 12px;
+    color: #4E4E4E;
+}
+
+.community span {
+    font-size: 18px;
+    line-height: 140%;
+    color: #373737;
+
+}
+
+.community_info{
+    padding-top: 77px;
+}
+
+.community_info {
+    width: 300px;
+    text-align: center;
+}
+
+.community_slider_nav {
+    padding-left: 418px;
+    margin-bottom: 16px;
+
+}
+
+.community_slider_carousel {
+    padding-left: 138px;
+    /* display: flex; */
+
+}
+
+.community_slider_carousel img{
+    padding-right: 26px;
+}
+
+.community_slider_carousel img:last-child{
+    padding-right: 0;
+    /* width: 244px; */
+}
+
+.implement {
+    padding-top: 120px;
+    padding-left: 269px;
+    display: flex;
+}
+
+.implement h3 {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    align-items: flex-end;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #373737;
+}
+
+.implement p {
+    font-size: 14px;
+    line-height: 143%;
+    /* or 20px */
+    color: #4E4E4E;
+}
+
+.implement_info {
+    padding-left: 139px;
+    padding-top: 198px;
+}
+
+.implement_info h3{
+    margin-bottom: 21px;
+}
+
+.implement_info p{
+    width: 410px;
+    margin-bottom: 29px;
+}
+
+ section.sing {
+    background: url(./assets/Frame7.png);
+    height: 300px;
+}
+.sign h3{
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+
+
+
+
+
