@@ -31,10 +31,8 @@ header h1{
 
 header {
     font-family: 'Roboto', sans-serif;
-    /* font-size: 14px;
-    line-height: 140%; */
     padding: 37px 0;
-    margin-bottom: 103px;
+    margin-bottom: 102px;
 }
 .main_nav {
     display: flex;
@@ -73,11 +71,11 @@ header a:hover {
 }
 
 .nav_projects {
-    left: -137px;
+    left: -138px;
 }
 
 .nav_faq{
-    left: -285px;
+    left: -284px;
 } 
 
 a.active {
@@ -92,7 +90,7 @@ a.active {
 /* second part; section promo */
 .promo {
     text-align: center;
-    margin-bottom: 85px;
+    margin-bottom: 86px;
 }
 
 .promo_slogon{
@@ -128,7 +126,7 @@ a.active {
 
 .promo button {
     padding: 16px 48px 14px 47px;
-    margin-right: 2px;
+    /* margin-right: 2px; */
     margin-bottom: 183px;
 }
 
@@ -141,7 +139,8 @@ a.active {
 }
 
 .promo button:hover,
-.presentation_info button:hover {
+.presentation_info button:hover,
+.download button:hover {
     cursor: pointer;
     background: #FFC107;
     color: #2632cc;
@@ -165,12 +164,12 @@ a.active {
     justify-content: space-between;
     margin-bottom: 16px;
     color: black;
-    padding: 120px 270px;
+    padding: 120px 269px;
 }
 
 .presentation_info {
     width: 407px;
-    margin-left: -2px;
+    /* margin-left: -1px; */
     
 }
 
@@ -224,7 +223,7 @@ a.active {
 .community p {
     font-size: 14px;
     line-height: 143%;
-    padding-top: 12px;
+    padding-top: 11px;
     color: #4E4E4E;
 }
 
@@ -250,6 +249,12 @@ a.active {
 
 }
 
+.community_slider_nav img:hover {
+    transform: scale(1.5);
+    opacity: 0.5;
+
+}
+
 .community_slider_carousel {
     padding-left: 138px;
     /* display: flex; */
@@ -265,9 +270,12 @@ a.active {
     /* width: 244px; */
 }
 
+
+/* fifth part; section implement */
 .implement {
     padding-top: 120px;
     padding-left: 269px;
+    padding-bottom: 136px;
     display: flex;
 }
 
@@ -284,7 +292,6 @@ a.active {
 .implement p {
     font-size: 14px;
     line-height: 143%;
-    /* or 20px */
     color: #4E4E4E;
 }
 
@@ -302,21 +309,139 @@ a.active {
     margin-bottom: 29px;
 }
 
- section.sing {
-    background: url(./assets/Frame7.png);
-    height: 300px;
+
+/* six part; section sign */
+.sign {
+    background: url(./assets/Frame\ 7.png) no-repeat;
+    /* background-size: 1600px 598px; */
+    height: 524px;
+    text-align: center;
 }
 .sign h3{
+    font-style: normal;
     font-weight: bold;
+    padding-top: 200px;
+    margin-left: 1px;
     font-size: 24px;
     line-height: 28px;
     letter-spacing: 1px;
     text-transform: uppercase;
     color: #FFFFFF;
+    margin-bottom: 30px;
 }
 
+.sign input {
+    width: 340px;
+    height: 46px;
+    padding-left: 24px;
+    border: none;
+    vertical-align: bottom;
+}
 
+::placeholder {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 140%;
+    /* identical to box height, or 20px */
+    display: flex;
+    align-items: flex-end;
+    color: #373737;
 
+}
 
+.sign button {
+    border: none;
+    padding-top: 1px;
+    height: 46px;
+    width: 66px;
+    margin-left: -3px;
+    background-color: #00AFDB;
+    vertical-align: bottom;
+}
 
+.sign button img {
+    width: 19px;
+    height: 16.52px;
+}
+
+.sign button:hover img{
+    transform: scale(1.8)
+}
+
+/* seventh part; section download */
+
+.download{
+    text-align: center;
+    padding-top: 120px;
+    padding-bottom: 180px;
+    background-color: #F5F6F7;
+}
+
+.download h3{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #373737;
+    margin-bottom: 21px;
+}
+
+.download div {
+    display: inline-block;
+    margin-right: 30px;
+}
+
+.download_store_apple {
+    margin-left: 33px;
+}
+
+.download p{
+    width: 483px;
+    height: 40px;
+    margin: 0 auto;
+    font-size: 14px;
+    line-height: 143%;
+    /* or 20px */
+    text-align: center;
+    color: #4E4E4E;
+    margin-bottom: 29px;
+}
+
+.download .download_store_name {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-color: #00AFDB;
+  
+    width: 128px;
+    /* height: 50px; */
+}
+.download button {
+    background-color: #009CC2;
+    border: none;
+    padding: 7px;
+    vertical-align: bottom;
+    width: 58px;
+    height: 46px;
+}
+
+.download button:hover img{
+    transform: scale(1.6)
+}
+
+.download_icon {
+    margin-left: -4px;
+}
+
+.download_store_android {
+    position: relative;
+    left: -3px;
+}
 
