@@ -6,6 +6,7 @@
 
 body{
     width: 1600px;
+    /* overflow: hidden; */
     margin: 0 auto;
     background: url(./assets/bg-image.png) no-repeat;
     background-size: 1600px 744px;
@@ -51,9 +52,13 @@ header a {
     position: relative;
 }
 
-header a:hover {
+header a:hover{
     opacity: 1;
     color: #2632cc;
+}
+
+header img:hover{
+    transform: scale(1.2)
 }
 
 .nav_about {
@@ -140,7 +145,8 @@ a.active {
 
 .promo button:hover,
 .presentation_info button:hover,
-.download button:hover {
+.download button:hover,
+.implement button:hover {
     cursor: pointer;
     background: #FFC107;
     color: #2632cc;
@@ -200,7 +206,7 @@ a.active {
     display: flex;
     text-align: center;
     padding-top: 79px;
-    padding-bottom: 136px;
+    padding-bottom: 140px;
     padding-left: 268px;
     background-color: #F5F6F7;
 }
@@ -244,7 +250,7 @@ a.active {
 }
 
 .community_slider_nav {
-    padding-left: 418px;
+    padding-left: 411px;
     margin-bottom: 16px;
 
 }
@@ -256,18 +262,23 @@ a.active {
 }
 
 .community_slider_carousel {
+    height: 244px;
     padding-left: 138px;
-    /* display: flex; */
+    display: flex;
+    overflow: hidden;
+    width: 1032px;
 
 }
 
 .community_slider_carousel img{
-    padding-right: 26px;
+    padding-right: 30px;
 }
 
 .community_slider_carousel img:last-child{
     padding-right: 0;
-    /* width: 244px; */
+    width: 407px;
+    height: 244px;
+    overflow: hidden;
 }
 
 
@@ -445,3 +456,60 @@ a.active {
     left: -3px;
 }
 
+/* last part; footer */
+
+footer {
+    background-color: black;
+    height: 184px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 160px;
+}
+
+footer p {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 140%;
+/* identical to box height, or 20px */
+/* text-align: center; */
+    color: #818181;
+}
+
+footer li {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 140%;
+/* identical to box height, or 20px */
+    color: #FFFFFF;
+    opacity: 0.98;
+    padding-right: 16px;
+}
+
+footer li::after {
+    content: url(./assets/mnu-items-divider.png);
+    padding-left: 20px;
+    /* width: 8px;
+    height: 0px; */
+}
+
+footer li:last-child::after{
+    content: none;
+}
+
+footer li:hover {
+    cursor: pointer;
+    color: #FFC107;
+    text-decoration: underline;
+}
+
+footer ul,
+footer img,
+footer p {
+    position: relative;
+    top: -9px;
+}
+
+footer img {
+    left: -42px;
+}
