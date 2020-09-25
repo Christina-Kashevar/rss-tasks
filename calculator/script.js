@@ -58,6 +58,7 @@ class Calculator {
         default:
           return;
       }
+      computation = Math.round(computation * 1000000000000000) / 1000000000000000;
       this.readyToReset = true;
       this.currentOperand = computation;
       this.operation = undefined;
@@ -83,12 +84,7 @@ class Calculator {
     }
 
     plusMinus () {
-        this.currentOperand = this.currentOperand.toString();
-        if (this.currentOperand.startsWith('-')) {
-          this.currentOperand = this.currentOperand.slice(1)
-        } else {
-          this.currentOperand = `-${this.currentOperand}`
-        }
+        this.currentOperand *= -1
     }
   
     getDisplayNumber(number) {
@@ -172,10 +168,6 @@ deleteButton.addEventListener('click', button => {
 
 sqrtButton.addEventListener('click', button => {
     calculator.sqrt();
-})
-
-exponentButton.addEventListener('click', button => {
-    calculator.exponent();
 })
 
 plusMinusButton.addEventListener('click', button => {
