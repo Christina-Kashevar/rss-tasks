@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.section {
+    width: 1920px;
+}
+
+.wrapper {
+    margin: 0 auto;
+    width: 62.5%;
+}
+
+header {
+    padding: 40px 0;
+    background: url(./assets/start-screen-gradient-background.png), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
+}
+
+h1 {
+    font-family: Georgia;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 110%;
+    /* or 35px */
+    letter-spacing: 0.06em;
+    color: #F1CDB3;
+    margin: 20px 0 10px;
+}
+
+header p {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 15px;
+    /* identical to box height */
+    letter-spacing: 0.1em;
+    color: #FFFFFF;
+    margin-top: 5px;
+}
+
+header li {
+    font-family: Arial;
+    font-size: 15px;
+    line-height: 160%;
+    /* identical to box height, or 24px */
+    color: #CDCDCD;
+    margin-right: 35px;
+}
+
+header li:last-child {
+    margin-right: 0;
+}
+
+header ul {
+    display: flex;
+    list-style: none;
+}
+
+.flex {
+    display: flex;
+}
+
+header .flex {
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.active_link {
+    color: #FAFAFA;
+    border-bottom: 3px solid #F1CDB3;;
+}
