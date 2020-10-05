@@ -1,0 +1,38 @@
+.our-friends {
+    background: $color-light-l;
+    text-align: center;
+    padding-top: 80px;
+}
+
+.our-friends__title {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.our-friends-slider {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    align-items: center;
+}
+
+.slider-button-wrapper {
+    padding-top: 29px;
+}
+
+.button-object {
+    max-height: 53px;
+}
+
+.our-friend-cards {
+    width: 990px;
+}
+
+.our-friend-card {
+    background:$color-light-s;
+    padding-bottom: 30px;
+    border-radius: 9px 9px 0px 0px;
+    h5 {
+        margin-top: 20px;
+        margin-bottom: 31px;
+    }
+}

@@ -1,0 +1,25 @@
+.hero {
+  background: $start-screen-gradient-background;
+  padding-top: 175px;
+}
+
+.hero-content {
+  padding-right: 35px;
+  padding-top: 169px;
+}
+
+.hero__title {
+  color: $color-light-xl;
+  max-width: 310px;
+  margin: 0;
+}
+
+.hero__text {
+  @extend %font-prim;
+  margin-top: 42px;
+  margin-bottom: 40px;
+  max-width: 460px;
+  display: flex;
+  align-items: center;
+  color: $color-dark-s;
+}
