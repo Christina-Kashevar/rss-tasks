@@ -1,0 +1,58 @@
+.help {
+    padding: 80px 0 40px;
+}
+
+.help__title {
+    max-width: 310px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.help-items {
+    padding: 60px 20px 0px 0px;
+}
+
+.help__item {
+    margin-bottom: 60px;
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.help__item-food {
+    @include icon($name: food);
+}
+
+.help__item-transport {
+    @include icon($name:transportation);
+}
+
+.help__item-toys {
+    @include icon($name:toys);
+}
+
+.help__item-bowls {
+    @include icon($name:bowls);
+}
+
+.help__item-shampoos {
+    @include icon($name:shampoos);
+}
+
+.help__item-vitamins{
+    @include icon($name:vitamins, $bottom: 20px);
+}
+
+.help__item-medicines{
+    @include icon($name:medicines, $bottom: 20px);
+}
+
+.help__item-collars{
+    @include icon($name:collars, $bottom: 20px);
+}
+
+.help__item-sleep{
+    @include icon($name:sleeping-area, $bottom: 20px);
+}
+

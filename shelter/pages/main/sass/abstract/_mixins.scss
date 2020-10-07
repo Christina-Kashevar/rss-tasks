@@ -4,3 +4,21 @@
     font-weight: $weight;
     line-height: $height;
 }
+
+@mixin icon ($name, $bottom: 25px) {
+    $url: " ../../../assets/icons/help/#{$name}.svg";
+    &::before {
+        content: url($url);
+        display: block;
+        margin-bottom: $bottom;
+    }
+}
+
+@mixin footer-icon ($name) {
+     $url: " ../../../assets/icons/#{$name}.svg";
+     &::before {
+        content: url($url);
+        margin-right: 20px;
+        vertical-align: middle;
+    }
+}

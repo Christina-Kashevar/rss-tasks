@@ -45,8 +45,15 @@
 .navigation__link {
   @extend %font-prim;
   font-size: 1.5rem;
-  color: $color-dark-s;
+  line-height: 2.4rem;
+  color: $color-light-l;
   padding-bottom: 2px;
+
+  &:hover {
+    cursor: pointer;
+    color: $color-dark-s;
+    // border-bottom: 3px solid transparent;
+  }
 }
 
 .navigation__link_active {
