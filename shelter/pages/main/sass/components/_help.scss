@@ -1,5 +1,8 @@
 .help {
-    padding: 80px 0 40px;
+    padding: 81px 0 44px;
+    @include media-mobile {
+        padding: 42px 0 17px;
+    }
 }
 
 .help__title {
@@ -9,15 +12,34 @@
 }
 
 .help-items {
-    padding: 60px 20px 0px 0px;
+    padding-top: 60px;
+    max-width: 1180px;
+    margin: 0 auto;
+    @include media-tablet {
+        max-width: 630px;
+    }
+    @include media-mobile {
+        max-width: 290px;
+        padding-top: 0px;
+    }
+
 }
 
 .help__item {
-    margin-bottom: 60px;
+    margin: 0 60px 58px;
     text-align: center;
     display:flex;
     flex-direction: column;
     justify-content: space-between;
+
+    @include media-tablet {
+        flex-basis: 170px;
+        margin: 0 0 55px;
+    }
+    @include media-mobile {
+        flex-basis: 130px;
+        margin: 0 0 26px;
+    }
 }
 
 .help__item-food {
@@ -46,6 +68,9 @@
 
 .help__item-medicines{
     @include icon($name:medicines, $bottom: 20px);
+    @include media-tablet {
+        @include icon($name:medicines);
+    }
 }
 
 .help__item-collars{

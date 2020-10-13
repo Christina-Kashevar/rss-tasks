@@ -1,24 +1,24 @@
 .footer {
     color: $color-primary;
     background: $footer-gradient-background;
-    padding-top: 40px;
+    padding-top: 39px;
     
     a {
-        @extend %font-add;
-        @include font( $size: 2.0rem, $height: 2.3rem );
-        color: $color-primary;
-        text-decoration: none;
-        margin: 0;
-        letter-spacing: 0.06em;
-        display:inline-block;
-        position: relative;
+         @extend %font-add;
+         @include font( $size: 2.0rem, $height: 2.3rem );
+         color: $color-primary;
+         text-decoration: none;
+         margin: 0;
+         letter-spacing: 0.06em;
+         display:inline-block;
+         position: relative;
     }
 
     @include media-tablet {
         padding-top: 30px;
     }
 
-    &> div {
+    & > div {
         @include media-tablet {
             flex-direction: column;
             max-width: 640px;
@@ -49,13 +49,12 @@
      max-height: 310px;
      @include media-tablet {
         margin-left: 0px;
-        margin-top: 60px;
+        margin-top: 56px;
         text-align: center;
     }
 
     @include media-mobile {
-        margin-top: 46px;
-        height: 269px;
+        margin-top: 45px;
     }
  }
 

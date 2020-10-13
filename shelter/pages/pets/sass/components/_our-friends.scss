@@ -1,0 +1,56 @@
+.our-friends {
+    background: $color-light-l;
+    text-align: center;
+    padding-top: 80px;
+    padding-bottom: 102px;
+    @include media-tablet {
+        padding-top: 72px;
+        padding-bottom: 76px;
+    }
+
+    @include media-mobile {
+        padding: 42px 0;
+    }
+
+}
+
+.our-friends__title {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.layout-4-column {
+    @include media-tablet {
+        margin: 0 auto;
+        max-width: 580px;
+        max-height: 1430px;
+        overflow:hidden;
+    }
+}
+
+.our-friend-card {
+    background:$color-light-s;
+    padding-bottom: 30px;
+    border-radius: 9px 9px 0px 0px;
+    margin-bottom: 30px;
+
+    h5 {
+        margin-top: 23px;
+        margin-bottom: 30px;
+    }
+
+    &:hover {
+        background:$color-light-xl;
+    }
+}
+
+.slider-pagination {
+    @include media-tablet {
+       margin-top: 15px;
+    }
+
+    @include media-mobile {
+        margin-top: 21px;
+     }
+}

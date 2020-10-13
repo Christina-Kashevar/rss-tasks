@@ -1,12 +1,44 @@
 .about-content {
     max-width: 430px;
-    padding-top: 20px;
+    padding-top: 15px;
+    @include media-tablet {
+        padding-top: 0px;
+        padding-bottom: 65px;
+    }
+    @include media-mobile {
+        max-width: 270px;
+        margin: 0 auto;
+        padding-bottom: 26px;
+    }
 }
 
 .about__title {
     max-width: 360px;
+
 }
 
 .about__text {
     margin-top: 25px;
+    @include media-mobile {
+        text-align: justify;
+    }
+    &:last-child {
+        @include media-mobile {
+            margin-top: 22px;
+        }
+    }
 }
+
+.about__image-wrapper {
+    @include media-tablet {
+        order: 2;
+        text-align: center;
+    }
+}
+
+.about__image {
+    @include media-mobile {
+       width: 260px;
+    }
+}
+

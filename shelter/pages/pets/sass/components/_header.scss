@@ -1,10 +1,11 @@
 .header{
   width: 100%;
-  position: absolute;
-  top: 59px;
+  background-color: $color-light-xl;
+  padding: 29px 0;
 
-   @include media-tablet {
-    top: 0px;
+  @include media-tablet {
+    position: sticky;
+    top: 0;
   }
 
   @include media-mobile {
@@ -15,23 +16,11 @@
 .header-logo {
   display: flex;
   flex-direction: column;
-
-  @include media-tablet {
-    position: absolute;
-    top: 30px;
-    left: 30px;
-  }
-
-  @include media-mobile {
-    left: 10px;
-  }
 }
 
 .header-logo__title {
-    letter-spacing: 0.16rem;
-    color: $color-primary;
+    letter-spacing: 0.22rem;
     margin: 0 0 10px;
-    padding: 0;
 }
 
 .header-logo__text {
@@ -40,7 +29,7 @@
   font-size: 1.3rem;
   line-height: 1.5rem;
   letter-spacing: 0.13rem;
-  color: $color-light-xl;
+  color: $color-dark-3xl;
   margin: 0;
   padding: 0;
 }
@@ -49,11 +38,6 @@
   display: flex;
   align-items: center;
   width: 443px;
-  @include media-tablet {
-    position: absolute;
-    top: 46px;
-    left: calc( 100% - 473px);
-  }
   @include media-mobile {
     display: none;
   }
@@ -72,7 +56,7 @@
   @extend %font-prim;
   font-size: 1.5rem;
   line-height: 2.4rem;
-  color: $color-light-l;
+  color: $color-dark-l;
   padding-bottom: 2px;
 
   &:hover {
@@ -81,12 +65,8 @@
     // border-bottom: 3px solid transparent;
   }
 
-  @include media-tablet {
-    padding-bottom: 4px;
+  &_active {
+    color: $color-dark-3xl;
+    border-bottom: 3px solid $color-primary;
   }
-}
-
-.navigation__link_active {
-  color: $color-light-s;
-  border-bottom: 3px solid $color-primary;
 }

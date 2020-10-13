@@ -1,0 +1,59 @@
+.button {
+  @extend %font-add;
+  padding: 13px 43px;
+  font-size: 1.7rem;
+  line-height: 2.21rem;
+  letter-spacing: 0.1rem;
+  color: $color-dark-3xl;
+  background: $color-primary;
+  border-radius: 100px;
+  border: none;
+  box-sizing: border-box;
+  @extend %transition;
+
+  &:hover {
+    background: $color-primary-light;
+  }
+
+  &_bordered {
+    border: 2px solid $color-primary;
+    background: $color-light-s;
+
+    &:hover {
+      border-color:$color-primary-light;
+    }
+  }
+}
+
+.button-pagination {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: $color-light-l;
+  color: $color-dark-3xl;
+  @include font( $size: 2.0rem, $height: 2.3rem );
+  letter-spacing: 0.06em;
+  border: 2px solid $color-primary;
+  margin-right: 15px;
+  @extend %transition;
+
+  &:last-child {
+    margin-right: 0px;
+  }
+
+  &_inactive {
+    color: $color-dark-s;
+    border-color: $color-dark-s;
+  }
+
+  &_active {
+    background: $color-primary;
+  }
+
+  @include media-mobile {
+    margin-right: 5px;
+    &:last-child {
+      margin-right: 0px;
+    }
+}
+}

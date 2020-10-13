@@ -16,22 +16,13 @@ h1 {
     padding: 0;
 }
 
-h2 {
-    @extend %font-add;
-    @include font( $size: 4.4rem, $height: 5.7rem );
-    @include media-mobile {
-        @include font( $size: 2.5rem, $height: 3.25rem );
-        text-align: center;
-        letter-spacing: 0.06em;
-    }
-}
-
 h3 {
     @extend %font-add;
     @include font( $size: 3.5rem, $height: 4.5rem );
     color: $color-dark-l;
     letter-spacing: 0.06em;
     margin: 0;
+
     @include media-mobile {
         @include font( $size: 2.5rem, $height: 3.25rem );
         text-align: center;
@@ -42,7 +33,6 @@ h4 {
     @extend %font-add;
     @include font( $size: 3.2rem, $height: 3.5rem );
     color: $color-dark-l;
-    margin: 0;
 }
 
 h5 {
@@ -51,11 +41,4 @@ h5 {
     color: $color-dark-l;
     margin: 0;
     letter-spacing: 0.06em;
-
-    .help &,
-    .donation & {
-        @include media-mobile {
-            @include font( $size: 1.5rem, $height: 1.65rem );
-        }
-    }
 }

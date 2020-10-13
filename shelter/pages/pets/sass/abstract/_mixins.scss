@@ -5,20 +5,6 @@
     line-height: $height;
 }
 
-@mixin icon ($name, $bottom: 25px) {
-    $url: " ../../../assets/icons/help/#{$name}.svg";
-    &::before {
-        content: url($url);
-        display: block;
-        margin-bottom: $bottom;
-
-        @include media-mobile {
-            transform: scale(0.8);
-            margin-bottom: 12px;
-        }
-    }
-}
-
 @mixin footer-icon ($name) {
      $url: " ../../../assets/icons/#{$name}.svg";
      &::before {

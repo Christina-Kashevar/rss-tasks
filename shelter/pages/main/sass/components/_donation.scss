@@ -1,23 +1,47 @@
 .donation {
-    padding: 82px 0px 90px;
+    padding: 77px 0px 90px;
     background: $color-light-l;
-    // max-width: 915px;
-
-
     .layout-column {
         max-width: 915px;
         margin: 0 auto;
         align-items: center;
     }
+
+    @include media-tablet {
+        padding: 79px 0px 92px;
+    }
+    @include media-mobile {
+        padding: 37px 0px 35px;
+    }
+}
+
+.donation__image-wrapper{
+    @include media-tablet {
+        order: 2;
+        margin-top: 49px;
+    }
+    @include media-mobile {
+        margin-top: 43px;
+    }
+} 
+
+.donation__image {
+    @include media-mobile {
+        width: 260px;
+    }
 }
 
 .donation-content {
     max-width: 380px;
+    padding-top: 4px;
 }
 
 .donation__title {
     max-width: 300px;
     margin-bottom: 20px;
+    @include media-mobile {
+        margin-bottom: 25px;
+    }
 }
 
 .donation__bank {
@@ -26,10 +50,15 @@
     letter-spacing: 0.06em;
     margin-bottom: 20px;
     color: $color-dark-l;
+    @include media-mobile {
+        letter-spacing: unset;
+        text-align: center;
+        margin-bottom: 25px;
+    }
 }
 
 .donation__account {
-    padding: 10px 0px 5px 15px;
+    padding: 9px 0px 5px 15px;
     background: $color-primary;
     border-radius: 0.9rem;
     margin-bottom: 20px;
@@ -44,6 +73,13 @@
     &:hover {
         background: $color-primary-light;
     }
+
+    @include media-mobile {
+        width: 281px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 22px;
+    }
 }
 
 .donation__link {
@@ -54,4 +90,9 @@
 .donation__info {
     @include font ($size: 1.2rem, $height: 1.8rem, $style: italic);
     color: $color-dark-m;
+    @include media-mobile {
+        width: 280px;
+        margin: 0 auto;
+        text-align: justify;
+    }
 }
