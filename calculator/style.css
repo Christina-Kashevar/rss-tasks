@@ -10,13 +10,21 @@ body {
     background: linear-gradient(to right, #00AAFF, #00FF6C);
 }
 
+.wrapper {
+    display: flex;
+    max-width: 1000px;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .calculator-grid {
     display: grid;
     justify-content: center;
     align-content: center;
     min-height: 100vh;
     grid-template-columns: repeat(4, 100px);
-    grid-template-rows: minmax(120px, auto) repeat(6, 80px);
+    grid-template-rows: minmax(120px, auto) repeat(6, 70px);
 }
 
 .calculator-grid > button {
@@ -59,4 +67,16 @@ sup {
 
 .span-two {
     grid-column: span 2;
+}
+
+h3 {
+    text-align: center;
+}
+.instruction {
+    margin-left: 10px;
+    max-width: 500px;
+    background: rgba(255, 255, 255, .75);
+    padding: 10px 15px;
+    border: 1px solid black;
+    border-radius: 2%;
 }

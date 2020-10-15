@@ -9,13 +9,14 @@
   <script src="script.js" defer></script>
 </head>
 <body>
+  <div class="wrapper">
   <div class="calculator-grid">
     <div class="output">
       <div data-previous-operand class="previous-operand"></div>
       <div data-current-operand class="current-operand"></div>
-    </div>
+    </div >
     <button data-all-clear class="span-two">AC</button>
-    <button data-sqrt="">√</button>
+    <button data-sqrt>√</button>
     <button data-operation>÷</button>
     <button data-delete class="span-two">DEL</button>
     <button data-operation>**</button>
@@ -35,6 +36,15 @@
     <button data-number>.</button>
     <button data-number>0</button>
     <button data-equals class="span-two">=</button>
+  </div>
+  <div class="instruction">
+    <h3>Уважаемые проверяющие!</h3>
+    <p>Обратите внимание, что Вы можете совершать несколько операций в одном выражении. Т е итоговый результат появляется после нажатия на знак равно. Например, вводите 3 + 2*4 + 2**3, нажимаете равно и получаете результ 19. </p>
+    <p>Ввод отрицательных чисел осуществляется при помощи специально кнопки "-/+". Сначала нужно нажать число, затем кнопку "-/+", и число станет отрицательным.</p>
+    <p>Чтобы получить корень квадратного числа, сначала нажмите число, затем кнопку "√".</p>
+    <p>Для возведения в степень нужно ввести число, которое хотим возвести в степень, затем кнопку степени "**", потом число соответстующей степени. </p>
+    <p>Если Вы вводите неверную операцию, например, деление на ноль или взятие корня из отрицательного числа, в нижней строке появится ошибка. Чтобы убрать надпись "Error", нажмите кнопки AC или DEL. Или нажмите число, тогда оно заменит надпись ошибки на выбранное число и можно будет продолжать вычисления.</p>
+  </div>
   </div>
 </body>
 </html>
