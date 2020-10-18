@@ -8,6 +8,7 @@ class Calculator {
     }
   
     clear() {
+      this.readyToReset = false
       this.currentOperand = '';
       this.previousOperand = '';
       this.operation = undefined;
@@ -27,6 +28,7 @@ class Calculator {
       if (this.currentOperandTextElement.innerText === "Error") {
         this.currentOperand = '';
       }
+      console.log(this.currentOperand)
       this.currentOperand = this.currentOperand.toString() + number.toString();
     }
   
