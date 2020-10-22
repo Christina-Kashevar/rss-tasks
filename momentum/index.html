@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/owfont-regular.css">
+  <title>momentum</title>
+</head>
+<body>
+    <div class="top-part">
+      <button class="btn"></button>
+      <div>
+          <i class="weather-icon owf"></i>
+          <div class="temperature"></div>
+          <div class="weather-description"></div>
+          <div class="city" contenteditable="true">Минск</div>
+      </div>
+    </div>
+    <div class="modal-overlay modal_closed" ></div>
+    <div class="modal modal_closed" id="modal">
+        <a href="#" class="modal__close" id="modal-close" title="Закрыть модальное окно">Закрыть</a>
+        <p class= "modal__info">По данному городу результатов не найдено. </p>
+        <button id="modal-save" class="modal__save" title="Сохранить">OK</button>
+    </div>
+      <time class="time"></time>
+      <div class="day"></div>
+      <h1>
+        <div class="greeting"></div>
+        <div class="name" contenteditable="true"></div>
+      </h1>
+      <h2>Какая цель на сегодня?</h2>
+      <h2 class="focus" contenteditable="true"></h2>
+      <div class="quote-wrapper">
+          <figure class="quote">
+            <blockquote>Пока мы смеёмся — с нами всё в порядке.</blockquote>
+            <figcaption>Сол Беллоу</figcaption>
+          </figure>
+          <button class="btn btn-quote"></button>
+      </div>
+  <script src="script.js"></script>
+</body>
+</html>
