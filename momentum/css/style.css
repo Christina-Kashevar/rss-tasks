@@ -15,11 +15,8 @@ body {
   background-size: cover;
   background-position: center center;
   color: white;
-  /* background-blend-mode: multiply; */
-  /* background: center center / cover no-repeat, linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)); */
-  /* background-image: url('./assets/images/day/01.jpg');*/
   transition: background-image 2s ease-in-out;
-  /* transition: button 1s ease-in-out; */
+  /* text-shadow: black 1px 1px 1px, black -1px -1px 0, black -1px 1px 0, black 1px -1px 0;  */
 }
 
 body:after{
@@ -51,21 +48,41 @@ body:after{
   filter: grayscale(1);
   margin: 10px;
   margin-top: 0;
+  margin-left: 0;
   transition: filter 1s ease-out;
 }
 .btn:hover {
   filter: grayscale(.6);
+  cursor: pointer;
 }
 .btn:active,
 .btn:focus {
   outline: 0;
+  
 }
 .btn:active{
-  transform: scale(1.08)
+  transform: scale(1.08);
+
 }
 
 .time {
   font-size: 7.5rem;
+}
+
+.time-num {
+  text-align: left;
+  width: 130px;
+  display: inline-block;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.time-num:first-child {
+  width: 110px;
+}
+
+.time-num:last-child {
+  margin-left: 5px;
 }
 
 .day {
@@ -78,7 +95,6 @@ body:after{
 }
 
 h1 div {
-  /* font-size: 2.5rem; */
   display: inline-block;
 }
 
@@ -89,7 +105,7 @@ h1 {
 }
 
 h2 {
-  opacity: 0.8;
+  opacity: 0.9;
   font-size: 1.4rem;
 }
 
@@ -111,6 +127,7 @@ h2 {
   margin: 0;
   background: #bedcdab0;
   color: black;
+  text-shadow: none;
   padding: 1em;
   border-radius: 1em;
   margin-bottom: 0.5rem;
@@ -237,6 +254,14 @@ div.modal_closed {
 }
 
 @media (max-width: 950px) {
+  .time-num {
+    width: 120px;
+  }
+  
+  .time-num:first-child {
+    width: 100px;
+  }
+
   .time {
     font-size: 6.5rem;
   }
@@ -254,6 +279,14 @@ div.modal_closed {
 }
 
 @media (max-width: 768px) {
+  .time-num {
+    width: 100px;
+  }
+  
+  .time-num:first-child {
+    width: 80px;
+  }
+
   .top-part{
     padding-bottom: 3rem;
     width: 96%;
@@ -289,6 +322,14 @@ div.modal_closed {
 }
 
 @media (max-width: 570px) {
+  .time-num {
+    width: 80px;
+  }
+  
+  .time-num:first-child {
+    width: 70px;
+  }
+
   .top-part{
     padding-bottom: 4rem;
   }
@@ -317,6 +358,13 @@ div.modal_closed {
 }
 
  @media (max-width: 400px) {
+  .time-num {
+    width: 65px;
+  }
+  
+  .time-num:first-child {
+    width: 60px;
+  }
   .top-part{
     padding-bottom: 5rem;
   }

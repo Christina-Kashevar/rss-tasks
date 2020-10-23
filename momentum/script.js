@@ -30,7 +30,7 @@ function showTime() {
     }
 
   // Output Time
-  time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)}`;
+  time.innerHTML = `<span class='time-num'>${hour}</span><span>:</span><span class='time-num'>${addZero(min)}</span><span>:</span><span class='time-num'>${addZero(sec)}</span>`;
 
   setTimeout(showTime, 1000);
 }
@@ -100,7 +100,7 @@ function setBgGreet() {
       // Afternoon
       greeting.textContent = 'Good afternoon, ';
     } else {
-      greeting.textContent = 'Good night, ';
+      greeting.textContent = 'Good evening, ';
     }
 }
 
@@ -109,7 +109,6 @@ function getName() {
   if (localStorage.getItem('name') === null) {
     name.textContent = '[Enter Name]';
   } else {
-    console.log(6)
     name.textContent = localStorage.getItem('name');
   }
 }
@@ -127,7 +126,6 @@ function setName(e) {
         }
       } else {
         localStorage.setItem('name', e.target.innerText);
-        name.textContent = e.target.innerText
       }
       name.blur();
     }
@@ -142,7 +140,6 @@ function setName(e) {
       return;
     } else {
       localStorage.setItem('name', e.target.innerText);
-      name.textContent = e.target.innerText
     }
   }
 }
@@ -255,7 +252,6 @@ async function getWeather() {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityLocal}&lang=en&appid=1f22d4f798f3fa7006bf7a2c8aec93c5&units=metric`;
     const res = await fetch(url);
     const data = await res.json();
-    console.log(data)
     weatherIcon.className = 'weather__icon owf';
     weatherIcon.classList.add(`owf-${data.weather[0].id}`);
     temperature.textContent = `${data.main.temp.toFixed(0)}°C`;
@@ -301,6 +297,16 @@ function clearCityField(){
   city.textContent = '';
 }
 
+function rotateBtn(e) {
+  let start = Date.now();
+
+  let timer = setInterval(function () {
+    let timePassed = Date.now() - start;
+    e.target.style.transform = `rotate(${timePassed}deg)`;
+    if (timePassed > 180) clearInterval(timer);
+  }, 20);
+}
+
 function closeModal() {
   modalContainer.classList.add("modal_closed");
   modalOverlay.classList.add("modal_closed");
@@ -317,8 +323,10 @@ focus.addEventListener('keypress', setFocus);
 focus.addEventListener('blur', setFocus);
 focus.addEventListener('click', clickFocusField);
 btn.addEventListener('click', getImage);
+btn.addEventListener('click', rotateBtn);
 document.addEventListener('DOMContentLoaded', getQuote);
 btnQuote.addEventListener('click', getQuote);
+btnQuote.addEventListener('click', rotateBtn);
 document.addEventListener('DOMContentLoaded', getWeather);
 city.addEventListener('keypress', setCity);
 city.addEventListener('blur', setCityBlur);
