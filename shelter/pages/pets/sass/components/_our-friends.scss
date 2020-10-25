@@ -23,8 +23,8 @@
 .layout-4-column {
     @include media-tablet {
         margin: 0 auto;
-        max-width: 580px;
-        max-height: 1430px;
+        width: 580px;
+        height: 1430px;
         overflow:hidden;
     }
 }

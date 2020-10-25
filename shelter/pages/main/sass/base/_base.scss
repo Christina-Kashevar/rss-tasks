@@ -8,6 +8,10 @@ body {
     color: $color-dark-xl;
 }
 
+.hidden {
+    overflow: hidden;
+}
+
 h1 {
     width: 1px;
     height: 1px;

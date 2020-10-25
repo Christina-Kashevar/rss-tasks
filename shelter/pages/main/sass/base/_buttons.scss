@@ -46,7 +46,7 @@
   background-color: $color-light-l;
   border-radius: 50%;
   @extend %transition;
-  
+  outline: none;
 
   &::before {
     content: url('../../../assets/icons/arrow.svg');
@@ -76,4 +76,39 @@
   @include media-mobile {
     order: 2;
   }
+}
+
+
+.modal-button {
+  position: absolute;
+  height: 52px;
+  width: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid $color-primary;
+  background-color: transparent;
+  border-radius: 50%;
+  @extend %transition;
+  top: -52px;
+  right: -48px;
+  cursor: pointer;
+  svg {
+      pointer-events: none;
+  }
+
+  &:hover {
+    background: $color-primary-light;
+    border-color:$color-primary-light;
+  }
+
+  @include media-mobile {
+    right: -30px;
+  }
+
+}
+
+.hover {
+  background: $color-primary-light;
+  border-color:$color-primary-light;
 }

@@ -30,7 +30,7 @@
         <div class='wrapper'>
             <h3 class="our-friends__title">Our friends who <br> are looking for a house</h3>
             <div class="layout-4-column">
-                <div class="our-friend-card">
+                <!-- <div class="our-friend-card">
                     <img class="our-friend-card__image" src="../../assets/images/pets-katrine.png" alt="cat-katrine">
                     <h5>Katrine</h5>
                     <button class="button button_bordered">Learn more</button>
@@ -69,14 +69,14 @@
                     <img class="our-friend-card__image" src="../../assets/images/pets-freddie.png" alt="cat-freddie">
                     <h5>Freddie</h5>
                     <button class="button button_bordered">Learn more</button>
-                </div>
+                </div> -->
             </div>
             <div class="slider-pagination">
-                <button class="button-pagination button-pagination_inactive" disabled><<</button>
-                <button class="button-pagination button-pagination_inactive" disabled><</button>
-                <button class="button-pagination button-pagination_active">1</button>
-                <button class="button-pagination">></button>
-                <button class="button-pagination">>></button>
+                <button class="button-pagination button-pagination_inactive" disabled id='to-first-page'>&lt;&lt;</button>
+                <button class="button-pagination button-pagination_inactive" disabled id='to-previous-page'>&lt;</button>
+                <button class="button-pagination button-pagination_active" id='current-page'>1</button>
+                <button class="button-pagination" id='to-next-page'>></button>
+                <button class="button-pagination" id='to-last-page'>>></button>
             </div>
         </div>
     </section>
@@ -97,5 +97,6 @@
             <div class="footer__image-wrapper"><img class="footer__image" src="../../assets/images/footer-puppy.png" alt="footer-puppy"></div>
         </div>
     </footer>
+    <script src="pets.js"></script>
 </body>
 </html>

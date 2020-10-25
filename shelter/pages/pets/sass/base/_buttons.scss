@@ -36,6 +36,7 @@
   border: 2px solid $color-primary;
   margin-right: 15px;
   @extend %transition;
+  outline: none;
 
   &:last-child {
     margin-right: 0px;
@@ -56,4 +57,39 @@
       margin-right: 0px;
     }
 }
+}
+
+
+.modal-button {
+  position: absolute;
+  height: 52px;
+  width: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid $color-primary;
+  background-color: transparent;
+  border-radius: 50%;
+  @extend %transition;
+  top: -52px;
+  right: -48px;
+  cursor: pointer;
+  svg {
+      pointer-events: none;
+  }
+
+  &:hover {
+    background: $color-primary-light;
+    border-color:$color-primary-light;
+  }
+
+  @include media-mobile {
+    right: -30px;
+  }
+
+}
+
+.hover {
+  background: $color-primary-light;
+  border-color:$color-primary-light;
 }

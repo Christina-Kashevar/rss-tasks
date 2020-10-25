@@ -22,6 +22,7 @@
     padding: 60px 0px;
     align-items: center;
     flex-wrap: wrap;
+    transition: all 1s;
     @include media-mobile {
         flex-wrap: wrap;
         width: 270px;
@@ -30,16 +31,23 @@
     }
 }
 
-.our-friend-cards {
-    max-width: 990px;
+.slider {
+    position: relative;
+    width: 990px;
+    height: 435px;
     overflow: hidden;
     @include media-tablet {
-        max-width: 580px;
+        width: 580px;
     }
     @include media-mobile {
         margin-bottom: 20px;
     }
+}
 
+.our-friend-cards {
+    display: flex;
+    position: relative;
+    transition: all 1s;
 }
 
 .our-friend-card {
@@ -47,6 +55,7 @@
     padding-bottom: 30px;
     border-radius: 9px 9px 0px 0px;
     margin-right: 90px;
+    transition: all 1s;
 
     &:last-child {
         margin-right: 0px;

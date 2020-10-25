@@ -8,13 +8,18 @@
   justify-content:space-between;
   flex-wrap: wrap;
   padding: 60px 0 29px 0;
+  width: 1200px;
+  height: 1020px;
+  // height: 930px;
   @include media-tablet {
     padding: 39px 0 29px 0;
+    width: 580px;
   }
 
   @include media-mobile {
     justify-content: center;
     padding-top: 42px;
+    width: 270px;
   }
 
 }

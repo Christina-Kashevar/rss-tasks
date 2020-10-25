@@ -7,6 +7,9 @@
     <title>Shelter</title>
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" /> -->
     <link rel="stylesheet" href="./sass/style.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
 </head>
 <body>
    <header class="header">
@@ -54,10 +57,27 @@
             <h3 class="our-friends__title">Our friends who <br> are looking for a house</h3>
             <div class="layout-column our-friends-slider">
                 <div class="slider-button-wrapper">
-                    <button class="slider-button"></button>
+                    <button class="slider-button prev-button" id="slider-btn-left"></button>
                 </div>
-                <div class="layout-column our-friend-cards">
-                    <div class="our-friend-card">
+                <div class="layout-column slider">
+                    <div class= "our-friend-cards">
+                        <!-- <div class="our-friend-card">
+                            <img class="our-friend-card__image" src="../../assets/images/pets-katrine.png" alt="cat-katrine">
+                            <h5>Katrine</h5>
+                            <button class="button button_bordered">Learn more</button>
+                        </div>
+                         <div class="our-friend-card">
+                            <img class="our-friend-card__image" src="../../assets/images/pets-jennifer.png" alt="dog-jennifer">
+                            <h5>Jennifer</h5>
+                            <button class="button button_bordered">Learn more</button>
+                        </div>
+                         <div class="our-friend-card">
+                            <img class="our-friend-card__image" src="../../assets/images/pets-woody.png" alt="dog-woody">
+                            <h5>Woody</h5>
+                            <button class="button button_bordered">Learn more</button>
+                        </div> -->
+                    </div>
+                    <!-- <div class="our-friend-card">
                         <img class="our-friend-card__image" src="../../assets/images/pets-katrine.png" alt="cat-katrine">
                         <h5>Katrine</h5>
                         <button class="button button_bordered">Learn more</button>
@@ -71,10 +91,10 @@
                         <img class="our-friend-card__image" src="../../assets/images/pets-woody.png" alt="dog-woody">
                         <h5>Woody</h5>
                         <button class="button button_bordered">Learn more</button>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="slider-button-wrapper">
-                    <button class="slider-button slider-button_reverted"></button>
+                    <button class="slider-button next-button slider-button_reverted" id="slider-btn-right"></button>
                 </div>
             </div>
             <button class="button">Get to know the rest</button>
@@ -126,6 +146,6 @@
             <div class="footer__image-wrapper"><img class="footer__image" src="../../assets/images/footer-puppy.png" alt="footer-puppy"></div>
         </div>
     </footer>
-
+<script src="main.js"></script>
 </body>
 </html>
