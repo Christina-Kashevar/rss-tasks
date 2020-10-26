@@ -605,6 +605,7 @@ h5 {
   top: 49px;
   left: -webkit-calc(100% - 83px);
   left: calc(100% - 83px);
+  transition: transform 1s;
 }
 
 .hamburger {
@@ -632,6 +633,133 @@ h5 {
   left: 0;
 }
 
+.overlay-hamburger {
+  position: fixed;
+  display: flex;
+  justify-content: flex-end;
+  align-items: start;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(41, 41, 41, 0.6);
+  z-index: 2;
+}
+.overlay-hamburger .hamburger:before,
+.overlay-hamburger .hamburger__line,
+.overlay-hamburger .hamburger:after {
+  background-color: #F1CDB3;
+}
+
+.none {
+  display: none;
+}
+
+.header-hamburger-wrapper {
+  position: absolute;
+  width: 320px;
+  padding: 30px 10px;
+  background-color: #292929;
+  animation-name: slidein;
+  animation-duration: 2s;
+}
+.header-hamburger-wrapper .header-logo__title, .header-hamburger-wrapper .hamburger__line {
+  color: #F1CDB3;
+}
+.header-hamburger-wrapper .header-logo__text {
+  color: #FFFFFF;
+}
+.header-hamburger-wrapper .navigation__link {
+  color: #CDCDCD;
+}
+.header-hamburger-wrapper .navigation__link:hover {
+  cursor: pointer;
+  color: #FAFAFA;
+  border-bottom: 3px solid transparent;
+}
+.header-hamburger-wrapper .navigation__link:active {
+  color: #FAFAFA;
+  border-bottom: 3px solid #F1CDB3;
+}
+.header-hamburger-wrapper .navigation__link_active {
+  color: #FAFAFA;
+}
+.header-hamburger-wrapper .header-logo {
+  position: static;
+}
+.header-hamburger-wrapper a {
+  text-decoration: none;
+}
+.header-hamburger-wrapper .navigation__link {
+  font-size: 3.2rem;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 5.1rem;
+}
+.header-hamburger-wrapper .navigation__item {
+  margin-bottom: 40px;
+}
+.header-hamburger-wrapper .header__hamburger {
+  animation-name: rotateTo;
+  animation-duration: 1.2s;
+  animation-delay: 1s;
+}
+
+.animate {
+  animation-delay: 0.7s;
+  animation-name: slideOut;
+}
+
+.animateRotate {
+  animation-delay: 0s;
+  animation-name: rotateOut;
+}
+
+.hamburger-navigation {
+  margin: 158px 0;
+  text-align: center;
+}
+
+.hamburger-logo {
+  height: 60px;
+}
+
+.rotate90 {
+  transform: rotate(90deg);
+}
+
+@keyframes slidein {
+  from {
+    right: -320px;
+  }
+  to {
+    right: 0px;
+  }
+}
+@keyframes slideOut {
+  from {
+    right: 0px;
+  }
+  to {
+    right: -320px;
+  }
+}
+@keyframes rotateTo {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(90deg);
+  }
+}
+@keyframes rotateOut {
+  from {
+    transform: rotate(90deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
 .overlay {
   position: fixed;
   top: 0;

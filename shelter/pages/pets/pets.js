@@ -28,7 +28,7 @@ fetch('./pets.json').then(res => res.json()).then(list => {
 
   fullPetsList = sort863(fullPetsList);
 
-  renderArticlesToDom();
+//   renderArticlesToDom();
 
 //   document.querySelector("#currentPage").innerText = (currentPage+1).toString();
 
@@ -436,3 +436,36 @@ btnToFirstPage.addEventListener('click', openFirstPage);
 btnToPrevPage.addEventListener('click', openPrevPage);
 btnToNextPage.addEventListener('click', openNextPage);
 btnToLastPage.addEventListener('click', openLastPage);
+
+// hamburger
+const btnHamburger = document.querySelector('#open-hamburger');
+
+const openHamburger = () => {
+    document.querySelector('.header-hamburger-wrapper').classList.remove('animate');
+    document.querySelector('.overlay-hamburger').classList.remove('none');
+    document.body.classList.add('hidden');
+    setTimeout(function(){
+        document.querySelector('#close-hamburger').classList.add('rotate90');
+    },2000)
+}
+
+btnHamburger.addEventListener('click', openHamburger);
+
+const btnHamburgerClose = document.querySelector('#close-hamburger');
+
+const closeHamburger = (e) => {
+    let classes = e.target.classList;
+    if(classes.contains('overlay-hamburger') || classes.contains('header__hamburger') || 
+    classes.contains('hamburger__line') || classes.contains('hamburger') || classes.contains('navigation__link_active')) {
+        setTimeout(function(){
+            document.querySelector('.overlay-hamburger').classList.add('none');
+            document.body.classList.remove('hidden');
+            },2300)
+        document.querySelector('#close-hamburger').classList.remove('rotate90');
+        document.querySelector('.header-hamburger-wrapper').classList.add('animate');
+        document.querySelector('#close-hamburger').classList.add('animateRotate');
+    }
+}
+
+btnHamburgerClose.addEventListener('click', closeHamburger);
+document.querySelector('.overlay-hamburger').addEventListener('click', closeHamburger);

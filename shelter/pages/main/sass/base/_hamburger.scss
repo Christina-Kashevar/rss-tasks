@@ -54,7 +54,6 @@
     height: 100%;
     background-color: $color-overlay;
     z-index: 2;
-
 }
 
 .none {
@@ -68,7 +67,6 @@
     background-color: $color-dark-3xl;
     animation-name: slidein;
     animation-duration: 2s;
-    // transition: right 1s;
 
     & .header-logo {
         position: static;
@@ -88,9 +86,8 @@
 
     .header__hamburger {
         animation-name: rotateTo;
-        animation-duration: 1.5s;
-        animation-delay: 0.7s;
-        // transform: rotate(90deg)
+        animation-duration: 1.2s;
+        animation-delay: 1s;
     }
 
 }

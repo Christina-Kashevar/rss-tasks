@@ -3,6 +3,7 @@
     text-align: center;
     padding-top: 80px;
     padding-bottom: 100px;
+    transition: all 2s;
     & a {
         text-decoration: none;
         color: #292929;
@@ -53,7 +54,7 @@
 .our-friend-cards {
     display: flex;
     position: relative;
-    transition: all 1s;
+    transition: all 2s;
 }
 
 .our-friend-card {
@@ -61,7 +62,7 @@
     padding-bottom: 30px;
     border-radius: 9px 9px 0px 0px;
     margin-right: 90px;
-    transition: all 1s;
+    transition: all 2s;
 
     &:last-child {
         margin-right: 0px;
@@ -82,5 +83,33 @@
 
     @include media-tablet {
         margin-right: 40px;
+    }
+}
+
+.to-right {
+    animation: right 1s;
+}
+
+@keyframes right {
+    from {
+        right: 0px;
+    }
+  
+    to {
+        right: 310px;
+    }
+}
+
+.to-left {
+    animation: left 1s;
+}
+
+@keyframes left {
+    from {
+        right: 310px;
+    }
+  
+    to {
+        right: 00px;
     }
 }

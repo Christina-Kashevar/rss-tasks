@@ -1,6 +1,6 @@
-//Создаем массив из 48 псевдослучайых элементов 
+//Создаем массив из 21 псевдослучайых элемента 
 let pets = []; // 8
-let fullPetsList = []; // 48
+let fullPetsList = []; // 
 let currentPage = 0;
 let index = 0;
 const request = new XMLHttpRequest();
@@ -8,97 +8,26 @@ request.open('GET', './pets.json');
 fetch('./pets.json').then(res => res.json()).then(list => {
   pets = list;
 
-  fullPetsList = (() => {
-    let tempArr = [];
-
-    for (let i = 0; i < 6; i++) {
-      const newPets = pets;
+fullPetsList = (() => {
+    let i = checkItemsPerPage()
+    let newPets = pets.slice();
 
       for (let j = pets.length; j > 0; j--) {
         let randInd = Math.floor(Math.random() * j);
         const randElem = newPets.splice(randInd, 1)[0];
         newPets.push(randElem);
       }
-
-      tempArr = [...tempArr, ...newPets];
-    }
-    return tempArr;
+    newPets = newPets.slice(0, i)
+    return newPets;
   })();
 
-  fullPetsList = sort863(fullPetsList);
 
   renderArticlesToDom();
-
-//   document.querySelector("#currentPage").innerText = (currentPage+1).toString();
-
-//   for (let i = 0; i < (fullPetsList.length / 6); i++) {
-//     const stepList = fullPetsList.slice(i * 6, (i * 6) + 6);
-
-//     for (let j = 0; j < 6; j++) {
-//       stepList.forEach((item, ind) => {
-//         if ( item.name === stepList[j].name && (ind !== j) ) {
-//           document.querySelector("#pets").children[(i * 6) + j].style.border = '5px solid red';
-//         }
-//       })
-//     }
-//   }
 })
 
 
 request.send();
 
-const sort863 = (list) => {
-  let unique8List = [];
-  let length = list.length;
-  for (let i = 0; i < length / 8; i++) {
-    const uniqueStepList = [];
-    for (j = 0; j < list.length; j++) {
-      if (uniqueStepList.length >= 8) {
-        break;
-      }
-      const isUnique = !uniqueStepList.some((item) => {
-        return item.name === list[j].name;
-      });
-      if (isUnique) {
-        uniqueStepList.push(list[j]);
-        list.splice(j, 1);
-        j--;
-      }
-    }
-    unique8List = [...unique8List, ...uniqueStepList];
-  }
-  list = unique8List;
-
-
-  list = sort6recursively(list);
-
-  return list;
-}
-
-const sort6recursively = (list) => {
-  const length = list.length;
-
-  for (let i = 0; i < (length / 6); i++) {
-    const stepList = list.slice(i * 6, (i * 6) + 6);
-
-    for (let j = 0; j < 6; j++) {
-      const duplicatedItem = stepList.find((item, ind) => {
-        return item.name === stepList[j].name && (ind !== j);
-      });
-
-      if (duplicatedItem !== undefined) {
-        const ind = (i * 6) + j;
-        const which8OfList = Math.trunc(ind / 8);
-
-        list.splice(which8OfList * 8, 0, list.splice(ind, 1)[0]);
-
-        sort6recursively(list);
-      }
-    }
-  }
-
-  return list;
-}
 
 //Создаем одну карточку для отрисовки на странице
 class Article {
@@ -305,13 +234,9 @@ const getOurFriendsCards = () => {
 
 const generateArticles = (fullPetsList) => {
     let articles = [];
-    let petsPerPage = checkItemsPerPage();
-    for (let i = index; i< ( index + petsPerPage*2 ); i++ ) {
-        articles.push(new Article(fullPetsList[i]))
-    }
-    // fullPetsList.forEach(article => {
-    //     articles.push(new Article(article))
-    // });
+    fullPetsList.forEach(article => {
+        articles.push(new Article(article))
+    });
     return articles;
 }
 
@@ -361,75 +286,26 @@ const renderArticleModalWindow = (article) => {
 const btnLeft = document.querySelector('#slider-btn-left');
 const btnRight = document.querySelector('#slider-btn-right');
 
-// const openSliderPrevPage = () => {
-//     let maxPage = 0;
-//     let widthOfWrapper = getWidthOfWrapper();
-//     if (widthOfWrapper === 1080) {
-//         maxPage = 16;
-//     } else if(widthOfWrapper === 620) {
-//         maxPage = 24;
-//     } else if(widthOfWrapper === 310) {
-//         maxPage = 48;
-//     }
-//     if (currentPage > 0) {
-//         currentPage--;
-//       } else {
-          
-//       }
-
-//     document.querySelector(".our-friend-cards").style.right = `calc(${widthOfWrapper * currentPage}px)`;
-// }
-
 const openSliderNextPage = () => {
-    // document.onclick = null;
     let petsPerPage = checkItemsPerPage();
-    let widthOfWrapper = getWidthOfWrapper();
-    // index += petsPerPage;
-    // if(index === fullPetsList.length - petsPerPage) {
-    //     index =0
-    // }
-    // console.log(index)
-    // let offset2= 0;
-    // let slides2 = document.querySelectorAll('.our-friend-card');
-    // for (let i =0; i < slides2.length; i++) {
-    //     slides2[i].style.left = offset2*310 - 310 + 'px';
-    //     offset2++
-    //     document.querySelector(".our-friend-cards").style.left = `(${310}px)`;
-    // }
-    document.querySelector(".our-friend-cards").style.right = `${widthOfWrapper}px`;
-    // setTimeout(function(){
-    //     for (let i =0; i<petsPerPage; i++ ) {
-    //         slides2[0].remove();
-    //     }
-    //     renderArticlesToDom();
-    // },1000)
-    // document.querySelector(".our-friend-cards").style.left = `(${widthOfWrapper}px)`;
-
-    // let maxPage = 0;
-    // currentPage++;
-    // let widthOfWrapper = getWidthOfWrapper();
-    // if (widthOfWrapper === 1080) {
-    //     maxPage = 16;
-    // } else if(widthOfWrapper === 620) {
-    //     maxPage = 24;
-    // } else if(widthOfWrapper === 310) {
-    //     maxPage = 48;
-    // }
-    // if (currentPage === maxPage-1) {
-    //     fullPetsList = [...fullPetsList,...fullPetsList];
-    //     renderArticlesToDom();
-    // }
-    //   console.log(currentPage)
-    // document.querySelector(".our-friend-cards").style.right = `calc(${widthOfWrapper * currentPage}px)`;
-    // if (fullPetsList.length > 48 ) {
-    //     fullPetsList.splice(0,48);
-    //     renderArticlesToDom();
-    //     currentPage =0;
-    // }
+   
+    let newArr = [];
+    for (let i = 0; i < petsPerPage; i++) {
+        let randInd = Math.floor(Math.random() * 8);
+        let randElem =pets[randInd];
+        if (!newArr.includes(randElem) && !fullPetsList.includes(randElem)){
+            newArr.push(randElem)
+        } else {
+            i--
+        }
+    }
+    fullPetsList = newArr;
+    console.log(fullPetsList)
+    renderArticlesToDom();
 }
 
 
-//btnLeft.addEventListener('click', openSliderPrevPage);
+btnLeft.addEventListener('click', openSliderNextPage);
 btnRight.addEventListener('click', openSliderNextPage);
 
 
@@ -452,7 +328,8 @@ const btnHamburgerClose = document.querySelector('#close-hamburger');
 
 const closeHamburger = (e) => {
     let classes = e.target.classList;
-    if(classes.contains('overlay-hamburger') || classes.contains('header__hamburger') || classes.contains('hamburger__line') || classes.contains('hamburger')) {
+    if(classes.contains('overlay-hamburger') || classes.contains('header__hamburger') || 
+    classes.contains('hamburger__line') || classes.contains('hamburger') || classes.contains('navigation__link_active')) {
         setTimeout(function(){
             document.querySelector('.overlay-hamburger').classList.add('none');
             document.body.classList.remove('hidden');
