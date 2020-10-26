@@ -2,15 +2,15 @@
   width: 100%;
   background-color: $color-light-xl;
   padding: 29px 0;
-
-  @include media-tablet {
-    position: sticky;
-    top: 0;
+  position: sticky;
+  top: 0;
+  & a {
+    text-decoration: none;
   }
+}
 
-  @include media-mobile {
-    position: static;
-  }
+h4 a {
+  color: $color-dark-l;
 }
 
 .header-logo {
@@ -61,8 +61,13 @@
 
   &:hover {
     cursor: pointer;
-    color: $color-dark-s;
-    // border-bottom: 3px solid transparent;
+    color: $color-dark-3xl;
+    border-bottom: 3px solid transparent;
+  }
+
+  &:active {
+    color: $color-dark-l;
+    border-bottom: 3px solid $color-primary;
   }
 
   &_active {

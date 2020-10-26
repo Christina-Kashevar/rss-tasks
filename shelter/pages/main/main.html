@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Shelter</title>
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" /> -->
     <link rel="stylesheet" href="./sass/style.css">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script> -->
-    <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
 </head>
 <body>
    <header class="header">
@@ -22,20 +18,39 @@
         <nav class="header__navigation">
             <ul class="navigation">
                 <li class="navigation__item"><a class="navigation__link navigation__link_active">About the shelter</a></li>
-                <li class="navigation__item"><a class="navigation__link">Our pets</a></li>
+                <li class="navigation__item"><a class="navigation__link" href="../pets/pets.html">Our pets</a></li>
                 <li class="navigation__item"><a class="navigation__link">Help the shelter</a></li>
                 <li class="navigation__item"><a class="navigation__link">Contacts</a></li>
             </ul>
         </nav>
-        <div class="header__hamburger"><span class="hamburger"><span class="hamburger__line"></span></span></div>
+        <div class="header__hamburger" id="open-hamburger"><span class="hamburger"><span class="hamburger__line"></span></span></div>
      </div>
    </header>
+   <div class="overlay-hamburger none">
+      <div class="header-hamburger-wrapper">
+          <div class="hamburger-logo layout-column">
+                <div class="header-logo">
+                    <h4 class="header-logo__title">Cozy House</h1>
+                    <p class="header-logo__text"> Shelter for pets in Boston</p>
+                </div>
+                <div class="header__hamburger" id="close-hamburger"><span class="hamburger"><span class="hamburger__line"></span></span></div>
+          </div>
+        <nav class="hamburger-navigation">
+            <ul class=>
+                <li class="navigation__item"><a class="navigation__link navigation__link_active">About the shelter</a></li>
+                <li class="navigation__item"><a class="navigation__link" href="../pets/pets.html">Our pets</a></li>
+                <li class="navigation__item"><a class="navigation__link">Help the shelter</a></li>
+                <li class="navigation__item"><a class="navigation__link">Contacts</a></li>
+            </ul>
+        </nav>
+      </div>
+   </div>
    <section class="hero">
        <div class="wrapper layout-column">
            <div class="hero-content">
                 <h2 class="hero__title">Not only people<br> need a house</h2>
                 <p class="hero__text">We offer to give a chance to a little and nice puppy with an extremely wide and open heart. He or she will love you more than anybody else in the world, you will see!</p>
-                <button type="button" class="button">Make a friend</button>
+                <button type="button" class="button button-no-padding"><a href="../pets/pets.html">Make a friend</a></button>
            </div>
            <div class="hero__image-wrapper"><img src="../../assets/images/start-screen-puppy.png" alt="start_puppy" class="hero__image"></div>
        </div>
@@ -61,7 +76,7 @@
                 </div>
                 <div class="layout-column slider">
                     <div class= "our-friend-cards">
-                        <!-- <div class="our-friend-card">
+                        <div class="our-friend-card">
                             <img class="our-friend-card__image" src="../../assets/images/pets-katrine.png" alt="cat-katrine">
                             <h5>Katrine</h5>
                             <button class="button button_bordered">Learn more</button>
@@ -75,7 +90,7 @@
                             <img class="our-friend-card__image" src="../../assets/images/pets-woody.png" alt="dog-woody">
                             <h5>Woody</h5>
                             <button class="button button_bordered">Learn more</button>
-                        </div> -->
+                        </div>
                     </div>
                     <!-- <div class="our-friend-card">
                         <img class="our-friend-card__image" src="../../assets/images/pets-katrine.png" alt="cat-katrine">
@@ -97,7 +112,7 @@
                     <button class="slider-button next-button slider-button_reverted" id="slider-btn-right"></button>
                 </div>
             </div>
-            <button class="button">Get to know the rest</button>
+            <button class="button button-no-padding"><a href="../pets/pets.html">Get to know the rest</a></button>
        </div>
     </section>
     <section class="help">

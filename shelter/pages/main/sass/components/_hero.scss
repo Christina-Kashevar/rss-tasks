@@ -4,6 +4,13 @@
   @include media-tablet {
    padding-top: 60px;
   }
+
+  & a {
+    text-decoration: none;
+    color: #292929;
+    padding: 15px 45px;
+    display: inline-block;
+  }
 }
 
 .hero-content {

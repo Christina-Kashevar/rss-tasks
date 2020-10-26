@@ -604,6 +604,7 @@ h5 {
   position: absolute;
   top: 49px;
   left: -webkit-calc(100% - 83px);
+  left: calc(100% - 83px);
 }
 
 .hamburger {
@@ -837,17 +838,15 @@ h5 {
   width: 100%;
   background-color: #FFFFFF;
   padding: 29px 0;
+  position: sticky;
+  top: 0;
 }
-@media (max-width: 1279px) {
-  .header {
-    position: sticky;
-    top: 0;
-  }
+.header a {
+  text-decoration: none;
 }
-@media (max-width: 767px) {
-  .header {
-    position: static;
-  }
+
+h4 a {
+  color: #545454;
 }
 
 .header-logo {
@@ -898,7 +897,12 @@ h5 {
 }
 .navigation__link:hover {
   cursor: pointer;
-  color: #CDCDCD;
+  color: #292929;
+  border-bottom: 3px solid transparent;
+}
+.navigation__link:active {
+  color: #545454;
+  border-bottom: 3px solid #F1CDB3;
 }
 .navigation__link_active {
   color: #292929;
@@ -937,6 +941,14 @@ h5 {
     overflow: hidden;
   }
 }
+@media (max-width: 767px) {
+  .layout-4-column {
+    margin: 0 auto;
+    width: 270px;
+    height: 1430px;
+    overflow: hidden;
+  }
+}
 
 .our-friend-card {
   background: #FAFAFA;
@@ -948,7 +960,7 @@ h5 {
   margin-top: 23px;
   margin-bottom: 30px;
 }
-.our-friend-card:hover {
+.our-friend-card:hover, .our-friend-card:active {
   background: #FFFFFF;
 }
 
@@ -1021,6 +1033,7 @@ h5 {
 }
 @media (max-width: 767px) {
   .footer__image-wrapper {
+    max-height: 269px;
     margin-top: 45px;
   }
 }

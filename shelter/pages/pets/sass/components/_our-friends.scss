@@ -27,6 +27,13 @@
         height: 1430px;
         overflow:hidden;
     }
+
+    @include media-mobile {
+        margin: 0 auto;
+        width: 270px;
+        height: 1430px;
+        overflow:hidden;
+    }
 }
 
 .our-friend-card {
@@ -40,7 +47,8 @@
         margin-bottom: 30px;
     }
 
-    &:hover {
+    &:hover,
+    &:active {
         background:$color-light-xl;
     }
 }

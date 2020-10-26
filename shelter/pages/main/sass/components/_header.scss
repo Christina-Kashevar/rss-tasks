@@ -3,6 +3,10 @@
   position: absolute;
   top: 59px;
 
+  & a {
+    text-decoration: none;
+  }
+
    @include media-tablet {
     top: 0px;
   }
@@ -72,13 +76,18 @@
   @extend %font-prim;
   font-size: 1.5rem;
   line-height: 2.4rem;
-  color: $color-light-l;
+  color: $color-dark-s;
   padding-bottom: 2px;
 
   &:hover {
     cursor: pointer;
-    color: $color-dark-s;
-    // border-bottom: 3px solid transparent;
+    color: $color-light-s;
+    border-bottom: 3px solid transparent;
+  }
+
+  &:active {
+    color: $color-light-s;
+    border-bottom: 3px solid $color-primary;
   }
 
   @include media-tablet {

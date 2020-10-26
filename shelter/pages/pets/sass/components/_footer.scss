@@ -54,6 +54,7 @@
     }
 
     @include media-mobile {
+        max-height: 269px;
         margin-top: 45px;
     }
  }

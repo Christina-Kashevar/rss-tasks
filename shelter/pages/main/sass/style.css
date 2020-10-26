@@ -560,6 +560,10 @@ h5 {
   border-color: #FDDCC4;
 }
 
+.button-no-padding {
+  padding: 0;
+}
+
 .slider-button {
   height: 52px;
   width: 52px;
@@ -646,6 +650,8 @@ h5 {
   position: absolute;
   top: 50px;
   left: -webkit-calc(100% - 83px);
+  left: calc(100% - 83px);
+  transition: transform 1s;
 }
 
 .hamburger {
@@ -673,6 +679,107 @@ h5 {
   left: 0;
 }
 
+.overlay-hamburger {
+  position: fixed;
+  display: flex;
+  justify-content: flex-end;
+  align-items: start;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(41, 41, 41, 0.6);
+  z-index: 2;
+}
+
+.none {
+  display: none;
+}
+
+.header-hamburger-wrapper {
+  position: absolute;
+  width: 320px;
+  padding: 30px 10px;
+  background-color: #292929;
+  animation-name: slidein;
+  animation-duration: 2s;
+}
+.header-hamburger-wrapper .header-logo {
+  position: static;
+}
+.header-hamburger-wrapper a {
+  text-decoration: none;
+}
+.header-hamburger-wrapper .navigation__link {
+  font-size: 3.2rem;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 5.1rem;
+}
+.header-hamburger-wrapper .navigation__item {
+  margin-bottom: 40px;
+}
+.header-hamburger-wrapper .header__hamburger {
+  animation-name: rotateTo;
+  animation-duration: 1.5s;
+  animation-delay: 0.7s;
+}
+
+.animate {
+  animation-delay: 0.7s;
+  animation-name: slideOut;
+}
+
+.animateRotate {
+  animation-delay: 0s;
+  animation-name: rotateOut;
+}
+
+.hamburger-navigation {
+  margin: 158px 0;
+  text-align: center;
+}
+
+.hamburger-logo {
+  height: 60px;
+}
+
+.rotate90 {
+  transform: rotate(90deg);
+}
+
+@keyframes slidein {
+  from {
+    right: -320px;
+  }
+  to {
+    right: 0px;
+  }
+}
+@keyframes slideOut {
+  from {
+    right: 0px;
+  }
+  to {
+    right: -320px;
+  }
+}
+@keyframes rotateTo {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(90deg);
+  }
+}
+@keyframes rotateOut {
+  from {
+    transform: rotate(90deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
 .overlay {
   position: fixed;
   top: 0;
@@ -893,6 +1000,9 @@ h5 {
   position: absolute;
   top: 59px;
 }
+.header a {
+  text-decoration: none;
+}
 @media (max-width: 1279px) {
   .header {
     top: 0px;
@@ -968,12 +1078,17 @@ h5 {
 .navigation__link {
   font-size: 1.5rem;
   line-height: 2.4rem;
-  color: #F6F6F6;
+  color: #CDCDCD;
   padding-bottom: 2px;
 }
 .navigation__link:hover {
   cursor: pointer;
-  color: #CDCDCD;
+  color: #FAFAFA;
+  border-bottom: 3px solid transparent;
+}
+.navigation__link:active {
+  color: #FAFAFA;
+  border-bottom: 3px solid #F1CDB3;
 }
 @media (max-width: 1279px) {
   .navigation__link {
@@ -994,6 +1109,12 @@ h5 {
   .hero {
     padding-top: 60px;
   }
+}
+.hero a {
+  text-decoration: none;
+  color: #292929;
+  padding: 15px 45px;
+  display: inline-block;
 }
 
 .hero-content {
@@ -1130,6 +1251,12 @@ h5 {
   padding-top: 80px;
   padding-bottom: 100px;
 }
+.our-friends a {
+  text-decoration: none;
+  color: #292929;
+  display: inline-block;
+  padding: 13px 43px;
+}
 @media (max-width: 1279px) {
   .our-friends {
     padding-top: 81px;
@@ -1151,6 +1278,7 @@ h5 {
   padding: 60px 0px;
   align-items: center;
   flex-wrap: wrap;
+  transition: all 1s;
 }
 @media (max-width: 767px) {
   .our-friends-slider {
@@ -1181,7 +1309,7 @@ h5 {
 .our-friend-cards {
   display: flex;
   position: relative;
-  transition: all 0.6s;
+  transition: all 1s;
 }
 
 .our-friend-card {
@@ -1189,7 +1317,7 @@ h5 {
   padding-bottom: 30px;
   border-radius: 9px 9px 0px 0px;
   margin-right: 90px;
-  transition: all 0.6s;
+  transition: all 1s;
 }
 .our-friend-card:last-child {
   margin-right: 0px;
@@ -1203,7 +1331,7 @@ h5 {
     margin-bottom: 29px;
   }
 }
-.our-friend-card:hover {
+.our-friend-card:hover, .our-friend-card:active {
   background: #FFFFFF;
 }
 @media (max-width: 1279px) {
@@ -1501,7 +1629,7 @@ h5 {
 
 .footer {
   color: #F1CDB3;
-  background: url(../../../assets/images/noise_lines_transparent@2X.png), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
+  background: url(../../../assets/images/noise_transparent@2X.png), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
   padding-top: 40px;
 }
 .footer a {
