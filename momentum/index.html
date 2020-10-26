@@ -9,7 +9,41 @@
   <title>momentum</title>
 </head>
 <body>
-    <div class="top-part">
+  <main>
+      <div class="top-part">
+          <button class="btn" title="Next picture"></button>
+          <div class="weather">
+              <i class="weather__icon owf"></i>
+              <p class="temperature"></p>
+              <p class="weather__description"></p>
+              <p>humidity: <span class="weather__humidity"></span>%</p>
+              <p>wind: <span class="weather__wind"></span> m/s</p>
+              <div class="city" contenteditable="true" title="Enter your city">Minsk</div>
+          </div>
+        </div>
+        <div class="modal-overlay modal_closed" ></div>
+        <div class="modal modal_closed" id="modal">
+            <a href="#" class="modal__close" id="modal-close" title="Close modal window">Close</a>
+            <p class= "modal__info">No results were found for this city.</p>
+            <button id="modal-save" class="modal__save" title="Ok">OK</button>
+        </div>
+          <time class="time"></time>
+          <div class="day"></div>
+          <h1>
+            <div class="greeting"></div>
+            <div class="name" contenteditable="true" title="Enter your name"></div>
+          </h1>
+          <h2>What Is Your Focus For Today?</h2>
+          <h2 class="focus" contenteditable="true" title="Enter your focus"></h2>
+          <div class="quote-wrapper">
+              <button class="btn btn-quote" title="Show a new quote"></button>
+              <figure class="quote">
+                <blockquote> Setting goals is the first step in turning the invisible into the visible.</blockquote>
+                <figcaption>Tony Robbins</figcaption>
+              </figure>
+          </div>
+  </main>
+    <!-- <div class="top-part">
       <button class="btn" title="Next picture"></button>
       <div class="weather">
           <i class="weather__icon owf"></i>
@@ -40,7 +74,7 @@
             <blockquote> Setting goals is the first step in turning the invisible into the visible.</blockquote>
             <figcaption>Tony Robbins</figcaption>
           </figure>
-      </div>
+      </div> -->
   <script src="script.js"></script>
 </body>
 </html>
