@@ -809,7 +809,7 @@ h5 {
 @media (max-width: 767px) {
   .modal {
     width: 240px;
-    height: 341px;
+    height: 380px;
   }
 }
 
@@ -1250,6 +1250,7 @@ h5 {
   text-align: center;
   padding-top: 80px;
   padding-bottom: 100px;
+  transition: all 2s;
 }
 .our-friends a {
   text-decoration: none;
@@ -1309,7 +1310,7 @@ h5 {
 .our-friend-cards {
   display: flex;
   position: relative;
-  transition: all 1s;
+  transition: all 2s;
 }
 
 .our-friend-card {
@@ -1317,7 +1318,7 @@ h5 {
   padding-bottom: 30px;
   border-radius: 9px 9px 0px 0px;
   margin-right: 90px;
-  transition: all 1s;
+  transition: all 2s;
 }
 .our-friend-card:last-child {
   margin-right: 0px;
@@ -1340,6 +1341,30 @@ h5 {
   }
 }
 
+.to-right {
+  animation: right 1s;
+}
+
+@keyframes right {
+  from {
+    right: 0px;
+  }
+  to {
+    right: 310px;
+  }
+}
+.to-left {
+  animation: left 1s;
+}
+
+@keyframes left {
+  from {
+    right: 310px;
+  }
+  to {
+    right: 0px;
+  }
+}
 .help {
   padding: 81px 0 44px;
 }

@@ -67,6 +67,9 @@ class Modal {
     }
 
     buildModal(content) {
+        if(document.querySelector('.overlay')) {
+            return;
+        }
         //Overlay
         this.overlay = this.createDomNode(this.overlay, 'div', 'overlay', 'overlay_modal');
 

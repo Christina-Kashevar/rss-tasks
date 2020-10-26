@@ -789,7 +789,7 @@ h5 {
 @media (max-width: 767px) {
   .modal {
     width: 240px;
-    height: 341px;
+    height: 380px;
   }
 }
 
@@ -971,6 +971,12 @@ h5 {
 }
 .header a {
   text-decoration: none;
+}
+@media (max-width: 767px) {
+  .header .wrapper {
+    max-width: 94%;
+    margin: 0 auto;
+  }
 }
 
 h4 a {

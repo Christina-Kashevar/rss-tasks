@@ -5,7 +5,7 @@ let index = 0;
 let currentPage = 0;
 const request = new XMLHttpRequest();
 request.open('GET', './pets.json');
-request.onload = () => {console.log(request.response)};
+// request.onload = () => {console.log(request.response)};
 fetch('./pets.json').then(res => res.json()).then(list => {
   pets = list;
 
@@ -28,7 +28,7 @@ fetch('./pets.json').then(res => res.json()).then(list => {
 
   fullPetsList = sort863(fullPetsList);
 
-//   renderArticlesToDom();
+renderArticlesToDom();
 
 //   document.querySelector("#currentPage").innerText = (currentPage+1).toString();
 
@@ -139,6 +139,7 @@ class Modal {
     }
 
     buildModal(content) {
+        console.log(5)
         if(document.querySelector('.overlay')) {
             return;
         }

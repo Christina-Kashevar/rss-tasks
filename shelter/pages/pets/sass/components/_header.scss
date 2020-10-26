@@ -7,6 +7,13 @@
   & a {
     text-decoration: none;
   }
+
+  & .wrapper {
+    @include media-mobile {
+      max-width: 94%;
+      margin: 0 auto;
+  }
+  }
 }
 
 h4 a {
