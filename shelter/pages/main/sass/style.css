@@ -1310,7 +1310,7 @@ h5 {
 .our-friend-cards {
   display: flex;
   position: relative;
-  transition: all 2s;
+  transition: all 0.6s;
 }
 
 .our-friend-card {

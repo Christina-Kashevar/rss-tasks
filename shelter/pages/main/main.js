@@ -303,8 +303,14 @@ const openSliderNextPage = () => {
         }
     }
     fullPetsList = newArr;
-    console.log(fullPetsList)
-    renderArticlesToDom();
+    console.log(fullPetsList);
+    document.querySelector('.our-friend-cards').style.opacity = 0;
+
+    setTimeout(function() {
+        renderArticlesToDom();
+        document.querySelector('.our-friend-cards').style.opacity = 1;
+    },500)
+    // renderArticlesToDom();
 }
 
 
