@@ -1036,7 +1036,6 @@ h4 a {
 }
 .navigation__link:active {
   color: #545454;
-  border-bottom: 3px solid #F1CDB3;
 }
 .navigation__link_active {
   color: #292929;

@@ -87,7 +87,7 @@
 
   &:active {
     color: $color-light-s;
-    border-bottom: 3px solid $color-primary;
+    // border-bottom: 3px solid $color-primary;
   }
 
   @include media-tablet {

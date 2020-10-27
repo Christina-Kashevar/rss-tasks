@@ -1088,7 +1088,6 @@ h5 {
 }
 .navigation__link:active {
   color: #FAFAFA;
-  border-bottom: 3px solid #F1CDB3;
 }
 @media (max-width: 1279px) {
   .navigation__link {
