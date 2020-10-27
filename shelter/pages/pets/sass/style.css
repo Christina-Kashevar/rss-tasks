@@ -679,7 +679,6 @@ h5 {
 }
 .header-hamburger-wrapper .navigation__link:active {
   color: #FAFAFA;
-  border-bottom: 3px solid #F1CDB3;
 }
 .header-hamburger-wrapper .navigation__link_active {
   color: #FAFAFA;
