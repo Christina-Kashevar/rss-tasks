@@ -423,7 +423,7 @@ ul {
   transition: all 0.3s ease-out;
 }
 
-.hero__text, .navigation__link, .header-logo__text, body {
+.hero__text, .navigation__link, .navigation__item, .header-logo__text, body {
   font-family: Arial, Verdana, sans-serif;
 }
 
@@ -710,7 +710,7 @@ h5 {
 .header-hamburger-wrapper a {
   text-decoration: none;
 }
-.header-hamburger-wrapper .navigation__link {
+.header-hamburger-wrapper .navigation__link, .header-hamburger-wrapper .navigation__item {
   font-size: 3.2rem;
   font-style: normal;
   font-weight: normal;
@@ -1075,6 +1075,13 @@ h5 {
   padding: 0;
 }
 
+.navigation__item {
+  font-size: 1.5rem;
+  line-height: 2.4rem;
+  color: #CDCDCD;
+  padding-bottom: 2px;
+}
+
 .navigation__link {
   font-size: 1.5rem;
   line-height: 2.4rem;
@@ -1084,7 +1091,6 @@ h5 {
 .navigation__link:hover {
   cursor: pointer;
   color: #FAFAFA;
-  border-bottom: 3px solid transparent;
 }
 .navigation__link:active {
   color: #FAFAFA;

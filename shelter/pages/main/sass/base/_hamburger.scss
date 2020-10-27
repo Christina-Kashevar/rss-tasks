@@ -76,7 +76,8 @@
         text-decoration: none;
       }
 
-    & .navigation__link {
+    & .navigation__link,
+    & .navigation__item {
         @include font( $size: 3.2rem, $height: 5.1rem );
     }
 

@@ -72,6 +72,14 @@
   padding: 0;
 }
 
+.navigation__item {
+  @extend %font-prim;
+  font-size: 1.5rem;
+  line-height: 2.4rem;
+  color: $color-dark-s;
+  padding-bottom: 2px;
+}
+
 .navigation__link {
   @extend %font-prim;
   font-size: 1.5rem;
@@ -82,7 +90,7 @@
   &:hover {
     cursor: pointer;
     color: $color-light-s;
-    border-bottom: 3px solid transparent;
+    // border-bottom: 3px solid transparent;
   }
 
   &:active {

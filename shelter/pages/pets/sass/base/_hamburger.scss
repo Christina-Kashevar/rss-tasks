@@ -85,10 +85,12 @@
 
     & .navigation__link {
         color: $color-dark-s;
+        @include font( $size: 3.2rem, $height: 5.1rem );
+
         &:hover {
             cursor: pointer;
             color: $color-light-s;
-            border-bottom: 3px solid transparent;
+            // border-bottom: 3px solid transparent;
           }
         
           &:active {
@@ -109,12 +111,10 @@
         text-decoration: none;
       }
 
-    & .navigation__link {
-        @include font( $size: 3.2rem, $height: 5.1rem );
-    }
-
     & .navigation__item {
         margin-bottom: 40px;
+        @include font( $size: 3.2rem, $height: 5.1rem );
+        color: $color-dark-s;
     }
 
     .header__hamburger {

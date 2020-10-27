@@ -671,11 +671,14 @@ h5 {
 }
 .header-hamburger-wrapper .navigation__link {
   color: #CDCDCD;
+  font-size: 3.2rem;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 5.1rem;
 }
 .header-hamburger-wrapper .navigation__link:hover {
   cursor: pointer;
   color: #FAFAFA;
-  border-bottom: 3px solid transparent;
 }
 .header-hamburger-wrapper .navigation__link:active {
   color: #FAFAFA;
@@ -689,14 +692,13 @@ h5 {
 .header-hamburger-wrapper a {
   text-decoration: none;
 }
-.header-hamburger-wrapper .navigation__link {
+.header-hamburger-wrapper .navigation__item {
+  margin-bottom: 40px;
   font-size: 3.2rem;
   font-style: normal;
   font-weight: normal;
   line-height: 5.1rem;
-}
-.header-hamburger-wrapper .navigation__item {
-  margin-bottom: 40px;
+  color: #CDCDCD;
 }
 .header-hamburger-wrapper .header__hamburger {
   animation-name: rotateTo;
@@ -1031,7 +1033,6 @@ h4 a {
 .navigation__link:hover {
   cursor: pointer;
   color: #292929;
-  border-bottom: 3px solid transparent;
 }
 .navigation__link:active {
   color: #545454;
