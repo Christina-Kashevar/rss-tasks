@@ -442,12 +442,14 @@ btnToLastPage.addEventListener('click', openLastPage);
 const btnHamburger = document.querySelector('#open-hamburger');
 
 const openHamburger = () => {
+    document.querySelector('.header-logo-main').style.opacity =0;
+    document.querySelector('#open-hamburger').style.opacity =0;
     document.querySelector('.header-hamburger-wrapper').classList.remove('animate');
     document.querySelector('.overlay-hamburger').classList.remove('none');
     document.body.classList.add('hidden');
     setTimeout(function(){
         document.querySelector('#close-hamburger').classList.add('rotate90');
-    },2000)
+    },1000)
 }
 
 btnHamburger.addEventListener('click', openHamburger);
@@ -459,9 +461,11 @@ const closeHamburger = (e) => {
     if(classes.contains('overlay-hamburger') || classes.contains('header__hamburger') || 
     classes.contains('hamburger__line') || classes.contains('hamburger') || classes.contains('navigation__link_active')) {
         setTimeout(function(){
+            document.querySelector('.header-logo-main').style.opacity =1;
+            document.querySelector('#open-hamburger').style.opacity =1;
             document.querySelector('.overlay-hamburger').classList.add('none');
             document.body.classList.remove('hidden');
-            },2300)
+            },1500)
         document.querySelector('#close-hamburger').classList.remove('rotate90');
         document.querySelector('.header-hamburger-wrapper').classList.add('animate');
         document.querySelector('#close-hamburger').classList.add('animateRotate');

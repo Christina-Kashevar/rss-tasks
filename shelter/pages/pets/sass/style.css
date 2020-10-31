@@ -659,9 +659,10 @@ h5 {
   position: absolute;
   width: 320px;
   padding: 30px 10px;
+  height: 100%;
   background-color: #292929;
   animation-name: slidein;
-  animation-duration: 2s;
+  animation-duration: 1s;
 }
 .header-hamburger-wrapper .header-logo__title, .header-hamburger-wrapper .hamburger__line {
   color: #F1CDB3;
@@ -702,8 +703,8 @@ h5 {
 }
 .header-hamburger-wrapper .header__hamburger {
   animation-name: rotateTo;
-  animation-duration: 1.2s;
-  animation-delay: 1s;
+  animation-duration: 1s;
+  animation-delay: 0.7s;
 }
 
 .animate {

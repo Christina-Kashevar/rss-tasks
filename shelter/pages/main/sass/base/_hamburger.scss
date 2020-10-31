@@ -64,9 +64,10 @@
     position: absolute;
     width: 320px;
     padding: 30px 10px;
+    height: 100%;
     background-color: $color-dark-3xl;
     animation-name: slidein;
-    animation-duration: 2s;
+    animation-duration: 1s;
 
     & .header-logo {
         position: static;
@@ -87,8 +88,8 @@
 
     .header__hamburger {
         animation-name: rotateTo;
-        animation-duration: 1.2s;
-        animation-delay: 1s;
+        animation-duration: 1s;
+        animation-delay: 0.7s;
     }
 
 }
