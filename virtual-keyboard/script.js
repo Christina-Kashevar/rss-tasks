@@ -532,14 +532,10 @@ const Keyboard = {
       language: en,
     },
   
-    // eventHandlers: {
-    //   oninput: null,
-    //   onclose: null
-    // },
-  
     properties: {
       capsLock: false,
-      shift: false
+      shift: false,
+      audio: true
     },
   
     init() {
@@ -561,24 +557,18 @@ const Keyboard = {
       // Automatically use keyboard for elements with .use-keyboard-input
       this.output = document.querySelector(".use-keyboard-input");
       document.querySelectorAll(".use-keyboard-input").forEach(element => {
-        element.addEventListener("focus", () => {
-          this.open()
-          // this.open(element.value, currentValue => {
-          //   element.value = currentValue;
-          // });
-        });
+        element.addEventListener("focus", () => { this.open() } );
         element.setAttribute('spellcheck', 'false')
       });
+    },
 
+     // Creates HTML for an icon
+    createIconHTML (icon_name) {
+      return `<i class="material-icons">${icon_name}</i>`;
     },
   
     _createKeys() {
       const fragment = document.createDocumentFragment();
-  
-      // Creates HTML for an icon
-      const createIconHTML = (icon_name) => {
-        return `<i class="material-icons">${icon_name}</i>`;
-      };
   
       this.elements['language'].forEach(key => {
         const keyElement = document.createElement("button");
@@ -588,35 +578,38 @@ const Keyboard = {
         keyElement.setAttribute("type", "button");
         keyElement.dataset.code = key['code'];
         keyElement.classList.add("keyboard__key");
+
+
         keyElement.addEventListener("click", () =>{
           this.typeToTextarea(key['code'], keyElement);
         });
   
+        // add styles and icons to buttons
         switch (key['code']) {
           case "Backspace":
             keyElement.classList.add("keyboard__key--wide");
-            keyElement.innerHTML = createIconHTML("backspace");
+            keyElement.innerHTML = this.createIconHTML("backspace");
             keyElement.dataset.code = key['code']
             break;
   
           case "CapsLock":
             keyElement.classList.add("keyboard__key--wide", "keyboard__key--activatable");
-            keyElement.innerHTML = createIconHTML("keyboard_capslock");
+            keyElement.innerHTML = this.createIconHTML("keyboard_capslock");
             break;
   
           case "Enter":
             keyElement.classList.add("keyboard__key--wide");
-            keyElement.innerHTML = createIconHTML("keyboard_return");
+            keyElement.innerHTML = this.createIconHTML("keyboard_return");
             break;
   
           case "Space":
             keyElement.classList.add("keyboard__key--extra-wide");
-            keyElement.innerHTML = createIconHTML("space_bar");
+            keyElement.innerHTML = this.createIconHTML("space_bar");
             break;
   
           case "done":
             keyElement.classList.add("keyboard__key--wide", "keyboard__key--dark");
-            keyElement.innerHTML = createIconHTML("check_circle");
+            keyElement.innerHTML = this.createIconHTML("check_circle");
             break;
 
           case "Lang":
@@ -626,19 +619,19 @@ const Keyboard = {
 
           case "ShiftRight":
             keyElement.classList.add("keyboard__key--wide", "keyboard__key--activatable");
-            keyElement.innerHTML = createIconHTML("arrow_upward");
+            keyElement.innerHTML = this.createIconHTML("arrow_upward");
             break;
 
           case "ArrowLeft":
-            keyElement.innerHTML = createIconHTML("arrow_left");
+            keyElement.innerHTML = this.createIconHTML("arrow_left");
             break;
 
           case "ArrowRight":
-            keyElement.innerHTML = createIconHTML("arrow_right");
+            keyElement.innerHTML = this.createIconHTML("arrow_right");
             break;
 
           case "Audio":
-            keyElement.innerHTML = createIconHTML("music_note");
+            keyElement.innerHTML = this.createIconHTML("music_note");
             break;
   
           default:
@@ -655,13 +648,7 @@ const Keyboard = {
   
       return fragment;
     },
-  
-    // _triggerEvent(handlerName) {
-    //   if (typeof this.eventHandlers[handlerName] == "function") {
-    //     this.eventHandlers[handlerName](this.output.value);
-    //   }
-    // },
-  
+
     _toggleCapsLock() {
       this.properties.capsLock = !this.properties.capsLock;
       this.checkKey()
@@ -672,6 +659,11 @@ const Keyboard = {
       this.checkKey()
     },
 
+    _toggleAudio(keyElement){
+      this.properties.audio = !this.properties.audio;
+      keyElement.innerHTML = this.properties.audio ? this.createIconHTML("music_note") : this.createIconHTML("music_off");
+    },
+
     changeLanguage() {
       document.querySelector('[data-lang]').dataset.lang = this.elements['language'] == en ? 'en' : 'ru';
       let currentLang = document.querySelector('[data-lang]').dataset.lang.toUpperCase();
@@ -679,6 +671,7 @@ const Keyboard = {
       this.checkKey()
   },
 
+  //change innerHTML of buttons depending on Capslock, Shit and Language
     checkKey() {
       for (const key of this.elements.keys) {
         if (key.childElementCount === 0) {
@@ -710,6 +703,8 @@ const Keyboard = {
       this.elements.main.classList.add("keyboard--hidden");
     },
 
+
+    //press buttons on physical keyboard
     handleEvent(e) {
       e.preventDefault();
       let keyObj;
@@ -725,6 +720,7 @@ const Keyboard = {
       }
     },
 
+    //highlight buttons pressed
     highlightActiveBtn(e, keyObj) {
       if (e.type === 'keydown') {
         if (keyObj) keyObj.classList.add('active')
@@ -733,7 +729,9 @@ const Keyboard = {
       }
     },
 
+    //press buttons on virtual or physical keyboard
     typeToTextarea(code, keyObj){
+      this.playSound(code);
       let cursorPos = this.output.selectionStart;
       const left = this.output.value.slice(0, cursorPos);
       const right = this.output.value.slice(cursorPos);
@@ -742,7 +740,6 @@ const Keyboard = {
         case "Backspace":
           this.output.value = `${left.slice(0, -1)}${right}`;
             cursorPos -= 1;
-            // this._triggerEvent("oninput");
             this.output.focus()
           break;
 
@@ -754,14 +751,12 @@ const Keyboard = {
 
         case "Enter":
             this.output.value = `${left}\n${right}`;
-            // this._triggerEvent("oninput");
             cursorPos += 1;
             this.output.focus()
           break;
 
         case "Space":
             this.output.value = `${left} ${right}`;
-            // this._triggerEvent("oninput");
             cursorPos += 1;
             this.output.focus()
           break;
@@ -774,7 +769,6 @@ const Keyboard = {
 
         case "done":
             this.close();
-            // this._triggerEvent("onclose");
           break;
   
         case "Lang":
@@ -794,18 +788,32 @@ const Keyboard = {
           break;
 
         case "Audio":
-            
+          this._toggleAudio(keyObj);
+          this.output.focus()
           break;
 
         default:
             cursorPos += 1;
             if (keyObj) this.output.value = `${left}${keyObj.innerHTML || ''}${right}`;
-            // this._triggerEvent("oninput");
             this.output.focus()
           break;
       }
 
       this.output.setSelectionRange(cursorPos, cursorPos);
+    },
+
+    playSound(code) {
+      if(!this.properties.audio) return; // if audio is off - return
+      let audio = null;
+      if(code.match(/ShiftRight|Backspace|CapsLock|Enter/)) {
+        audio =document.querySelector(`audio[data-key="${code}"]`);
+      } else {
+        audio =this.elements['language'] == en ? document.querySelector(`audio[data-key="rest-en"]`) :
+        document.querySelector(`audio[data-key="rest-ru"]`);
+      }
+      if (!audio) return;
+      audio.currentTime = 0;
+      audio.play();
     }
   
   };
