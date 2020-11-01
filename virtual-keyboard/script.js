@@ -255,6 +255,11 @@ const en =[
     code: 'Space',
   },
   {
+    small: 'Record',
+    shift: null,
+    code: 'Record',
+  },
+  {
     small: '&larr;',
     shift: null,
     code: 'ArrowLeft',
@@ -535,7 +540,8 @@ const Keyboard = {
     properties: {
       capsLock: false,
       shift: false,
-      audio: true
+      audio: true,
+      record: false
     },
   
     init() {
@@ -613,6 +619,7 @@ const Keyboard = {
             break;
 
           case "Lang":
+            keyElement.classList.add("keyboard__key--wide");
             keyElement.innerHTML = `<span>EN</span>`;
             keyElement.dataset.lang = 'en';
             break;
@@ -632,6 +639,10 @@ const Keyboard = {
 
           case "Audio":
             keyElement.innerHTML = this.createIconHTML("music_note");
+            break;
+
+          case "Record":
+            keyElement.innerHTML = this.createIconHTML("mic_off");
             break;
   
           default:
@@ -662,6 +673,11 @@ const Keyboard = {
     _toggleAudio(keyElement){
       this.properties.audio = !this.properties.audio;
       keyElement.innerHTML = this.properties.audio ? this.createIconHTML("music_note") : this.createIconHTML("music_off");
+    },
+
+    _toggleRecord(keyElement){
+      this.properties.record = !this.properties.record;
+      keyElement.innerHTML = this.properties.record ? this.createIconHTML("mic") : this.createIconHTML("mic_off");
     },
 
     changeLanguage() {
@@ -729,6 +745,34 @@ const Keyboard = {
       }
     },
 
+    speechRecognitionFunc(){
+      if(!this.properties.record)  return;
+
+      window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      let recognition = new SpeechRecognition();
+      recognition.interimResults = true;
+      recognition.lang = this.elements['language'] == en ? 'en-US' : 'ru-RU';
+      
+      recognition.addEventListener('result', (e) => {
+        const transcript = Array.from(e.results)
+            .map((result) => result[0])
+            .map((result) => result.transcript)
+            .join('')
+
+            if (e.results[0].isFinal) {
+              this.output.value += transcript +' '
+            }
+    })
+
+    recognition.addEventListener('end', () => {
+      recognition.lang = this.elements['language'] == en ? 'en-US' : 'ru-RU';
+        if (this.properties.record) recognition.start()
+    })
+
+    recognition.start()
+    },
+
+
     //press buttons on virtual or physical keyboard
     typeToTextarea(code, keyObj){
       this.playSound(code);
@@ -788,8 +832,14 @@ const Keyboard = {
           break;
 
         case "Audio":
-          this._toggleAudio(keyObj);
-          this.output.focus()
+            this._toggleAudio(keyObj);
+            this.output.focus()
+          break;
+
+        case "Record":
+            this._toggleRecord(keyObj);
+            this.speechRecognitionFunc();
+            this.output.focus()
           break;
 
         default:
