@@ -1,19 +1,18 @@
 class Field {
-  constructor(level = 4, audio = true, picture = false) {
+  constructor(level = 4, audio = true) {
     this.level= level,
     this.audio = audio,
-    this.picture = picture,
     this.cellsQuantity = level*level - 1,
     this.cellSize = 400 / level,
     this.cells =[],
     this.moves = 0,
     this.empty = {}
-    // this.empty = { value: 0,
-    //   top: 0,
-    //   left: 0},
+    this.empty = { value: 0,
+      top: 0,
+      left: 0},
     this.timer = 0,
     this.finishGame = false,
-    this.image = Math.floor(Math.random()*150) + 1
+    this.image
   }
 
   init() {
@@ -33,6 +32,7 @@ class Field {
     this.overlayResults = this.createDomNode(this.overlay, 'div', null, 'overlayResults', 'hidden');
     this.overlayResults.innerHTML=`<div class='score'></div><button class='hide-results'>Hide results</button>`
     this.field.append(this.audioDiv, this.overlay, this.overlayWin, this.overlayResults)
+    // this.field.style.backgroundImage = `url(./assets/63.jpg)`;
 
     return this.field;
   }
@@ -63,7 +63,7 @@ class Field {
 
   createCellsArray() { // замешиваем числа и проверяем решаемость пазла
     let numbers = [...Array(this.cellsQuantity).keys()]
-     .sort(()=> Math.random() - 0.5);
+      // .sort(()=> Math.random() - 0.5);
    // проверить решаемость
     let sum = 0;
     for (let i =0; i < numbers.length; i++) {
@@ -74,12 +74,15 @@ class Field {
       }
     }
     if(this.level== 4 || this.level== 6 || this.level == 8 ) {
-      sum += this.level // добавить для четных уровней номер ряда пустой ячейки ( в данном случае 1)
+      console.log(sum)
+      sum +=1 // добавить для четных уровней номер ряда пустой ячейки ( в данном случае 1)
     }
     if ( sum % 2 != 0) {
+      console.log(sum)
       numbers = this.createCellsArray()
       return numbers
     } else {
+      console.log(sum)
       return numbers
     }
     // return numbers
@@ -88,9 +91,6 @@ class Field {
   // создаем для замешанных чисел дивы, вешаем обработчики, устанавливаем стили
   createCells() {
     const numbersArr = this.createCellsArray()
-    this.empty.value = this.level * this.level;
-    this.empty.top = this.level -1;
-    this.empty.left = this.level -1;
     this.cells.push(this.empty);
     const emptyCell = document.createElement('div');
     emptyCell.className = 'cell';
@@ -112,7 +112,6 @@ class Field {
     })
     this.empty.element = emptyCell;
     for (let i =1; i <= this.cellsQuantity ; i++) {
-      // console.log(numbersArr)
       const cell = document.createElement('div');
       cell.draggable = `true`;
       const value = numbersArr[i-1] + 1;
@@ -121,8 +120,8 @@ class Field {
       cell.style.height = cell.style.width;
       cell.innerHTML = value;
     
-      const left = (i-1) % this.level;
-      const top = ( i- left -1) / this.level;
+      const left = i % this.level;
+      const top = ( i- left) / this.level;
     
       this.cells.push({
         value: value,
@@ -144,25 +143,20 @@ class Field {
         this.dragStart(e)
       })
 
-       if (this.picture) {
-        cell.style.backgroundSize = '400px 400px'
-        cell.style.backgroundImage = `url(./assets/images/${this.image}.jpg)`;
-        let width = 400/ this.level - 2;
-        cell.style.backgroundPosition = `-${left*width}px -${top*width}px`;
-       }
+      const leftVal = value % this.level;
+      const topVal = ( value- leftVal) / this.level;
 
-    //   // console.log(value, left, top)
-    //   // console.log(cell.style.backgroundPosition)
-     }
-  }
-
-  chooseRandomPicture() {
-    return Math.floor(Math.random()*150) + 1
+      cell.style.backgroundImage = `url(./assets/63.jpg)`;
+      let width = 400/ this.level - 2
+      // console.log(value, left, top)
+      cell.style.backgroundPosition = `-${leftVal*width}px -${topVal*width}px`;
+      // console.log(cell.style.backgroundPosition)
+    }
   }
 
   // создаем для сохраненной игры дивы, вешаем обработчики, устанавливаем стили
   createCellsSavedField() {
-    let emptyCell = document.createElement('div');
+    const emptyCell = document.createElement('div');
     emptyCell.className = 'cell';
     emptyCell.classList.add('empty-cell');
     emptyCell.style.width =`${ 400/ this.level - 2}px`;
@@ -180,11 +174,9 @@ class Field {
     emptyCell.addEventListener('dragover', (e)=>{
       this.dragOver(e)
     })
-
     this.empty.element = emptyCell;
-   
     for (let i = 0; i < this.cells.length ; i++) {
-      if(this.cells[i].value == this.level*this.level) continue;
+      if(this.cells[i].value == 0) continue;
       const cell = document.createElement('div');
       cell.draggable = `true`
       cell.className = 'cell';
@@ -204,15 +196,6 @@ class Field {
     cell.addEventListener('dragstart', (e)=>{
       this.dragStart(e)
     })
-
-    if (this.picture) {
-      const left = (i-1) % this.level;
-      const top = ( i- left -1) / this.level;
-      cell.style.backgroundSize = '400px 400px'
-      cell.style.backgroundImage = `url(./assets/images/${this.image}.jpg)`;
-      let width = 400/ this.level - 2;
-      cell.style.backgroundPosition = `-${left*width}px -${top*width}px`;
-     }
     }
   }
 
@@ -248,16 +231,12 @@ class Field {
     this.empty.element.style.top = `${this.empty.top * this.cellSize}px`;
     this.playAudio();
     this.moves += 1;
-    // console.log(this.empty)
-    // console.log(this.cells)
-    // let firstPart = this.cells.slice(1)
+
     const isFinished = this.cells.every(cell => {
-      // console.log(this.cells)
-      return (cell.value-1) === cell.top * this.level + cell.left;
+      return cell.value === cell.top * this.level + cell.left;
     })
 
     if (isFinished) {
-      // console.log(cell)
       this.saveResultToLocalStorage();
       this.finishGame = true;
       let innerText = new Date(this.timer*1000).toUTCString().split(/ /)[4];
@@ -321,7 +300,6 @@ class Puzzle {
   constructor(){
     this.level = 4,
     this.audio = true,
-    this.picture = false,
     this.isPause = false,
     this.timer = 0,
     this.interval
@@ -361,13 +339,12 @@ class Puzzle {
     this.footer = this.createDomNode(this.footer, 'div', null, 'flex');
     this.audioBtn = this.createDomNode(this.audioBtn, 'button', null, 'audio');
     this.audioBtn.innerHTML = this.createIconHTML("music_note");
-    this.pictureBtn = this.createDomNode(this.pictureBtn, 'button', "Picture", 'picture', 'inactive');
     this.savedGame = this.createDomNode(this.savedGame, 'button', 'Saved Game');
     this.results = this.createDomNode(this.results, 'button', 'Results');
 
     this.additionalInfo = this.createDomNode(this.additionalInfo, 'div', null, 'additional-info'); 
 
-    this.footer.append(this.audioBtn, this.pictureBtn, this.savedGame, this.results)
+    this.footer.append(this.audioBtn, this.savedGame, this.results)
     this.wrapper.append(this.header, this.startField, this.footer, this.additionalInfo)
     document.body.append(this.wrapper);
 
@@ -438,14 +415,13 @@ class Puzzle {
     this.pause.addEventListener('click', () => this.pauseGame()),
     this.select.addEventListener('click', () => this.selectLevelOfDifficulty()),
     this.audioBtn.addEventListener('click', () => this.toggleAudio()),
-    this.pictureBtn.addEventListener('click', () => this.togglePicture()),
     this.savedGame.addEventListener('click', ()=> this.startSavedGame()),
     this.results.addEventListener('click', ()=> this.showResults() ),
     document.querySelector('.hide-results').addEventListener('click', ()=> this.hideResults() )
   }
 
   startGame() {
-    this.field = new Field(this.level, this.audio, this.picture);
+    this.field = new Field(this.level, this.audio);
     this.fieldNew = this.field.init();
     this.fieldNew.addEventListener('click', () => this.countMoves())
     this.fieldNew.addEventListener('dragend', () => this.countMoves())
@@ -509,6 +485,7 @@ class Puzzle {
   }
 
   countMoves() {
+    console.log(this.field.moves)
     this.movesCounter.innerText= `${this.field.moves}`
   }
 
@@ -521,7 +498,7 @@ class Puzzle {
   startNewGame() {
     let oldPuzzle = document.querySelector(`.field`);
     // let wrapper = document.querySelector(`.wrapper`)
-    this.field = new Field(this.level, this.audio, this.picture);
+    this.field = new Field(this.level, this.audio);
     this.fieldNew = this.field.init();
     this.field.finishGame =false;
     this.fieldNew.addEventListener('click', () => this.countMoves())
@@ -541,12 +518,6 @@ class Puzzle {
     this.audio = !this.audio
     this.audioBtn.innerHTML = this.audio ? this.createIconHTML("music_note") : this.createIconHTML("music_off");
     if(this.field) this.field.audio = !this.field.audio
-  }
-
-  togglePicture() {
-    this.picture = !this.picture
-    this.pictureBtn.classList.toggle('inactive');
-    if(this.field) this.field.picture = !this.field.picture;
   }
 
   saveGame(){
@@ -570,15 +541,12 @@ class Puzzle {
     this.field.cells = prevField.cells;
     this.field.level = prevField.level;
     this.field.finishGame = false;
-    this.field.picture = prevField.picture;
-    // console.log(this.field.picture)
-    this.field.image = prevField.image;
     this.field.cellsQuantity = prevField.cellsQuantity;
     this.field.cellSize = prevField.cellSize;
     this.field.moves = prevField.moves;
     this.field.timer = prevField.timer;
-    this.field.empty = prevField.empty
-
+    this.field.empty = prevField.cells.find( cell=> cell.value ==0)
+  
     this.fieldNew = this.field.initSavedGame();
     this.fieldNew.addEventListener('click', () => this.countMoves())
     if(oldPuzzle) {
