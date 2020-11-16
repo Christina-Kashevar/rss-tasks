@@ -50,7 +50,11 @@ class Field {
       <button class="continue-game">Continue</button>
       </div>
     `
-    this.field.append(this.audioDiv, this.overlay)
+    this.overlayWin = this.createDomNode(this.overlay, 'div', null, 'overlayWin', 'hidden');
+    this.overlayWin.innerHTML =`<p>YOU WON!</p><p class='phrase'>Yo solve the puzzle for </p> <button class="new-game">New Game</button>`;
+    this.overlayResults = this.createDomNode(this.overlay, 'div', null, 'overlayResults', 'hidden');
+    this.overlayResults.innerHTML=`<div class='score'></div><button class='hide-results'>Hide results</button>`
+    this.field.append(this.audioDiv, this.overlay, this.overlayWin, this.overlayResults)
     return this.field;
   }
 
@@ -82,7 +86,6 @@ class Field {
     } else {
       return numbers
     }
-    // return numbers
   }
 
   // создаем для замешанных чисел дивы, вешаем обработчики, устанавливаем стили
@@ -112,7 +115,6 @@ class Field {
     })
     this.empty.element = emptyCell;
     for (let i =1; i <= this.cellsQuantity ; i++) {
-      // console.log(numbersArr)
       const cell = document.createElement('div');
       cell.draggable = `true`;
       const value = numbersArr[i-1] + 1;
@@ -167,6 +169,8 @@ class Field {
     emptyCell.classList.add('empty-cell');
     emptyCell.style.width =`${ 400/ this.level - 2}px`;
     emptyCell.style.height = emptyCell.style.width;
+    emptyCell.style.left = `${this.empty.left * this.cellSize}px`;
+    emptyCell.style.top = `${this.empty.top * this.cellSize}px`;
     emptyCell.ondragenter = 'dragEnter(event)';
     emptyCell.ondrop = 'dragDrop(event)';
     emptyCell.ondragover = 'dragOver(event)';
@@ -180,11 +184,13 @@ class Field {
     emptyCell.addEventListener('dragover', (e)=>{
       this.dragOver(e)
     })
-
     this.empty.element = emptyCell;
    
     for (let i = 0; i < this.cells.length ; i++) {
-      if(this.cells[i].value == this.level*this.level) continue;
+      if(this.cells[i].value == this.level*this.level) {
+        this.cells[i] = this.empty
+        continue
+      };
       const cell = document.createElement('div');
       cell.draggable = `true`
       cell.className = 'cell';
@@ -248,16 +254,11 @@ class Field {
     this.empty.element.style.top = `${this.empty.top * this.cellSize}px`;
     this.playAudio();
     this.moves += 1;
-    // console.log(this.empty)
-    // console.log(this.cells)
-    // let firstPart = this.cells.slice(1)
     const isFinished = this.cells.every(cell => {
-      // console.log(this.cells)
       return (cell.value-1) === cell.top * this.level + cell.left;
     })
 
     if (isFinished) {
-      // console.log(cell)
       this.saveResultToLocalStorage();
       this.finishGame = true;
       let innerText = new Date(this.timer*1000).toUTCString().split(/ /)[4];
@@ -520,7 +521,6 @@ class Puzzle {
 
   startNewGame() {
     let oldPuzzle = document.querySelector(`.field`);
-    // let wrapper = document.querySelector(`.wrapper`)
     this.field = new Field(this.level, this.audio, this.picture);
     this.fieldNew = this.field.init();
     this.field.finishGame =false;
@@ -571,7 +571,6 @@ class Puzzle {
     this.field.level = prevField.level;
     this.field.finishGame = false;
     this.field.picture = prevField.picture;
-    // console.log(this.field.picture)
     this.field.image = prevField.image;
     this.field.cellsQuantity = prevField.cellsQuantity;
     this.field.cellSize = prevField.cellSize;
@@ -584,6 +583,7 @@ class Puzzle {
     if(oldPuzzle) {
       this.wrapper.replaceChild(this.fieldNew, oldPuzzle);
     } else {
+      this.startTimer()
       this.start.style.display = 'none';
       this.pause.style.display = 'inline-block';
       this.wrapper.replaceChild(this.fieldNew,this.startField)
@@ -594,7 +594,7 @@ class Puzzle {
     this.countMoves()
 
     this.bindOverlayEvents()
-
+    // this.startTimer()
   }
 
   showResults() {
