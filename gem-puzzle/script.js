@@ -7,8 +7,9 @@ class Puzzle {
     this.picture = false,
     this.isPause = false,
     this.timer = 0,
-    this.interval
-    
+    this.interval,
+    this.widthWindow,
+    this.widthWrapper
   }
 
   init() {
@@ -128,7 +129,9 @@ class Puzzle {
   }
 
   startGame() {
-    this.field = new Field(this.level, this.audio, this.picture);
+    this.widthWindow = document.documentElement.clientWidth;
+    this.widthWrapper = this.widthWindow > 480 ? 400 : 300;
+    this.field = new Field(this.level, this.audio, this.widthWrapper, this.picture);
     this.fieldNew = this.field.init();
     this.fieldNew.addEventListener('click', () => this.countMoves())
     this.fieldNew.addEventListener('dragend', () => this.countMoves())
@@ -202,7 +205,9 @@ class Puzzle {
 
   startNewGame() {
     let oldPuzzle = document.querySelector(`.field`);
-    this.field = new Field(this.level, this.audio, this.picture);
+    this.widthWindow = document.documentElement.clientWidth;
+    this.widthWrapper = this.widthWindow > 480 ? 400 : 300;
+    this.field = new Field(this.level, this.audio,this.widthWrapper, this.picture);
     this.fieldNew = this.field.init();
     this.field.finishGame =false;
     this.fieldNew.addEventListener('click', () => this.countMoves())
@@ -247,7 +252,10 @@ class Puzzle {
     this.timer = prevField.timer;
     this.moves = prevField.moves;
     this.isPause = false;
-    this.field = new Field(this.level, this.audio);
+    this.widthWindow = document.documentElement.clientWidth;
+    this.widthWrapper = this.widthWindow > 430 ? 400 : 300;
+    // this.field = new Field(this.level, this.audio, this.picture, this.widthWrapper);
+    this.field = new Field(this.level, this.audio, this.widthWrapper);
     this.field.cells = prevField.cells;
     this.field.level = prevField.level;
     this.field.finishGame = false;

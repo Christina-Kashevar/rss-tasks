@@ -1,10 +1,11 @@
 export class Field {
-  constructor(level = 4, audio = true, picture = false) {
+  constructor(level = 4, audio = true, width = 400, picture = false) {
     this.level= level,
     this.audio = audio,
     this.picture = picture,
     this.cellsQuantity = level*level - 1,
-    this.cellSize = 400 / level,
+    this.width = width,
+    this.cellSize = this.width / level,
     this.cells =[],
     this.moves = 0,
     this.empty = {}
@@ -95,7 +96,7 @@ export class Field {
     const emptyCell = document.createElement('div');
     emptyCell.className = 'cell';
     emptyCell.classList.add('empty-cell');
-    emptyCell.style.width =`${ 400/ this.level - 2}px`;
+    emptyCell.style.width =`${ this.width/ this.level - 2}px`;
     emptyCell.style.height = emptyCell.style.width;
     emptyCell.ondragenter = 'dragEnter(event)';
     emptyCell.ondrop = 'dragDrop(event)';
@@ -116,7 +117,7 @@ export class Field {
       cell.draggable = `true`;
       const value = numbersArr[i-1] + 1;
       cell.className = 'cell';
-      cell.style.width =`${ 400/ this.level - 2}px`;
+      cell.style.width =`${ this.width/ this.level - 2}px`;
       cell.style.height = cell.style.width;
       cell.innerHTML = value;
     
@@ -146,10 +147,10 @@ export class Field {
       const leftVal = (value -1) % this.level;
       const topVal = ( value- leftVal) / this.level;
        if (this.picture) {
-        cell.innerHTML = ''
-        cell.style.backgroundSize = '400px 400px'
+        // cell.innerHTML = '';
+        cell.style.backgroundSize = `${this.width}px ${this.width}px`;
         cell.style.backgroundImage = `url(./assets/images/${this.image}.jpg)`;
-        let width = 400/ this.level - 2;
+        let width = this.width / this.level - 2;
         cell.style.backgroundPosition = `-${leftVal*width}px -${topVal*width}px`;
         // console.log(value,  leftVal, topVal)
        }
@@ -158,13 +159,15 @@ export class Field {
 
   // создаем для сохраненной игры дивы, вешаем обработчики, устанавливаем стили
   createCellsSavedField() {
+    this.cellSize = this.width / this.level;
     let emptyCell = document.createElement('div');
     emptyCell.className = 'cell';
     emptyCell.classList.add('empty-cell');
-    emptyCell.style.width =`${ 400/ this.level - 2}px`;
+    emptyCell.style.width =`${ this.width / this.level - 2}px`;
     emptyCell.style.height = emptyCell.style.width;
     emptyCell.style.left = `${this.empty.left * this.cellSize}px`;
     emptyCell.style.top = `${this.empty.top * this.cellSize}px`;
+    console.log(this.cellSize)
     emptyCell.ondragenter = 'dragEnter(event)';
     emptyCell.ondrop = 'dragDrop(event)';
     emptyCell.ondragover = 'dragOver(event)';
@@ -188,12 +191,13 @@ export class Field {
       const cell = document.createElement('div');
       cell.draggable = `true`
       cell.className = 'cell';
-      cell.style.width =`${ 400/ this.level - 2}px`;
+      cell.style.width =`${ this.width / this.level - 2}px`;
       cell.style.height = cell.style.width;
       cell.innerHTML = this.cells[i].value;
     
       cell.style.left = `${this.cells[i].left * this.cellSize}px`;
       cell.style.top = `${this.cells[i].top * this.cellSize}px`;
+      console.log()
       this.cells[i].element = cell;
     
       this.field.append(cell);
@@ -206,12 +210,12 @@ export class Field {
     })
 
     if (this.picture) {
-      cell.innerHTML = ''
+      // cell.innerHTML = ''
       const leftVal = (this.cells[i].value -1) % this.level;
       const topVal = ( this.cells[i].value - leftVal) / this.level;
-      cell.style.backgroundSize = '400px 400px'
+      cell.style.backgroundSize = `${this.width}px ${this.width}px`;
       cell.style.backgroundImage = `url(./assets/images/${this.image}.jpg)`;
-      let width = 400 / this.level - 2;
+      let width = this.width / this.level - 2;
       cell.style.backgroundPosition = `-${leftVal*width}px -${topVal*width}px`;
      }
     }
