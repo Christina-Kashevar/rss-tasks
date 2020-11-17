@@ -1,17 +1,17 @@
 export class Field {
   constructor(level = 4, audio = true, width = 400, picture = false) {
-    this.level= level,
-    this.audio = audio,
-    this.picture = picture,
-    this.cellsQuantity = level*level - 1,
-    this.width = width,
-    this.cellSize = this.width / level,
-    this.cells =[],
-    this.moves = 0,
-    this.empty = {}
-    this.timer = 0,
-    this.finishGame = false,
-    this.image = Math.floor(Math.random()*150) + 1
+    this.level= level;
+    this.audio = audio;
+    this.picture = picture;
+    this.cellsQuantity = level*level - 1;
+    this.width = width;
+    this.cellSize = this.width / level;
+    this.cells =[];
+    this.moves = 0;
+    this.empty = {};
+    this.timer = 0;
+    this.finishGame = false;
+    this.image = Math.floor(Math.random()*150) + 1;
   }
 
   init() {
@@ -51,8 +51,8 @@ export class Field {
     this.overlayWin = this.createDomNode(this.overlay, 'div', null, 'overlayWin', 'hidden');
     this.overlayWin.innerHTML =`<p>YOU WON!</p><p class='phrase'>Yo solve the puzzle for </p> <button class="new-game">New Game</button>`;
     this.overlayResults = this.createDomNode(this.overlay, 'div', null, 'overlayResults', 'hidden');
-    this.overlayResults.innerHTML=`<div class='score'></div><button class='hide-results'>Hide results</button>`
-    this.field.append(this.audioDiv, this.overlay, this.overlayWin, this.overlayResults)
+    this.overlayResults.innerHTML=`<div class='score'></div><button class='hide-results'>Hide results</button>`;
+    this.field.append(this.audioDiv, this.overlay, this.overlayWin, this.overlayResults);
     return this.field;
   }
 
@@ -145,14 +145,14 @@ export class Field {
       })
 
       const leftVal = (value -1) % this.level;
-      const topVal = ( value- leftVal) / this.level;
+      const topVal = ( value- leftVal -1 ) / this.level;
        if (this.picture) {
         // cell.innerHTML = '';
         cell.style.backgroundSize = `${this.width}px ${this.width}px`;
         cell.style.backgroundImage = `url(./assets/images/${this.image}.jpg)`;
         let width = this.width / this.level - 2;
         cell.style.backgroundPosition = `-${leftVal*width}px -${topVal*width}px`;
-        // console.log(value,  leftVal, topVal)
+        // console.log(value, leftVal, topVal)
        }
      }
   }
@@ -167,7 +167,6 @@ export class Field {
     emptyCell.style.height = emptyCell.style.width;
     emptyCell.style.left = `${this.empty.left * this.cellSize}px`;
     emptyCell.style.top = `${this.empty.top * this.cellSize}px`;
-    console.log(this.cellSize)
     emptyCell.ondragenter = 'dragEnter(event)';
     emptyCell.ondrop = 'dragDrop(event)';
     emptyCell.ondragover = 'dragOver(event)';
@@ -189,7 +188,7 @@ export class Field {
         continue
       };
       const cell = document.createElement('div');
-      cell.draggable = `true`
+      cell.draggable = `true`;
       cell.className = 'cell';
       cell.style.width =`${ this.width / this.level - 2}px`;
       cell.style.height = cell.style.width;
@@ -197,7 +196,6 @@ export class Field {
     
       cell.style.left = `${this.cells[i].left * this.cellSize}px`;
       cell.style.top = `${this.cells[i].top * this.cellSize}px`;
-      console.log()
       this.cells[i].element = cell;
     
       this.field.append(cell);
@@ -212,7 +210,7 @@ export class Field {
     if (this.picture) {
       // cell.innerHTML = ''
       const leftVal = (this.cells[i].value -1) % this.level;
-      const topVal = ( this.cells[i].value - leftVal) / this.level;
+      const topVal = ( this.cells[i].value - leftVal -1) / this.level;
       cell.style.backgroundSize = `${this.width}px ${this.width}px`;
       cell.style.backgroundImage = `url(./assets/images/${this.image}.jpg)`;
       let width = this.width / this.level - 2;

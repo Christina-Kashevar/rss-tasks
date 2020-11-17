@@ -2,14 +2,14 @@ import { Field } from "./Field.js"
 
 class Puzzle {
   constructor(){
-    this.level = 4,
-    this.audio = true,
-    this.picture = false,
-    this.isPause = false,
-    this.timer = 0,
-    this.interval,
-    this.widthWindow,
-    this.widthWrapper
+    this.level = 4;
+    this.audio = true;
+    this.picture = false;
+    this.isPause = false;
+    this.timer = 0;
+    this.interval;
+    this.widthWindow;
+    this.widthWrapper;
   }
 
   init() {
