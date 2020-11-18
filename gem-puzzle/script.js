@@ -198,9 +198,16 @@ class Puzzle {
   }
 
   resumeGame() {
-    this.isPause = false;
+    // this.isPause = false;
     this.overlay.classList.add('hidden');
     this.pause.innerHTML = 'Pause';
+    if(document.querySelector('.overlayResults')) {
+      if(document.querySelector('.overlayResults').classList.contains('hidden')) {
+        this.isPause = false;
+      }
+    } else {
+      this.isPause = false;
+    }
   }
 
   startNewGame() {
@@ -308,8 +315,11 @@ class Puzzle {
   }
 
   hideResults(){
-    this.isPause = false;
+    // this.isPause = false;
     document.querySelector('.overlayResults').classList.add('hidden');
+    if(document.querySelector('.overlay').classList.contains('hidden')) {
+      this.isPause = false;
+    }
   }
 
 }
