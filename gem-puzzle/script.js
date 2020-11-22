@@ -4,7 +4,7 @@ class Puzzle {
   constructor(){
     this.level = 4;
     this.audio = true;
-    this.picture = false;
+    this.picture = true;
     this.isPause = false;
     this.timer = 0;
     this.interval;
@@ -45,7 +45,7 @@ class Puzzle {
     this.footer = this.createDomNode(this.footer, 'div', null, 'flex');
     this.audioBtn = this.createDomNode(this.audioBtn, 'button', null, 'audio');
     this.audioBtn.innerHTML = this.createIconHTML("music_note");
-    this.pictureBtn = this.createDomNode(this.pictureBtn, 'button', "Picture", 'picture', 'inactive');
+    this.pictureBtn = this.createDomNode(this.pictureBtn, 'button', "Picture", 'picture');
     this.savedGame = this.createDomNode(this.savedGame, 'button', 'Saved Game');
     this.results = this.createDomNode(this.results, 'button', 'Results');
 

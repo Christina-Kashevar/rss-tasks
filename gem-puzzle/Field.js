@@ -147,7 +147,7 @@ export class Field {
       const leftVal = (value -1) % this.level;
       const topVal = ( value- leftVal -1 ) / this.level;
        if (this.picture) {
-        // cell.innerHTML = '';
+        cell.style.color = 'transparent';
         cell.style.backgroundSize = `${this.width}px ${this.width}px`;
         cell.style.backgroundImage = `url(./assets/images/${this.image}.jpg)`;
         let width = this.width / this.level - 2;
@@ -208,7 +208,7 @@ export class Field {
     })
 
     if (this.picture) {
-      // cell.innerHTML = ''
+      cell.style.color = 'transparent';
       const leftVal = (this.cells[i].value -1) % this.level;
       const topVal = ( this.cells[i].value - leftVal -1) / this.level;
       cell.style.backgroundSize = `${this.width}px ${this.width}px`;
