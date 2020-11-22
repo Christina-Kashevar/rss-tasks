@@ -1,5 +1,5 @@
 export class Field {
-  constructor(level = 4, audio = true, width = 400, picture = false) {
+  constructor(level = 4, audio = true, width = 400, picture = true) {
     this.level= level;
     this.audio = audio;
     this.picture = picture;
@@ -17,6 +17,20 @@ export class Field {
   init() {
     this.field = this.createDomNode(this.field, 'div', null, 'field');
     this.createCells();
+    this.init2(this.field )
+    return this.field;
+  }
+
+  // начать сохраненную игру
+  initSavedGame() {
+    this.field = this.createDomNode(this.field, 'div', null, 'field');
+    this.createCellsSavedField();
+    this.init2(this.field )
+    return this.field;
+  }
+
+  // общая функция для начала новой ил сохраненной игры
+  init2(field){
     this.audioDiv = document.createElement('audio');
     this.audioDiv.src = './assets/sound.mp3';
     this.overlay = this.createDomNode(this.overlay, 'div', null, 'overlay', 'hidden');
@@ -30,30 +44,7 @@ export class Field {
     this.overlayWin.innerHTML =`<p>YOU WON!</p><p class='phrase'>Yo solve the puzzle for </p> <button class="new-game">New Game</button>`;
     this.overlayResults = this.createDomNode(this.overlay, 'div', null, 'overlayResults', 'hidden');
     this.overlayResults.innerHTML=`<div class='score'></div><button class='hide-results'>Hide results</button>`
-    this.field.append(this.audioDiv, this.overlay, this.overlayWin, this.overlayResults)
-
-    return this.field;
-  }
-
-  // начать сохраненную игру
-  initSavedGame() {
-    this.field = this.createDomNode(this.field, 'div', null, 'field');
-    this.createCellsSavedField();
-    this.audioDiv = document.createElement('audio');
-    this.audioDiv.src = './assets/sound.mp3';
-    this.overlay = this.createDomNode(this.overlay, 'div', null, 'overlay', 'hidden');
-    this.overlay.innerHTML =`<span class="message"> game paused, want to save it? <button class= 'save-game'> save game</button></span>
-      <div class="overlay-main">
-      <button class="new-game">New Game</button>
-      <button class="continue-game">Continue</button>
-      </div>
-    `
-    this.overlayWin = this.createDomNode(this.overlay, 'div', null, 'overlayWin', 'hidden');
-    this.overlayWin.innerHTML =`<p>YOU WON!</p><p class='phrase'>Yo solve the puzzle for </p> <button class="new-game">New Game</button>`;
-    this.overlayResults = this.createDomNode(this.overlay, 'div', null, 'overlayResults', 'hidden');
-    this.overlayResults.innerHTML=`<div class='score'></div><button class='hide-results'>Hide results</button>`;
-    this.field.append(this.audioDiv, this.overlay, this.overlayWin, this.overlayResults);
-    return this.field;
+    field.append(this.audioDiv, this.overlay, this.overlayWin, this.overlayResults)
   }
 
   createDomNode (node, element, innerText, ...classes){
@@ -76,7 +67,7 @@ export class Field {
       }
     }
     if(this.level== 4 || this.level== 6 || this.level == 8 ) {
-      sum += this.level // добавить для четных уровней номер ряда пустой ячейки ( в данном случае 1)
+      sum += this.level // добавить для четных уровней номер ряда пустой ячейки
     }
     if ( sum % 2 != 0) {
       numbers = this.createCellsArray()
@@ -101,6 +92,8 @@ export class Field {
     emptyCell.ondragenter = 'dragEnter(event)';
     emptyCell.ondrop = 'dragDrop(event)';
     emptyCell.ondragover = 'dragOver(event)';
+    emptyCell.style.left = `${this.empty.left * this.cellSize}px`;
+    emptyCell.style.top = `${this.empty.top * this.cellSize}px`;
     this.field.append(emptyCell);
     emptyCell.addEventListener('dragenter', (e)=>{
       this.dragEnter(e)
@@ -272,7 +265,6 @@ export class Field {
   dragStart(e) {
     e.dataTransfer.setData("text", e.target.innerHTML);
     e.dataTransfer.effectAllowed='move';
-    // e.dataTransfer.setDragImage(e.target,100,100); 
     return true;
   }
 
