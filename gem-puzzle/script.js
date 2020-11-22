@@ -53,7 +53,14 @@ class Puzzle {
 
     this.footer.append(this.audioBtn, this.pictureBtn, this.savedGame, this.results)
     this.wrapper.append(this.header, this.startField, this.footer, this.additionalInfo)
-    document.body.append(this.wrapper);
+
+    this.instruction = this.createDomNode(this.instruction, 'div', null, 'instruction');
+    this.instruction.innerHTML = `<p>Чтобы начать новую игру: выберите вверху уровень сложности,включите/отключите картинки - кнопка Picture, нажмите Start или кликните по полю игры. Чтобы снова начать новую игру: 
+    нажмите Pause, перед тем как нажать в появившемся окне New Game, настройте праметры новой игры (выберите вверху уровень сложности, включите/отключите картинки - кнопка Picture).<br> Чтобы сохранить игру, нажмите Pause, в появившемся окне нажмите Save Game. Если хотите сыграть в ранее сохраненную
+    игру, нажмите кнопку Saved Game. Кнопка results показывает в модальном окне результаты по времени.
+    Чтобы убрать модальное окно, нажмите Hide results. Приложение адаптивно, после уменьшения окна менее чем 420px, перезагрузите страницу</p>`
+
+    document.body.append(this.wrapper, this.instruction);
 
     // Bind Events
     this.bindEvents();
