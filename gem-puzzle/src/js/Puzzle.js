@@ -1,5 +1,6 @@
 import Field from './Field.js';
-import createDomNode from './CreateDomNode.js'
+import createDomNode from './CreateDomNode.js';
+import colorizeLetters from './ColorizeLetters.js';
 
 function createIconHTML(iconName) {
   return `<i class="material-icons">${iconName}</i>`;
@@ -11,9 +12,9 @@ export default class Puzzle {
     this.picture = true;
     this.isPause = false;
     this.timer = 0;
-    this.interval;
-    this.widthWindow;
-    this.widthWrapper;
+    this.interval =null;
+    this.widthWindow = null;
+    this.widthWrapper = 400;
   }
 
   init() {
@@ -43,6 +44,7 @@ export default class Puzzle {
     this.overlayResults = createDomNode(this.overlay, 'div', null, 'overlayResults', 'hidden');
     this.overlayResults.innerHTML = '<div class=\'score\'></div><button class=\'hide-results\'>Hide results</button>';
     this.startField = createDomNode(this.startField, 'div', 'Let`s play!', 'start-field');
+    this.startField.innerHTML = colorizeLetters(this.startField.innerText)
     this.startField.append(this.overlayResults);
 
     this.footer = createDomNode(this.footer, 'div', null, 'flex');
@@ -150,7 +152,6 @@ export default class Puzzle {
   }
 
   resumeGame() {
-    // this.isPause = false;
     this.overlay.classList.add('hidden');
     this.pause.innerHTML = 'Pause';
     if (document.querySelector('.overlayResults')) {
@@ -240,7 +241,6 @@ export default class Puzzle {
     this.countMoves();
 
     this.bindOverlayEvents();
-    // this.startTimer()
   }
 
   showResults() {
@@ -252,7 +252,7 @@ export default class Puzzle {
 
       for (let i = 0; i < results.length; i++) {
         let innerText = new Date(results[i][2] * 1000).toUTCString().split(/ /)[4];
-        if (innerText[0] === 0 && innerText[1] === 0) {
+        if (innerText[0] === '0' && innerText[1] === '0') {
           innerText = innerText.slice(3);
         }
         table += `<tr><td>${results[i][0]}</td><td>${results[i][1]}</td><td>${innerText}</td></tr>`;
@@ -265,7 +265,6 @@ export default class Puzzle {
   }
 
   hideResults() {
-    // this.isPause = false;
     document.querySelector('.overlayResults').classList.add('hidden');
     if (document.querySelector('.overlay').classList.contains('hidden')) {
       this.isPause = false;

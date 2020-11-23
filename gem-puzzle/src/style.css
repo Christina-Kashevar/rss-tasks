@@ -28,7 +28,6 @@ body {
 
 button,
 .select-box {
-  /* font-size: 22px; */
   background: yellowgreen;
   outline: none;
   border: none;
@@ -93,8 +92,6 @@ button:active {
 }
 
 .cell {
-  /* width: 100px;
-  height: 100px; */
   background-color:#0be2e4;
   border: 2px solid blue;
   position: absolute;

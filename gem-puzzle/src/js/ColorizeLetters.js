@@ -1,12 +1,5 @@
-// eslint-disable-next-line import/extensions
-import Puzzle from './Puzzle.js';
-
-const newPuzzle = new Puzzle();
-newPuzzle.init();
-
 // сделать буквы в заставке цветными
-
-function colorizeLetters(text) {
+export default function colorizeLetters(text) {
   const letters = text.split('');
   // Converts integer to hex
   const colToHex = (c) => {
@@ -49,5 +42,3 @@ function colorizeLetters(text) {
   // Set the text
   return randomColor(letters);
 }
-
-document.querySelector('.start-field').innerHTML = colorizeLetters(document.querySelector('.start-field').innerText);
