@@ -13,48 +13,47 @@ export default class Puzzle{
   }
 
   init() {
-    this.wrapper = this.createDomNode(this.wrapper, 'div', null,'wrapper');
-    this.header = this.createDomNode(this.header, 'div', null, 'flex');
-    this.start = this.createDomNode(this.start, 'button', 'Start', 'start');
-    this.pause = this.createDomNode(this.pause, 'button', 'Pause', 'pause');
-    this.select = this.createDomNode(this.select, 'select', null, 'select-box');
+    this.wrapper = createDomNode(this.wrapper, 'div', null,'wrapper');
+    this.header = createDomNode(this.header, 'div', null, 'flex');
+    this.start = createDomNode(this.start, 'button', 'Start', 'start');
+    this.pause = createDomNode(this.pause, 'button', 'Pause', 'pause');
+    this.select = createDomNode(this.select, 'select', null, 'select-box');
     this.select.innerHTML = `<option class="select-option" value="3">3x3</option>
       <option class="select-option" value="4" selected>4x4</option>
       <option class="select-option" value="5">5x5</option>
       <option class="select-option" value="6">6x6</option>
       <option class="select-option" value="7">7x7</option>
       <option class="select-option" value="8">8x8</option>`;
-    this.time = this.createDomNode(this.time, 'div', null, 'time');
-    this.timeDecs = this.createDomNode(this.timeDecs, 'span', 'Time', 'description');
-    this.timeCounter = this.createDomNode(this.timeCounter, 'span', '00:00', 'time-counter');
+    this.time = createDomNode(this.time, 'div', null, 'time');
+    this.timeDecs = createDomNode(this.timeDecs, 'span', 'Time', 'description');
+    this.timeCounter = createDomNode(this.timeCounter, 'span', '00:00', 'time-counter');
     this.time.append(this.timeDecs, this.timeCounter);
 
-    this.moves = this.createDomNode(this.moves, 'div', null, 'moves');
-    this.movesDecs = this.createDomNode(this.movesDecs, 'span', 'Moves', 'description');
-    this.movesCounter = this.createDomNode(this.movesCounter, 'span', '0', 'moves-counter');
+    this.moves = createDomNode(this.moves, 'div', null, 'moves');
+    this.movesDecs = createDomNode(this.movesDecs, 'span', 'Moves', 'description');
+    this.movesCounter = createDomNode(this.movesCounter, 'span', '0', 'moves-counter');
     this.moves.append(this.movesDecs, this.movesCounter);
 
     this.header.append(this.start, this.pause, this.select, this.time, this.moves);
 
-    this.overlayResults = this.createDomNode(this.overlay, 'div', null, 'overlayResults', 'hidden');
+    this.overlayResults = createDomNode(this.overlay, 'div', null, 'overlayResults', 'hidden');
     this.overlayResults.innerHTML=`<div class='score'></div><button class='hide-results'>Hide results</button>`;
-    this.startField= this.createDomNode(this.startField, 'div', 'Let`s play!', 'start-field');
-    // this.colorizeLetters();
+    this.startField= createDomNode(this.startField, 'div', 'Let`s play!', 'start-field');
     this.startField.append(this.overlayResults)
 
-    this.footer = this.createDomNode(this.footer, 'div', null, 'flex');
-    this.audioBtn = this.createDomNode(this.audioBtn, 'button', null, 'audio');
-    this.audioBtn.innerHTML = this.createIconHTML("music_note");
-    this.pictureBtn = this.createDomNode(this.pictureBtn, 'button', "Picture", 'picture');
-    this.savedGame = this.createDomNode(this.savedGame, 'button', 'Saved Game');
-    this.results = this.createDomNode(this.results, 'button', 'Results');
+    this.footer = createDomNode(this.footer, 'div', null, 'flex');
+    this.audioBtn = createDomNode(this.audioBtn, 'button', null, 'audio');
+    this.audioBtn.innerHTML = createIconHTML("music_note");
+    this.pictureBtn = createDomNode(this.pictureBtn, 'button', "Picture", 'picture');
+    this.savedGame = createDomNode(this.savedGame, 'button', 'Saved Game');
+    this.results = createDomNode(this.results, 'button', 'Results');
 
-    this.additionalInfo = this.createDomNode(this.additionalInfo, 'div', null, 'additional-info'); 
+    this.additionalInfo = createDomNode(this.additionalInfo, 'div', null, 'additional-info'); 
 
     this.footer.append(this.audioBtn, this.pictureBtn, this.savedGame, this.results)
     this.wrapper.append(this.header, this.startField, this.footer, this.additionalInfo)
 
-    this.instruction = this.createDomNode(this.instruction, 'div', null, 'instruction');
+    this.instruction = createDomNode(this.instruction, 'div', null, 'instruction');
     this.instruction.innerHTML = `<p>Чтобы начать новую игру: выберите вверху уровень сложности,включите/отключите картинки - кнопка Picture, нажмите Start или кликните по полю игры. Чтобы снова начать новую игру: 
     нажмите Pause, перед тем как нажать в появившемся окне New Game, настройте праметры новой игры (выберите вверху уровень сложности, включите/отключите картинки - кнопка Picture).<br> Чтобы сохранить игру, нажмите Pause, в появившемся окне нажмите Save Game. Если хотите сыграть в ранее сохраненную
     игру, нажмите кнопку Saved Game. Кнопка results показывает в модальном окне результаты по времени.
@@ -66,17 +65,6 @@ export default class Puzzle{
     this.bindEvents();
 
   }
-
-  createIconHTML (icon_name) {
-    return `<i class="material-icons">${icon_name}</i>`;
-  }
-
-  createDomNode (node, element, innerText, ...classes){
-    node = document.createElement(element);
-    node.classList.add(...classes);
-    if (innerText) node.innerText = innerText;
-    return node
-  };
 
   bindEvents() {
     this.start.addEventListener('click', () => this.startGame()),
@@ -193,7 +181,7 @@ export default class Puzzle{
 
   toggleAudio() {
     this.audio = !this.audio
-    this.audioBtn.innerHTML = this.audio ? this.createIconHTML("music_note") : this.createIconHTML("music_off");
+    this.audioBtn.innerHTML = this.audio ? createIconHTML("music_note") : createIconHTML("music_off");
     if(this.field) this.field.audio = !this.field.audio
   }
 
@@ -283,5 +271,16 @@ export default class Puzzle{
     }
   }
 
+}
+
+function createDomNode (node, element, innerText, ...classes){
+  node = document.createElement(element);
+  node.classList.add(...classes);
+  if (innerText) node.innerText = innerText;
+  return node
+};
+
+function createIconHTML (icon_name) {
+  return `<i class="material-icons">${icon_name}</i>`;
 }
 

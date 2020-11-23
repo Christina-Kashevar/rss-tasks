@@ -15,7 +15,7 @@ export class Field {
   }
 
   init() {
-    this.field = this.createDomNode(this.field, 'div', null, 'field');
+    this.field = createDomNode(this.field, 'div', null, 'field');
     this.createCells();
     this.init2(this.field )
     return this.field;
@@ -23,7 +23,7 @@ export class Field {
 
   // начать сохраненную игру
   initSavedGame() {
-    this.field = this.createDomNode(this.field, 'div', null, 'field');
+    this.field = createDomNode(this.field, 'div', null, 'field');
     this.createCellsSavedField();
     this.init2(this.field )
     return this.field;
@@ -33,26 +33,19 @@ export class Field {
   init2(field){
     this.audioDiv = document.createElement('audio');
     this.audioDiv.src = './assets/sound.mp3';
-    this.overlay = this.createDomNode(this.overlay, 'div', null, 'overlay', 'hidden');
+    this.overlay = createDomNode(this.overlay, 'div', null, 'overlay', 'hidden');
     this.overlay.innerHTML =`<span class="message"> game paused, want to save it? <button class= 'save-game'> save game</button></span>
       <div class="overlay-main">
       <button class="new-game">New Game</button>
       <button class="continue-game">Continue</button>
       </div>
     `
-    this.overlayWin = this.createDomNode(this.overlay, 'div', null, 'overlayWin', 'hidden');
+    this.overlayWin = createDomNode(this.overlay, 'div', null, 'overlayWin', 'hidden');
     this.overlayWin.innerHTML =`<p>YOU WON!</p><p class='phrase'>Yo solve the puzzle for </p> <button class="new-game">New Game</button>`;
-    this.overlayResults = this.createDomNode(this.overlay, 'div', null, 'overlayResults', 'hidden');
+    this.overlayResults = createDomNode(this.overlay, 'div', null, 'overlayResults', 'hidden');
     this.overlayResults.innerHTML=`<div class='score'></div><button class='hide-results'>Hide results</button>`
     field.append(this.audioDiv, this.overlay, this.overlayWin, this.overlayResults)
   }
-
-  createDomNode (node, element, innerText, ...classes){
-    node = document.createElement(element);
-    node.classList.add(...classes);
-    if (innerText) node.innerText = innerText;
-    return node
-  };
 
   createCellsArray() { // замешиваем числа и проверяем решаемость пазла
     let numbers = [...Array(this.cellsQuantity).keys()]
@@ -304,3 +297,10 @@ export class Field {
     audio.play();
   }
 }
+
+function createDomNode (node, element, innerText, ...classes){
+  node = document.createElement(element);
+  node.classList.add(...classes);
+  if (innerText) node.innerText = innerText;
+  return node
+};
