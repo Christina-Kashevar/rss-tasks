@@ -1,11 +1,5 @@
-import { Field } from './Field.js';
-
-function createDomNode(node, element, innerText, ...classes) {
-  node = document.createElement(element);
-  node.classList.add(...classes);
-  if (innerText) node.innerText = innerText;
-  return node;
-}
+import Field from './Field.js';
+import createDomNode from './CreateDomNode.js'
 
 function createIconHTML(iconName) {
   return `<i class="material-icons">${iconName}</i>`;

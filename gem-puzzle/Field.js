@@ -1,26 +1,8 @@
-function createDomNode(node, element, innerText, ...classes) {
-  node = document.createElement(element);
-  node.classList.add(...classes);
-  if (innerText) node.innerText = innerText;
-  return node;
-}
 
-function dragStart(e) {
-  e.dataTransfer.setData('text', e.target.innerHTML);
-  e.dataTransfer.effectAllowed = 'move';
-  return true;
-}
+import {dragStart, dragOver, dragEnter} from './DragEvents.js';
+import createDomNode from './CreateDomNode.js'
 
-function dragOver(e) {
-  e.preventDefault();
-}
-
-function dragEnter(e) {
-  e.preventDefault();
-  return true;
-}
-
-export class Field {
+export default class Field {
   constructor(level = 4, audio = true, width = 400, picture = true) {
     this.level = level;
     this.audio = audio;
@@ -154,12 +136,10 @@ export class Field {
       const leftVal = (value - 1) % this.level;
       const topVal = (value - leftVal - 1) / this.level;
       if (this.picture) {
-        cell.style.color = 'transparent';
         cell.style.backgroundSize = `${this.width}px ${this.width}px`;
         cell.style.backgroundImage = `url(./assets/images/${this.image}.jpg)`;
         const width = this.width / this.level - 2;
         cell.style.backgroundPosition = `-${leftVal * width}px -${topVal * width}px`;
-        // console.log(value, leftVal, topVal)
       }
     }
   }
@@ -215,7 +195,6 @@ export class Field {
       });
 
       if (this.picture) {
-        cell.style.color = 'transparent';
         const leftVal = (this.cells[i].value - 1) % this.level;
         const topVal = (this.cells[i].value - leftVal - 1) / this.level;
         cell.style.backgroundSize = `${this.width}px ${this.width}px`;
@@ -302,10 +281,3 @@ export class Field {
     audio.play();
   }
 }
-
-// function createDomNode (node, element, innerText, ...classes){
-//   node = document.createElement(element);
-//   node.classList.add(...classes);
-//   if (innerText) node.innerText = innerText;
-//   return node
-// };
