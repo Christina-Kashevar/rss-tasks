@@ -1,4 +1,3 @@
-
 import {dragStart, dragOver, dragEnter} from './DragEvents.js';
 import createDomNode from './CreateDomNode.js';
 
@@ -36,7 +35,15 @@ export default class Field {
   // общая функция для начала новой ил сохраненной игры
   init2(field) {
     this.audioDiv = document.createElement('audio');
-    this.audioDiv.src = './src/audio/sound.mp3';
+
+
+
+
+
+
+
+    // ИЗМЕНИЛА ПУТЬ
+    this.audioDiv.src = '../src/audio/sound.mp3';
     this.overlay = createDomNode(this.overlay, 'div', null, 'overlay', 'hidden');
     this.overlay.innerHTML = `<span class="message"> game paused, want to save it? <button class= 'save-game'> save game</button></span>
       <div class="overlay-main">
@@ -198,7 +205,7 @@ export default class Field {
         const leftVal = (this.cells[i].value - 1) % this.level;
         const topVal = (this.cells[i].value - leftVal - 1) / this.level;
         cell.style.backgroundSize = `${this.width}px ${this.width}px`;
-        cell.style.backgroundImage = `url(./src/images/${this.image}.jpg)`;
+        cell.style.backgroundImage = `url(../src/images/${this.image}.jpg)`;
         const width = this.width / this.level - 2;
         cell.style.backgroundPosition = `-${leftVal * width}px -${topVal * width}px`;
       }
