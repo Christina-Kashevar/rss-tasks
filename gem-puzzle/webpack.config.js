@@ -4,9 +4,10 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-function add() {
-  let entryArr =['./src/index.js', './src/style.css', './src/audio/sound.mp3']
-  for (let i=1; i<= 150; i++) {
+const add = () => {
+  const imageQuantity = 150;
+  const entryArr =['./src/index.js', './src/style.css', './src/audio/sound.mp3']
+  for (let i=1; i<= imageQuantity; i++) {
     entryArr.push(`./src/images/${i}.jpg`)
   }
   return entryArr
@@ -19,9 +20,8 @@ module.exports = (env, options) => {
 
     const config = {
         mode: isProduction ? 'production' : 'development',
-        devtool: isProduction ? false : 'source-map',
+        devtool: isProduction ? !isProduction : 'source-map',
         watch: !isProduction,
-        // entry: ['./src/index.js', './src/style.css', './src/audio/sound.mp3', './src/images/1.jpg'],
         entry: add(),
         output: {
             path: path.join(__dirname, '/dist'),

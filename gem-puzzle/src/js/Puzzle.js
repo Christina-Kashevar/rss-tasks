@@ -1,6 +1,6 @@
 import Field from './Field.js';
 import createDomNode from './CreateDomNode.js';
-import colorizeLetters from './ColorizeLetters.js';
+import colorizeText from './ColorizeText.js';
 
 function createIconHTML(iconName) {
   return `<i class="material-icons">${iconName}</i>`;
@@ -44,7 +44,7 @@ export default class Puzzle {
     this.overlayResults = createDomNode(this.overlay, 'div', null, 'overlayResults', 'hidden');
     this.overlayResults.innerHTML = '<div class=\'score\'></div><button class=\'hide-results\'>Hide results</button>';
     this.startField = createDomNode(this.startField, 'div', 'Let`s play!', 'start-field');
-    this.startField.innerHTML = colorizeLetters(this.startField.innerText)
+    this.startField.innerHTML = colorizeText(this.startField.innerText)
     this.startField.append(this.overlayResults);
 
     this.footer = createDomNode(this.footer, 'div', null, 'flex');
@@ -83,7 +83,8 @@ export default class Puzzle {
     document.querySelector('.hide-results').addEventListener('click', () => this.hideResults());
   }
 
-  startGame() {
+  
+   startGame () {
     this.widthWindow = document.documentElement.clientWidth;
     this.widthWrapper = this.widthWindow > 480 ? 400 : 300;
     this.field = new Field(this.level, this.audio, this.widthWrapper, this.picture);
@@ -219,7 +220,7 @@ export default class Puzzle {
     this.field.finishGame = false;
     this.field.picture = prevField.picture;
     this.field.image = prevField.image;
-    this.field.cellsQuantity = prevField.cellsQuantity;
+    this.field.cellsAmount = prevField.cellsAmount;
     this.field.cellSize = prevField.cellSize;
     this.field.moves = prevField.moves;
     this.field.timer = prevField.timer;

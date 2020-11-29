@@ -6,7 +6,7 @@ export default class Field {
     this.level = level;
     this.audio = audio;
     this.picture = picture;
-    this.cellsQuantity = level * level - 1;
+    this.cellsAmount = level * level - 1;
     this.width = width;
     this.cellSize = this.width / level;
     this.cells = [];
@@ -35,14 +35,6 @@ export default class Field {
   // общая функция для начала новой ил сохраненной игры
   init2(field) {
     this.audioDiv = document.createElement('audio');
-
-
-
-
-
-
-
-    // ИЗМЕНИЛА ПУТЬ
     this.audioDiv.src = '../src/audio/sound.mp3';
     this.overlay = createDomNode(this.overlay, 'div', null, 'overlay', 'hidden');
     this.overlay.innerHTML = `<span class="message"> game paused, want to save it? <button class= 'save-game'> save game</button></span>
@@ -59,7 +51,7 @@ export default class Field {
   }
 
   createCellsArray() { // замешиваем числа и проверяем решаемость пазла
-    let numbers = [...Array(this.cellsQuantity).keys()]
+    let numbers = [...Array(this.cellsAmount).keys()]
       .sort(() => Math.random() - 0.5);
     // проверить решаемость
     let sum = 0;
@@ -108,7 +100,7 @@ export default class Field {
       dragOver(e);
     });
     this.empty.element = emptyCell;
-    for (let i = 1; i <= this.cellsQuantity; i++) {
+    for (let i = 1; i <= this.cellsAmount; i++) {
       const cell = document.createElement('div');
       cell.draggable = 'true';
       const value = numbersArr[i - 1] + 1;
