@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const add = () => {
   const imageQuantity = 150;
-  const entryArr =['./src/index.js', './src/style.css', './src/audio/sound.mp3']
+  const entryArr = ['./src/index.js', './src/style.css', './src/audio/sound.mp3'];
   for (let i=1; i<= imageQuantity; i++) {
     entryArr.push(`./src/images/${i}.jpg`)
   }
