@@ -1,5 +1,5 @@
 const cards = [ 
-  ['Action (set A)', 'Action (set B)', 'Action (Set C)', 'Adjective', 'Animal (set A)', 'Animal (set B)', 'Clothes', 'Emotions'],
+  ['Action (set A)', 'Action (set B)', 'Food (set A)', 'Food (set B)', 'Animal (set A)', 'Animal (set B)', 'Clothes', 'Emotions'],
   [
     {
       word: 'cry',
@@ -102,102 +102,102 @@ const cards = [
   ],
   [
     {
-      word: 'cry',
-      translation: 'плакать',
-      image: './assets/img/cry.jpg',
-      audioSrc: 'audio/cry.mp3'
+      word: 'apple',
+      translation: 'яблоко',
+      image: './assets/img/apple.jpg',
+      audioSrc: 'audio/apple.mp3'
     },
     {
-      word: 'dance',
-      translation: 'танцевать',
-      image: './assets/img/dance.jpg',
-      audioSrc: 'audio/dance.mp3'
+      word: 'carrot',
+      translation: 'морковь',
+      image: './assets/img/carrot.jpg',
+      audioSrc: 'audio/carrot.mp3'
     },
     {
-      word: 'dive',
-      translation: 'нырять',
-      image: './assets/img/dive.jpg',
-      audioSrc: 'audio/dive.mp3'
+      word: 'cucumber',
+      translation: 'огурец',
+      image: './assets/img/cucumber.jpg',
+      audioSrc: 'audio/cucumber.mp3'
     },
     {
-      word: 'draw',
-      translation: 'рисовать',
-      image: './assets/img/draw.jpg',
-      audioSrc: 'audio/draw.mp3'
+      word: 'tomato',
+      translation: 'помидор',
+      image: './assets/img/tomato.jpg',
+      audioSrc: 'audio/tomato.mp3'
     },
     {
-      word: 'fish',
-      translation: 'ловить рыбу',
-      image: './assets/img/fish.jpg',
-      audioSrc: 'audio/fish.mp3'
+      word: 'pineapple',
+      translation: 'ананас',
+      image: './assets/img/pineapple.jpg',
+      audioSrc: 'audio/pineapple.mp3'
     },
     {
-      word: 'fly',
-      translation: 'летать',
-      image: './assets/img/fly.jpg',
-      audioSrc: 'audio/fly.mp3'
+      word: 'watermelon',
+      translation: 'арбуз',
+      image: './assets/img/watermelon.jpg',
+      audioSrc: 'audio/watermelon.mp3'
     },
     {
-      word: 'hug',
-      translation: 'обнимать',
-      image: './assets/img/hug.jpg',
-      audioSrc: 'audio/hug.mp3'
+      word: 'strawberry',
+      translation: 'клубника',
+      image: './assets/img/strawberry.jpg',
+      audioSrc: 'audio/strawberry.mp3'
     },
     {
-      word: 'jump',
-      translation: 'прыгать',
-      image: './assets/img/jump.jpg',
-      audioSrc: 'audio/jump.mp3'
+      word: 'orange',
+      translation: 'апельсин',
+      image: './assets/img/orange.jpg',
+      audioSrc: 'audio/orange.mp3'
     }
   ],
   [
     {
-      word: 'cry',
-      translation: 'плакать',
-      image: './assets/img/cry.jpg',
-      audioSrc: 'audio/cry.mp3'
+      word: 'butter',
+      translation: 'масло',
+      image: './assets/img/butter.jpg',
+      audioSrc: 'audio/butter.mp3'
     },
     {
-      word: 'dance',
-      translation: 'танцевать',
-      image: './assets/img/dance.jpg',
-      audioSrc: 'audio/dance.mp3'
+      word: 'cheese',
+      translation: 'сыр',
+      image: './assets/img/cheese.jpg',
+      audioSrc: 'audio/cheese.mp3'
     },
     {
-      word: 'dive',
-      translation: 'нырять',
-      image: './assets/img/dive.jpg',
-      audioSrc: 'audio/dive.mp3'
+      word: 'milk',
+      translation: 'молоко',
+      image: './assets/img/milk.jpg',
+      audioSrc: 'audio/milk.mp3'
     },
     {
-      word: 'draw',
-      translation: 'рисовать',
-      image: './assets/img/draw.jpg',
-      audioSrc: 'audio/draw.mp3'
+      word: 'ice cream',
+      translation: 'мороженое',
+      image: './assets/img/ice-cream.jpg',
+      audioSrc: 'audio/ice-cream.mp3'
     },
     {
-      word: 'fish',
-      translation: 'ловить рыбу',
-      image: './assets/img/fish.jpg',
-      audioSrc: 'audio/fish.mp3'
+      word: 'ham',
+      translation: 'ветчина',
+      image: './assets/img/ham.jpg',
+      audioSrc: 'audio/ham.mp3'
     },
     {
-      word: 'fly',
-      translation: 'летать',
-      image: './assets/img/fly.jpg',
-      audioSrc: 'audio/fly.mp3'
+      word: 'egg',
+      translation: 'яйцо',
+      image: './assets/img/egg.jpg',
+      audioSrc: 'audio/egg.mp3'
     },
     {
-      word: 'hug',
-      translation: 'обнимать',
-      image: './assets/img/hug.jpg',
-      audioSrc: 'audio/hug.mp3'
+      word: 'pizza',
+      translation: 'пицца',
+      image: './assets/img/pizza.jpg',
+      audioSrc: 'audio/pizza.mp3'
     },
     {
-      word: 'jump',
-      translation: 'прыгать',
-      image: './assets/img/jump.jpg',
-      audioSrc: 'audio/jump.mp3'
+      word: 'bread',
+      translation: 'хлеб',
+      image: './assets/img/bread.jpg',
+      audioSrc: 'audio/bread.mp3'
     }
   ],
   [
