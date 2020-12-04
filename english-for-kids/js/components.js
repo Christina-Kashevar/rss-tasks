@@ -37,20 +37,19 @@ const CardsComponent = {
     for (let i = 0; i < param.length; i++) {
       renderElement += `
       <div class="card-container">
-      <div class="card" data-word=${param[i]['word']}>
-        <div class="front" style="background-image: url(${param[i]['image']});">
-          <div class="card-header">${param[i]['word']}</div>
+        <div class="card" data-word=${param[i]['word']}>
+          <div class="front" style="background-image: url(${param[i]['image']});">
+            <div class="card-header">${param[i]['word']}</div>
+          </div>
+          <div class="back hidden" style="background-image: url(${param[i]['image']});">
+            <div class="card-header">${param[i]['translation']}</div>
+          </div>
+          <div class="rotate"></div>
         </div>
-        <div class="back hidden" style="background-image: url(${param[i]['image']});">
-          <div class="card-header">${param[i]['translation']}</div>
-        </div>
-        <div class="rotate"></div>
-      </div>
-      <audio class="audio"></audio>
-    </div>`
+      </div>`
     }
 
-    renderElement += '</div>'
+    renderElement += '<div class="btn-wrapper"><button class="btn none">Start game</button></div><audio class="audio"></audio></div>'
     return renderElement;
   }
 };

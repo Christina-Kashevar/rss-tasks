@@ -28,6 +28,9 @@ function renderCards() {
     const categoryInCardsIndex = cards[0].indexOf(currentPage) + 1;
     const parametersToRender = cards[categoryInCardsIndex];
     document.querySelector('.main-wrapper').innerHTML = CardsComponent.render(parametersToRender);
+    if(!switcher.checked) {
+      changeCardsStyle();
+    }
     document.querySelector('.cards-block').addEventListener('click', rotateCard);
     document.querySelectorAll('.card').forEach( card => {
       card.addEventListener('mouseleave', rotateCardBack);
@@ -78,6 +81,7 @@ function changePages(e) {
 
 function openCatPage(){
   document.querySelector('.cards-block').addEventListener('click', (e) => {
+    if (!e.target.closest('.main-card')) return;
     const targetCategory = e.target.closest('.main-card').innerText;
     if(!targetCategory) return;
     currentPage = targetCategory;
@@ -101,6 +105,7 @@ function rotateCardBack (e) {
 
 function playSound(e) {
   const targetCard = e.target.closest('.card');
+  if (!switcher.checked) return;
   if(targetCard.classList.contains('translate') || e.target.classList.contains('rotate')) {
     return;
   }
@@ -108,4 +113,19 @@ function playSound(e) {
   if (!audio) return;
   audio.src = `./assets/audio/${targetCard.dataset.word}.mp3`;
   audio.play();
+}
+
+function changeCardsStyle () {
+  document.querySelectorAll('.card').forEach( card => {
+    card.classList.add('card-cover')
+  });
+  document.querySelectorAll('.rotate').forEach( card => {
+    card.classList.add('none')
+  });
+  document.querySelectorAll('.card-header').forEach( card => {
+    card.classList.add('none')
+  });
+  if (document.querySelector('.btn') && document.querySelector('.btn').classList.contains('none')) {
+    document.querySelector('.btn').classList.remove('none');
+  }
 }

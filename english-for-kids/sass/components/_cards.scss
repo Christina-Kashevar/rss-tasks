@@ -8,7 +8,6 @@
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
     display: flex;
-    box-sizing: border-box;
     justify-content: flex-end;
     width: 300px;
     height: 250px;
@@ -56,8 +55,6 @@
 .back,
 .front,
 .rotate {
-  // -webkit-transform: rotateY(180deg);
-  // transform: rotateY(180deg);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
@@ -90,4 +87,10 @@
   &:hover {
     filter: none;
   }
+}
+
+.card-cover .back,
+.card-cover .front {
+  background-size: cover;
+  background-position: 50%;
 }
