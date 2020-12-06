@@ -33,7 +33,7 @@ const HomeComponent = {
 
 const CardsComponent = {
   render: (param) => {
-    let renderElement = '<div class="cards-block">'
+    let renderElement = '<div class="cards-block page"><div class="rating"></div>'
     for (let i = 0; i < param.length; i++) {
       renderElement += `
       <div class="card-container">
@@ -49,7 +49,7 @@ const CardsComponent = {
       </div>`
     }
 
-    renderElement += '<div class="btn-wrapper"><button class="btn none">Start game</button></div><audio class="audio"></audio></div>'
+    renderElement += '<div class="btn-wrapper"><button class="btn none">Start game</button></div><audio class="audio"></audio><audio class="starSound"></audio></div>'
     return renderElement;
   }
 };

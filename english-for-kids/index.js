@@ -6,7 +6,7 @@ const navInput = document.querySelector("#menuToggle > input[type=checkbox]");
 const switcher = document.querySelector("#myonoffswitch");
 const menu = document.querySelector("#menu");
 let currentPage = 'Main page';
-let play = new Play()
+const play = new Play()
 
 switcher.addEventListener('click', changeBgDependingOnMode);
 menu.addEventListener('click', changePages);
@@ -14,6 +14,14 @@ renderCards();
 play.init();
 
 document.addEventListener('click', (e) => {
+  if(!document.querySelector('.modal').classList.contains('modal_closed')) {
+    currentPage = 'Main page';
+    renderCards();
+    addActiveClassToLink();
+    document.querySelector('.modal-overlay').classList.add('modal_closed');
+    document.querySelector('.modal').classList.add('modal_closed');
+    return;
+  }
   if (!e.target.closest('#menu') && !e.target.closest('#menuToggle')) {
     navInput.checked = false;
   }
@@ -29,13 +37,14 @@ function renderCards() {
     const parametersToRender = cards[categoryInCardsIndex];
     document.querySelector('.main-wrapper').innerHTML = CardsComponent.render(parametersToRender);
     if(!switcher.checked) {
-      changeCardsStyle();
+      play.changeCardsStyle()
     }
     document.querySelector('.cards-block').addEventListener('click', rotateCard);
     document.querySelectorAll('.card').forEach( card => {
       card.addEventListener('mouseleave', rotateCardBack);
       card.addEventListener('click', playSound);
     });
+    document.querySelector('.btn').addEventListener('click', play.startGame)
   }
 }
 
@@ -70,9 +79,7 @@ function changeBgDependingOnMode() {
 }
 
 function changePages(e) {
-  if( e.target.tagName !== 'LI') {
-    return
-  }
+  if( e.target.tagName !== 'LI') return;
   navInput.checked = false;
   currentPage = e.target.innerHTML
   renderCards();
@@ -113,19 +120,4 @@ function playSound(e) {
   if (!audio) return;
   audio.src = `./assets/audio/${targetCard.dataset.word}.mp3`;
   audio.play();
-}
-
-function changeCardsStyle () {
-  document.querySelectorAll('.card').forEach( card => {
-    card.classList.add('card-cover')
-  });
-  document.querySelectorAll('.rotate').forEach( card => {
-    card.classList.add('none')
-  });
-  document.querySelectorAll('.card-header').forEach( card => {
-    card.classList.add('none')
-  });
-  if (document.querySelector('.btn') && document.querySelector('.btn').classList.contains('none')) {
-    document.querySelector('.btn').classList.remove('none');
-  }
 }
