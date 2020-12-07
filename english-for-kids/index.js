@@ -1,5 +1,5 @@
 import cards from './js/cards.js';
-import {HomeComponent, CardsComponent} from './js/components.js';
+import {HomeComponent, StatisticComponent, CardsComponent} from './js/components.js';
 import Play from './js/play.js';
 
 const navInput = document.querySelector("#menuToggle > input[type=checkbox]");
@@ -10,8 +10,6 @@ const play = new Play()
 
 switcher.addEventListener('click', changeBgDependingOnMode);
 menu.addEventListener('click', changePages);
-renderCards();
-play.init();
 
 document.addEventListener('click', (e) => {
   if(!document.querySelector('.modal').classList.contains('modal_closed')) {
@@ -21,17 +19,74 @@ document.addEventListener('click', (e) => {
     document.querySelector('.modal-overlay').classList.add('modal_closed');
     document.querySelector('.modal').classList.add('modal_closed');
     return;
+  };
+  if (e.target.closest('.table-heading')) {
+    const statHeading = document.querySelectorAll(".table-heading div");
+    statHeading.forEach( elem => {
+      if(e.target === elem) {
+        if(e.target.classList.contains('active-td')) {
+          e.target.classList.toggle('reverse')
+        } else {
+          elem.classList.add('active-td');
+        }
+      } else {
+        elem.classList.remove('active-td');
+        elem.classList.remove('reverse');
+      }
+    })
+    sortStat(e.target);
   }
   if (!e.target.closest('#menu') && !e.target.closest('#menuToggle')) {
     navInput.checked = false;
   }
 })
 
+function writeToLocalStorage() {
+  let value = [cards[0]];
+  const categoryAmount = 8;
+  for (let i = 0; i < categoryAmount; i++) {
+    let valueElement = [];
+    for (let j = 0; j < categoryAmount; j++) {
+      valueElement.push({
+        word: cards[i+1][j].word,
+        translation: cards[i+1][j].translation,
+        correct: 0,
+        wrong: 0,
+        asked: 0,
+        errors: 0
+      })
+    }
+    value.push(valueElement)
+  }
+  localStorage.setItem('play', JSON.stringify(value))
+}
+
+if(!localStorage.getItem('play')) { writeToLocalStorage()};
+
+let cardsFromStorage = JSON.parse(localStorage.getItem('play'));
+
+renderCards();
+play.init();
+
 function renderCards() {
   if(currentPage === 'Main page') {
     document.querySelector('.main-wrapper').innerHTML = HomeComponent.render();
     changeBgDependingOnMode();
     openCatPage()
+  } else if (currentPage === 'Statistic') {
+    cardsFromStorage = JSON.parse(localStorage.getItem('play'));
+    let heading = `
+    <div class="table-heading">
+      <div class="stat-word">Word</div>
+      <div class="stat-translation">Translation</div>
+      <div class="stat-asked">Asked</div>
+      <div class="stat-correct">Correct</div>
+      <div class="stat-wrong">Wrong</div>
+      <div class="stat-errors">% errors</div>
+    </div>
+    <div class="table"></div>`
+    document.querySelector('.main-wrapper').innerHTML = heading;
+    document.querySelector('.table').innerHTML = StatisticComponent.render(cardsFromStorage);
   } else {
     const categoryInCardsIndex = cards[0].indexOf(currentPage) + 1;
     const parametersToRender = cards[categoryInCardsIndex];
@@ -39,6 +94,7 @@ function renderCards() {
     if(!switcher.checked) {
       play.changeCardsStyle()
     }
+    play.pageIndex = categoryInCardsIndex;
     document.querySelector('.cards-block').addEventListener('click', rotateCard);
     document.querySelectorAll('.card').forEach( card => {
       card.addEventListener('mouseleave', rotateCardBack);
@@ -120,4 +176,55 @@ function playSound(e) {
   if (!audio) return;
   audio.src = `./assets/audio/${targetCard.dataset.word}.mp3`;
   audio.play();
+}
+
+function sortStat(target) {
+  let storageCopy = JSON.parse(localStorage.getItem('play')).slice();
+  if (target.classList.contains('stat-word')) {
+    console.log()
+    for (let i =1; i < storageCopy.length; i++) {
+      console.log(storageCopy[i])
+      storageCopy[i].sort((a, b) => a.word > b.word ? 1 : -1);
+      if(target.classList.contains('reverse')) {
+        storageCopy[i].reverse();
+      }
+    }
+  } else if (target.classList.contains('stat-translation')) {
+    for (let i =1; i < storageCopy.length; i++) {
+      storageCopy[i].sort((a, b) => a.translation > b.translation ? 1 : -1);
+      if(target.classList.contains('reverse')) {
+        storageCopy[i].reverse();
+      }
+    }
+  } else if(target.classList.contains('stat-asked')) {
+    for (let i =1; i < storageCopy.length; i++) {
+      storageCopy[i].sort((a, b) => a.asked > b.asked ? 1 : -1);
+      if(target.classList.contains('reverse')) {
+        storageCopy[i].reverse();
+      }
+    }
+  } else if(target.classList.contains('stat-correct')) {
+    for (let i =1; i < storageCopy.length; i++) {
+      storageCopy[i].sort((a, b) => a.correct > b.correct ? 1 : -1);
+      if(target.classList.contains('reverse')) {
+        storageCopy[i].reverse();
+      }
+    }
+  } else if(target.classList.contains('stat-wrong')) {
+    for (let i =1; i < storageCopy.length; i++) {
+      storageCopy[i].sort((a, b) => a.wrong > b.wrong ? 1 : -1);
+      if(target.classList.contains('reverse')) {
+        storageCopy[i].reverse();
+      }
+    }
+  } else if(target.classList.contains('stat-errors')) {
+    for (let i =1; i < storageCopy.length; i++) {
+      storageCopy[i].sort((a, b) => a.errors > b.errors ? 1 : -1);
+      if(target.classList.contains('reverse')) {
+        storageCopy[i].reverse();
+      }
+    }
+  }
+
+  document.querySelector('.table').innerHTML = StatisticComponent.render(storageCopy)
 }

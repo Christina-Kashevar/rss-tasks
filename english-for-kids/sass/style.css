@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* ==========================================================================
    Normalize.scss settings
    ========================================================================== */
@@ -866,6 +867,66 @@ div.modal_closed {
 }
 .modal p {
   font-size: 3.6rem;
+}
+
+table,
+.table-heading {
+  width: 800px;
+  margin: 0 auto;
+}
+
+td {
+  padding: 0.5rem;
+  padding-right: 1rem;
+  min-width: 10.1rem;
+}
+td:nth-child(3), td:nth-child(4), td:nth-child(5), td:nth-child(6) {
+  text-align: center;
+}
+
+tr:hover {
+  background: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%);
+}
+
+.table-heading {
+  margin-top: 3rem;
+  background-color: #c5243f;
+  font-weight: bold;
+  font-size: 2.4rem;
+  display: flex;
+  justify-content: space-around;
+}
+.table-heading:hover {
+  cursor: pointer;
+}
+.table-heading div {
+  padding: 0.5rem 0;
+}
+.table-heading div::after {
+  content: "⯆";
+  transform: rotate(90deg);
+  font-size: 1.6rem;
+  padding-left: 2px;
+  text-decoration: none;
+}
+
+.stat-translation {
+  flex-basis: 20%;
+}
+
+.cat-heading {
+  text-align: center;
+  background-color: #ccc;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.active-td::after {
+  color: yellow;
+}
+
+.reverse::after {
+  content: "⯅" !important;
 }
 
 /*# sourceMappingURL=style.css.map */

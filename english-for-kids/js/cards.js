@@ -1,11 +1,11 @@
-const cards = [ 
+const cards = [
   ['Action (set A)', 'Action (set B)', 'Food (set A)', 'Food (set B)', 'Animal (set A)', 'Animal (set B)', 'Clothes', 'Emotions'],
   [
     {
       word: 'cry',
       translation: 'плакать',
       image: './assets/img/cry.jpg',
-      audioSrc: 'audio/cry.mp3'
+      audioSrc: 'audio/cry.mp3',
     },
     {
       word: 'dance',

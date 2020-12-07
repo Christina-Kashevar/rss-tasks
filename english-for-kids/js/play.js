@@ -46,7 +46,11 @@ export default class Play {
     this.startBtn = document.querySelector('.btn');
     this.startBtn.classList.add('repeat');
     this.mistakes = 0;
-    this.startBtn.removeEventListener('click', this.startGame)
+    this.startBtn.removeEventListener('click', this.startGame);
+    this.results = JSON.parse(localStorage.getItem('play'));
+    this.targetCat = this.results[this.pageIndex].slice();
+    console.log(this.results)
+    console.log(this.targetCat)
     this.wordsOnPage = [];
     this.wordsLeftToGuess = 8;
     document.querySelectorAll('.card').forEach( card => {
@@ -75,10 +79,14 @@ export default class Play {
     if (!this.audioStar) return;
     let clickedWord = e.target.closest('.card').dataset.word;
     let star = document.createElement('div');
+    let currentWord = this.targetCat.find(word => {
+      return word.word === this.wordsOnPage[this.wordsOnPage.length-1]
+    });
     if (clickedWord === this.wordsOnPage[this.wordsOnPage.length-1]) {
       star.classList.add('star-win');
       this.audioStar.src = './assets/audio/correct.mp3';
       e.target.classList.add('inactive');
+      currentWord.correct += 1
       if(this.wordsOnPage.length > 1) {
         this.wordsOnPage.pop();
         setTimeout(this.gameLogic,1000);
@@ -87,10 +95,13 @@ export default class Play {
       }
     } else {
       star.classList.add('star-error');
+      currentWord.wrong += 1;
       if( e.target.classList.contains('inactive')) return;
       this.audioStar.src = './assets/audio/error.mp3';
       this.mistakes += 1;
     }
+    currentWord.asked +=1;
+    currentWord.errors = Math.round(+currentWord.wrong/+currentWord.asked*100)
     document.querySelector('.rating').append(star);
     this.audioStar.play();
   }
@@ -105,6 +116,12 @@ export default class Play {
     document.querySelector('.modal').classList.remove('modal_closed');
     this.audioStar.src = this.mistakes === 0 ? './assets/audio/success.mp3': './assets/audio/failure.mp3';
     this.audioStar.play();
+    this.addResultsToLocalStorage();
+  }
+
+  addResultsToLocalStorage = () => {
+    this.results[this.pageIndex] = this.targetCat;
+    localStorage.setItem('play', JSON.stringify(this.results))
   }
 
   changeMode = () => {

@@ -1,3 +1,5 @@
+// import cards from './cards.js';
+
 const HomeComponent = {
   render: () => {
     return `
@@ -31,6 +33,30 @@ const HomeComponent = {
   }
 };
 
+const StatisticComponent = {
+  render: (cards) => {
+    let table = `<table>`;
+    const categoryAmount = 8;
+    for (let i = 0; i < categoryAmount; i++) {
+      table += `<tr class="cat-heading"><td colspan = "6">${cards[0][i]}</td></tr>`;
+      for (let j = 0; j < categoryAmount; j++) {
+        const correct = cards[i+1][j].correct === undefined ? 0 : cards[i+1][j].correct;
+        const wrong = cards[i+1][j].wrong === undefined ? 0 : cards[i+1][j].wrong;
+        const asked = cards[i+1][j].correct === undefined ? 0 : correct + wrong;
+        const errors = cards[i+1][j].asked === 0 ? 0 : Math.round(+wrong/+asked*100);
+        table += `<tr class = "cat-word"><td>${cards[i+1][j].word}</td>
+        <td>${cards[i+1][j].translation}</td>
+        <td>${asked}</td>
+        <td>${correct}</td>
+        <td>${wrong}</td>
+        <td>${errors}</td></tr>`;
+      }
+    }
+    table += '</table>';
+    return table
+  }
+}
+
 const CardsComponent = {
   render: (param) => {
     let renderElement = '<div class="cards-block page"><div class="rating"></div>'
@@ -54,4 +80,4 @@ const CardsComponent = {
   }
 };
 
-export {HomeComponent, CardsComponent};
+export {HomeComponent, StatisticComponent, CardsComponent};
