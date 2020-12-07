@@ -881,6 +881,41 @@ div.page {
   background-position: 50%;
 }
 
+.stat-btn-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  width: 800px;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+@media (max-width: 900px) {
+  .stat-btn-wrapper {
+    width: 700px;
+  }
+}
+@media (max-width: 760px) {
+  .stat-btn-wrapper {
+    width: 500px;
+  }
+}
+
+.stat-btn {
+  background-color: #c5243f;
+  outline: none;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  font-size: 2rem;
+}
+.stat-btn:active {
+  background-color: #f3627b;
+}
+
+#repeat {
+  margin-right: 2rem;
+}
+
 div.modal_closed {
   display: none;
 }

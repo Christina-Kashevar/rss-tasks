@@ -49,8 +49,6 @@ export default class Play {
     this.startBtn.removeEventListener('click', this.startGame);
     this.results = JSON.parse(localStorage.getItem('play'));
     this.targetCat = this.results[this.pageIndex].slice();
-    console.log(this.results)
-    console.log(this.targetCat)
     this.wordsOnPage = [];
     this.wordsLeftToGuess = 8;
     document.querySelectorAll('.card').forEach( card => {
@@ -79,7 +77,12 @@ export default class Play {
     if (!this.audioStar) return;
     let clickedWord = e.target.closest('.card').dataset.word;
     let star = document.createElement('div');
+
     let currentWord = this.targetCat.find(word => {
+      console.log(word.word, this.wordsOnPage[this.wordsOnPage.length-1])
+      if (this.wordsOnPage[this.wordsOnPage.length-1] === 'ice') {
+        this.wordsOnPage[this.wordsOnPage.length-1] = 'ice cream'
+      }
       return word.word === this.wordsOnPage[this.wordsOnPage.length-1]
     });
     if (clickedWord === this.wordsOnPage[this.wordsOnPage.length-1]) {

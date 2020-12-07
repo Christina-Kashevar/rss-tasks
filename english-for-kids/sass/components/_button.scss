@@ -37,3 +37,36 @@
     background-size: 32px 32px,cover;
     background-position: 50%;
 }
+
+.stat-btn-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  width: 800px;
+  margin: 0 auto;
+  margin-top: 2rem;
+  @include media-tablet {
+    width: 700px;
+  }
+
+  @include media-mobile {
+    width: 500px;
+  }
+}
+
+.stat-btn {
+  background-color: $color-stat;
+  outline: none;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  font-size: 2rem;
+
+  &:active {
+    background-color: $color-stat-active;
+  }
+}
+
+#repeat {
+  margin-right: 2rem;
+}

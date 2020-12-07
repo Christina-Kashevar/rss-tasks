@@ -77,6 +77,10 @@ function renderCards() {
     cardsFromStorage = JSON.parse(localStorage.getItem('play'));
     let heading = `
     <div class ="stat-wrapper">
+      <div class="stat-btn-wrapper">
+        <button class="stat-btn" id="repeat">Repeat Difficult Words</button>
+        <button class="stat-btn" id="reset">Reset</button>
+      </div>
       <div class="table-heading">
         <div class="stat-word">Word</div>
         <div class="stat-translation">Translation</div>
@@ -89,6 +93,8 @@ function renderCards() {
     </div>`
     document.querySelector('.main-wrapper').innerHTML = heading;
     document.querySelector('.table').innerHTML = StatisticComponent.render(cardsFromStorage);
+    document.querySelector('#repeat').addEventListener('click', repeatWords);
+    document.querySelector('#reset').addEventListener('click', resetWords);
   } else {
     const categoryInCardsIndex = cards[0].indexOf(currentPage) + 1;
     const parametersToRender = cards[categoryInCardsIndex];
@@ -204,6 +210,23 @@ function sortStat(target) {
       }
    }
   }
-
   document.querySelector('.table').innerHTML = StatisticComponent.render(storageCopy)
+}
+
+function resetWords() {
+  const categoryAmount = 8;
+    for (let i = 1; i < categoryAmount; i++) {
+      for (let j = 0; j < categoryAmount; j++) {
+        cardsFromStorage[i][j].correct = 0;
+        cardsFromStorage[i][j].wrong = 0;
+        cardsFromStorage[i][j].asked = 0;
+        cardsFromStorage[i][j].errors = 0;
+      }
+    }
+  document.querySelector('.table').innerHTML = StatisticComponent.render(cardsFromStorage);
+  localStorage.setItem('play', JSON.stringify(cardsFromStorage))
+}
+
+function repeatWords() {
+
 }
