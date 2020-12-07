@@ -442,6 +442,24 @@ body {
   }
 }
 
+footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+footer span, footer a {
+  margin-right: 3rem;
+  color: #c5243f;
+  font-weight: bold;
+}
+footer a {
+  text-decoration: none;
+  color: #c5243f;
+}
+footer img {
+  width: 10rem;
+}
+
 #menuToggle {
   display: block;
   position: relative;

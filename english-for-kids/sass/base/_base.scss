@@ -19,11 +19,24 @@ body {
   }
 }
 
-// .finish {
-//   text-align: center;
-//   margin-top: 2rem;
+footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 
-//   & p {
-//     font-size: 3.6rem;
-//   }
-// }
+  & span,
+  & a {
+    margin-right: 3rem;
+    color: $color-stat;
+    font-weight: bold;
+  }
+
+  & a {
+    text-decoration: none;
+    color: $color-stat;
+  }
+
+  & img {
+    width: 10rem;
+  }
+}
