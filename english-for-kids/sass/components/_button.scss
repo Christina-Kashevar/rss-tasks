@@ -55,11 +55,12 @@
 
 .stat-btn {
   background-color: $color-stat;
+  color: $color-light;
   outline: none;
   border: none;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
-  font-weight: bold;
+  // font-weight: bold;
   font-size: 2rem;
 
   &:active {

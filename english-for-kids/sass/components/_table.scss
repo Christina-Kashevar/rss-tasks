@@ -46,7 +46,8 @@ tr:hover {
 .table-heading {
   margin-top: 3rem;
   background-color: $color-stat;
-  font-weight: bold;
+  color: $color-light;
+  // font-weight: bold;
   font-size: 2.4rem;
   display: flex;
   justify-content: space-around;

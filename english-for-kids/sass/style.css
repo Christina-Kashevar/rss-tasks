@@ -901,11 +901,11 @@ div.page {
 
 .stat-btn {
   background-color: #c5243f;
+  color: #FFFFFF;
   outline: none;
   border: none;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
-  font-weight: bold;
   font-size: 2rem;
 }
 .stat-btn:active {
@@ -995,7 +995,7 @@ tr:hover {
 .table-heading {
   margin-top: 3rem;
   background-color: #c5243f;
-  font-weight: bold;
+  color: #FFFFFF;
   font-size: 2.4rem;
   display: flex;
   justify-content: space-around;

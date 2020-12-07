@@ -48,7 +48,13 @@ export default class Play {
     this.mistakes = 0;
     this.startBtn.removeEventListener('click', this.startGame);
     this.results = JSON.parse(localStorage.getItem('play'));
-    this.targetCat = this.results[this.pageIndex].slice();
+    if (this.results[this.pageIndex]) {
+      this.targetCat = this.results[this.pageIndex].slice();
+      this.difficultWords = null;
+    };
+    if (this.difficultWords) {
+      this.targetCat = this.difficultWords;
+    }
     this.wordsOnPage = [];
     this.wordsLeftToGuess = 8;
     document.querySelectorAll('.card').forEach( card => {
@@ -120,6 +126,7 @@ export default class Play {
   }
 
   addResultsToLocalStorage = () => {
+    if (this.difficultWords) return;
     this.results[this.pageIndex] = this.targetCat;
     localStorage.setItem('play', JSON.stringify(this.results))
   }
