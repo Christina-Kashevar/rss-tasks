@@ -2,7 +2,25 @@ table,
 .table-heading {
   width: 800px;
   margin: 0 auto;
+
+  @include media-tablet {
+    width: 700px;
+  }
+
+  @include media-mobile {
+    width: 500px;
+  }
 }
+
+.stat-wrapper {
+  @include media-mobile {
+    width: 500px;
+    margin: 0 auto;
+    overflow-x: scroll;
+  }
+
+}
+
 
 td {
   padding: 0.5rem;
@@ -13,6 +31,11 @@ td {
   &:nth-child(5),
   &:nth-child(6) {
     text-align: center;
+  }
+
+  @include media-mobile {
+    padding: 0;
+    min-width: 6rem;
   }
 }
 
@@ -34,6 +57,9 @@ tr:hover {
 
   & div {
     padding: 0.5rem 0;
+    @include media-mobile {
+      padding: 0;
+    }
   }
 
   & div::after {
@@ -44,9 +70,9 @@ tr:hover {
     text-decoration: none;
   }
 
-  // & div:nth-child(2)::after {
-  //   content: '';
-  // }
+  @include media-mobile {
+    font-size: 1.6rem;
+  }
 }
 
 .stat-translation {

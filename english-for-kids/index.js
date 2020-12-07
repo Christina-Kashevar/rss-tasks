@@ -76,15 +76,17 @@ function renderCards() {
   } else if (currentPage === 'Statistic') {
     cardsFromStorage = JSON.parse(localStorage.getItem('play'));
     let heading = `
-    <div class="table-heading">
-      <div class="stat-word">Word</div>
-      <div class="stat-translation">Translation</div>
-      <div class="stat-asked">Asked</div>
-      <div class="stat-correct">Correct</div>
-      <div class="stat-wrong">Wrong</div>
-      <div class="stat-errors">% errors</div>
-    </div>
-    <div class="table"></div>`
+    <div class ="stat-wrapper">
+      <div class="table-heading">
+        <div class="stat-word">Word</div>
+        <div class="stat-translation">Translation</div>
+        <div class="stat-asked">Asked</div>
+        <div class="stat-correct">Correct</div>
+        <div class="stat-wrong">Wrong</div>
+        <div class="stat-errors">% errors</div>
+      </div>
+      <div class="table"></div>
+    </div>`
     document.querySelector('.main-wrapper').innerHTML = heading;
     document.querySelector('.table').innerHTML = StatisticComponent.render(cardsFromStorage);
   } else {
@@ -181,49 +183,26 @@ function playSound(e) {
 function sortStat(target) {
   let storageCopy = JSON.parse(localStorage.getItem('play')).slice();
   if (target.classList.contains('stat-word')) {
-    console.log()
-    for (let i =1; i < storageCopy.length; i++) {
-      console.log(storageCopy[i])
-      storageCopy[i].sort((a, b) => a.word > b.word ? 1 : -1);
-      if(target.classList.contains('reverse')) {
-        storageCopy[i].reverse();
-      }
-    }
+    sortStat('word')
   } else if (target.classList.contains('stat-translation')) {
-    for (let i =1; i < storageCopy.length; i++) {
-      storageCopy[i].sort((a, b) => a.translation > b.translation ? 1 : -1);
-      if(target.classList.contains('reverse')) {
-        storageCopy[i].reverse();
-      }
-    }
+    sortStat('translation')
   } else if(target.classList.contains('stat-asked')) {
-    for (let i =1; i < storageCopy.length; i++) {
-      storageCopy[i].sort((a, b) => a.asked > b.asked ? 1 : -1);
-      if(target.classList.contains('reverse')) {
-        storageCopy[i].reverse();
-      }
-    }
+    sortStat('asked')
   } else if(target.classList.contains('stat-correct')) {
-    for (let i =1; i < storageCopy.length; i++) {
-      storageCopy[i].sort((a, b) => a.correct > b.correct ? 1 : -1);
-      if(target.classList.contains('reverse')) {
-        storageCopy[i].reverse();
-      }
-    }
+    sortStat('correct')
   } else if(target.classList.contains('stat-wrong')) {
-    for (let i =1; i < storageCopy.length; i++) {
-      storageCopy[i].sort((a, b) => a.wrong > b.wrong ? 1 : -1);
-      if(target.classList.contains('reverse')) {
-        storageCopy[i].reverse();
-      }
-    }
+    sortStat('wrong')
   } else if(target.classList.contains('stat-errors')) {
+    sortStat('errors')
+  }
+
+  function sortStat(key) {
     for (let i =1; i < storageCopy.length; i++) {
-      storageCopy[i].sort((a, b) => a.errors > b.errors ? 1 : -1);
+      storageCopy[i].sort((a, b) => a[key] > b[key] ? 1 : -1);
       if(target.classList.contains('reverse')) {
         storageCopy[i].reverse();
       }
-    }
+   }
   }
 
   document.querySelector('.table').innerHTML = StatisticComponent.render(storageCopy)

@@ -21,6 +21,10 @@
       color: $color-nav-hover;
     }
   }
+
+  @include media-mobile {
+    left: 50px;
+  }
 }
 
 #menuToggle input{
@@ -93,12 +97,21 @@
   &.play-mode {
     background: $color-play;
   }
+
+  @include media-mobile {
+    width: 320px;
+  }
 }
 
 #menu li {
   padding: 0.5rem 0;
   font-size: 3.2rem;
   line-height: 4.5rem;
+
+  @include media-mobile {
+    font-size: 2rem;
+    padding: 0;
+  }
 }
 
 #menuToggle input:checked ~ ul {

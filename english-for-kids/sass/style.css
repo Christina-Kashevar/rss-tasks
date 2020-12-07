@@ -436,6 +436,11 @@ body {
   padding-top: 20px;
   padding-right: 120px;
 }
+@media (max-width: 760px) {
+  .header-wrapper {
+    padding-right: 20px;
+  }
+}
 
 #menuToggle {
   display: block;
@@ -457,6 +462,11 @@ body {
 }
 #menuToggle a:hover li {
   color: tomato;
+}
+@media (max-width: 760px) {
+  #menuToggle {
+    left: 50px;
+  }
 }
 
 #menuToggle input {
@@ -523,11 +533,22 @@ body {
 #menu.play-mode {
   background: linear-gradient(315deg, #c28fb1 0%, #ff8489 74%);
 }
+@media (max-width: 760px) {
+  #menu {
+    width: 320px;
+  }
+}
 
 #menu li {
   padding: 0.5rem 0;
   font-size: 3.2rem;
   line-height: 4.5rem;
+}
+@media (max-width: 760px) {
+  #menu li {
+    font-size: 2rem;
+    padding: 0;
+  }
 }
 
 #menuToggle input:checked ~ ul {
@@ -629,6 +650,12 @@ body {
   padding: 20px 15px;
   max-width: 1440px;
 }
+@media (max-width: 760px) {
+  .cards-block {
+    margin-left: 0;
+    padding: 20px 0;
+  }
+}
 
 .main-card {
   width: 300px;
@@ -692,6 +719,12 @@ body {
 .card:hover {
   box-shadow: -1px 5px 15px 0 rgba(0, 0, 0, 0.5);
 }
+@media (max-width: 760px) {
+  .card {
+    width: 270px;
+    height: 225px;
+  }
+}
 
 div.page {
   margin-top: 10px;
@@ -721,6 +754,11 @@ div.page {
   background: #fff;
   color: #212529;
 }
+@media (max-width: 760px) {
+  .card-header {
+    margin-top: 180px;
+  }
+}
 
 .back,
 .front,
@@ -744,9 +782,9 @@ div.page {
   width: 50px;
   height: 50px;
   background-image: url(../assets/img/rotate.png);
-  background-size: 32px;
+  background-size: 3.2rem;
   background-repeat: no-repeat;
-  background-position: center 16px;
+  background-position: center 1.6rem;
   bottom: 5px;
   right: 5px;
   -webkit-transition: 0.3s;
@@ -756,6 +794,11 @@ div.page {
 }
 .rotate:hover {
   filter: none;
+}
+@media (max-width: 760px) {
+  .rotate {
+    background-position: center 2rem;
+  }
 }
 
 .card-cover .back,
@@ -874,6 +917,26 @@ table,
   width: 800px;
   margin: 0 auto;
 }
+@media (max-width: 900px) {
+  table,
+.table-heading {
+    width: 700px;
+  }
+}
+@media (max-width: 760px) {
+  table,
+.table-heading {
+    width: 500px;
+  }
+}
+
+@media (max-width: 760px) {
+  .stat-wrapper {
+    width: 500px;
+    margin: 0 auto;
+    overflow-x: scroll;
+  }
+}
 
 td {
   padding: 0.5rem;
@@ -882,6 +945,12 @@ td {
 }
 td:nth-child(3), td:nth-child(4), td:nth-child(5), td:nth-child(6) {
   text-align: center;
+}
+@media (max-width: 760px) {
+  td {
+    padding: 0;
+    min-width: 6rem;
+  }
 }
 
 tr:hover {
@@ -902,12 +971,22 @@ tr:hover {
 .table-heading div {
   padding: 0.5rem 0;
 }
+@media (max-width: 760px) {
+  .table-heading div {
+    padding: 0;
+  }
+}
 .table-heading div::after {
   content: "⯆";
   transform: rotate(90deg);
   font-size: 1.6rem;
   padding-left: 2px;
   text-decoration: none;
+}
+@media (max-width: 760px) {
+  .table-heading {
+    font-size: 1.6rem;
+  }
 }
 
 .stat-translation {

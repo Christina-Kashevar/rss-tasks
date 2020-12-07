@@ -24,6 +24,11 @@
     &:hover {
       box-shadow: -1px 5px 15px 0 rgba(0,0,0,.5);
   }
+
+  @include media-mobile {
+    width: 270px;
+    height: 225px;
+  }
 }
 
 div.page {
@@ -54,6 +59,10 @@ div.page {
     pointer-events: none;
     background: #fff;
     color: #212529;
+
+    @include media-mobile {
+      margin-top: 180px;
+    }
 }
 
 .back,
@@ -78,9 +87,9 @@ div.page {
   width: 50px;
   height: 50px;
   background-image: url(../assets/img/rotate.png);
-  background-size: 32px;
+  background-size: 3.2rem;
   background-repeat: no-repeat;
-  background-position: center 16px;
+  background-position: center 1.6rem;
   bottom: 5px;
   right: 5px;
   -webkit-transition: .3s;
@@ -90,6 +99,10 @@ div.page {
 
   &:hover {
     filter: none;
+  }
+
+  @include media-mobile {
+    background-position: center 2rem;
   }
 }
 

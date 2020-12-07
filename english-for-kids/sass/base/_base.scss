@@ -13,6 +13,10 @@ body {
 .header-wrapper {
   padding-top: $padding-top-header-1350;
   padding-right: $padding-right-1350;
+
+  @include media-mobile {
+    padding-right: 20px;
+  }
 }
 
 // .finish {

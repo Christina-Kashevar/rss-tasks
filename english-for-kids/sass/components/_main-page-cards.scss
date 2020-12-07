@@ -6,6 +6,11 @@
   justify-content: center;
   padding: 20px 15px;
   max-width: 1440px;
+
+  @include media-mobile {
+    margin-left: 0;
+    padding: 20px 0;
+  }
 }
 
 .main-card {
