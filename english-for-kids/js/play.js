@@ -77,13 +77,10 @@ export default class Play {
     if (!this.audioStar) return;
     let clickedWord = e.target.closest('.card').dataset.word;
     let star = document.createElement('div');
-
+    let checkWord = this.wordsOnPage[this.wordsOnPage.length-1]
     let currentWord = this.targetCat.find(word => {
-      console.log(word.word, this.wordsOnPage[this.wordsOnPage.length-1])
-      if (this.wordsOnPage[this.wordsOnPage.length-1] === 'ice') {
-        this.wordsOnPage[this.wordsOnPage.length-1] = 'ice cream'
-      }
-      return word.word === this.wordsOnPage[this.wordsOnPage.length-1]
+      if(checkWord === 'ice') { checkWord = 'ice cream'}
+      return word.word === checkWord;
     });
     if (clickedWord === this.wordsOnPage[this.wordsOnPage.length-1]) {
       star.classList.add('star-win');
