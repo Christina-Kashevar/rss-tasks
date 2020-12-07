@@ -18,9 +18,7 @@ table,
     margin: 0 auto;
     overflow-x: scroll;
   }
-
 }
-
 
 td {
   padding: 0.5rem;
@@ -47,7 +45,6 @@ tr:hover {
   margin-top: 3rem;
   background-color: $color-stat;
   color: $color-light;
-  // font-weight: bold;
   font-size: 2.4rem;
   display: flex;
   justify-content: space-around;
@@ -97,4 +94,10 @@ tr:hover {
   &::after {
     content: '\2BC5' !important;
   }
+}
+
+.table p {
+  text-align: center;
+  font-size: 36px;
+  margin-top: 30px;
 }

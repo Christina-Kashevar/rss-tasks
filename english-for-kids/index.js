@@ -246,7 +246,7 @@ function repeatWords() {
     }
   }
   if(difficultWords.length === 0) {
-    document.querySelector('.table').innerHTML = 'There are no difficult words';
+    document.querySelector('.table').innerHTML = '<p>There are no difficult words</p>';
     return;
   }
   if(difficultWords.length > 8) {
