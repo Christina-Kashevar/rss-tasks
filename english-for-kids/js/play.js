@@ -106,7 +106,6 @@ export default class Play {
       this.audioStar.src = './assets/audio/error.mp3';
       this.mistakes += 1;
     }
-    currentWord.asked +=1;
     currentWord.errors = Math.round(+currentWord.wrong/+currentWord.asked*100)
     document.querySelector('.rating').append(star);
     this.audioStar.play();
@@ -143,7 +142,9 @@ export default class Play {
       }
     } else {
       this.mode = 'train';
-      document.querySelector('.rating').innerHTML ='';
+      if(document.querySelector('.rating')) {
+        document.querySelector('.rating').innerHTML ='';
+      }
       document.querySelectorAll('.front').forEach(card => {
         if (card.classList.contains('inactive')) {
           card.classList.remove('inactive');

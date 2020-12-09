@@ -42,8 +42,8 @@ const StatisticComponent = {
       for (let j = 0; j < categoryAmount; j++) {
         const correct = cards[i+1][j].correct === undefined ? 0 : cards[i+1][j].correct;
         const wrong = cards[i+1][j].wrong === undefined ? 0 : cards[i+1][j].wrong;
-        const asked = cards[i+1][j].correct === undefined ? 0 : correct + wrong;
-        const errors = cards[i+1][j].asked === 0 ? 0 : Math.round(+wrong/+asked*100);
+        const asked = cards[i+1][j].asked === undefined ? 0 : cards[i+1][j].asked;
+        const errors = +wrong + +correct === 0 ? 0 : Math.round(+wrong/(+wrong + +correct)*100);
         table += `<tr class = "cat-word"><td>${cards[i+1][j].word}</td>
         <td>${cards[i+1][j].translation}</td>
         <td>${asked}</td>

@@ -84,7 +84,7 @@ function renderCards(list) {
       <div class="table-heading">
         <div class="stat-word">Word</div>
         <div class="stat-translation">Translation</div>
-        <div class="stat-asked">Asked</div>
+        <div class="stat-asked">Trained</div>
         <div class="stat-correct">Correct</div>
         <div class="stat-wrong">Wrong</div>
         <div class="stat-errors">% errors</div>
@@ -188,6 +188,19 @@ function playSound(e) {
   if (!audio) return;
   audio.src = `./assets/audio/${targetCard.dataset.word}.mp3`;
   audio.play();
+  addTrain(targetCard.dataset.word);
+}
+
+function addTrain(word) {
+  const results = JSON.parse(localStorage.getItem('play'));
+  const targetCat = results[play.pageIndex];
+  const currentWord = targetCat.find( i => {
+    if(word === 'ice') { word = 'ice cream'}
+    return i.word === word;
+  });
+  currentWord['asked'] += 1;
+  results[play.pageIndex] = targetCat;
+  localStorage.setItem('play', JSON.stringify(results))
 }
 
 function sortStat(target) {
