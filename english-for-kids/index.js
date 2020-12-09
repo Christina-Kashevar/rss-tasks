@@ -25,12 +25,17 @@ function writeToLocalStorage() {
     }
     value.push(valueElement);
   }
+  console.log(JSON.stringify(value))
   localStorage.setItem('play', JSON.stringify(value));
 }
 
+
 if (localStorage.getItem('play') === null) {
+  console.log(localStorage.getItem('play'))
   writeToLocalStorage();
 }
+
+console.log(localStorage.getItem('play'))
 
 function changeBgDependingOnMode() {
   const mainCards = document.querySelectorAll('.main-card');
@@ -159,7 +164,6 @@ function renderCards(list) {
   }
 }
 
-console.log(localStorage.getItem('play'))
 let cardsFromStorage = JSON.parse(localStorage.getItem('play'));
 
 function repeatWords() {
