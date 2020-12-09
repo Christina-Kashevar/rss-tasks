@@ -28,7 +28,9 @@ function writeToLocalStorage() {
   localStorage.setItem('play', JSON.stringify(value));
 }
 
-if (!localStorage.getItem('play')) { writeToLocalStorage(); }
+if (localStorage.getItem('play') === null) {
+  writeToLocalStorage();
+}
 
 function changeBgDependingOnMode() {
   const mainCards = document.querySelectorAll('.main-card');
@@ -157,6 +159,7 @@ function renderCards(list) {
   }
 }
 
+console.log(localStorage.getItem('play'))
 let cardsFromStorage = JSON.parse(localStorage.getItem('play'));
 
 function repeatWords() {
