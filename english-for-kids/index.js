@@ -30,7 +30,7 @@ function writeToLocalStorage() {
 }
 
 
-if (typeof localStorage.getItem('play') !== null ||
+if (localStorage.getItem('play') === null ||
     localStorage.getItem('play')[3] !== 'A') {
   writeToLocalStorage();
 }
