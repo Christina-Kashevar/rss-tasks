@@ -15,13 +15,13 @@ export default class Play {
   changeCardsStyle = () => {
     if(this.mode === 'play') {
       document.querySelectorAll('.card').forEach( card => {
-        card.classList.add('card-cover')
+        card.classList.add('card-cover');
       });
       document.querySelectorAll('.rotate').forEach( card => {
-        card.classList.add('none')
+        card.classList.add('none');
       });
       document.querySelectorAll('.card-header').forEach( card => {
-        card.classList.add('none')
+        card.classList.add('none');
       });
       if (document.querySelector('.btn') && document.querySelector('.btn').classList.contains('none')) {
         document.querySelector('.btn').classList.remove('none');
@@ -31,10 +31,10 @@ export default class Play {
         card.classList.remove('card-cover');
       });
       document.querySelectorAll('.rotate').forEach( card => {
-        card.classList.remove('none')
+        card.classList.remove('none');
       });
       document.querySelectorAll('.card-header').forEach( card => {
-        card.classList.remove('none')
+        card.classList.remove('none');
       });
       if( document.querySelector('.btn') && !document.querySelector('.btn').classList.contains('none')) {
         document.querySelector('.btn').classList.add('none');
@@ -73,7 +73,7 @@ export default class Play {
       this.audio.play();
     })
     document.querySelectorAll('.card').forEach( card => {
-      card.addEventListener('click', this.checkWord)
+      card.addEventListener('click', this.checkWord);
     });
   }
 
@@ -92,7 +92,7 @@ export default class Play {
       star.classList.add('star-win');
       this.audioStar.src = './assets/audio/correct.mp3';
       e.target.classList.add('inactive');
-      currentWord.correct += 1
+      currentWord.correct += 1;
       if(this.wordsOnPage.length > 1) {
         this.wordsOnPage.pop();
         setTimeout(this.gameLogic,1000);
@@ -136,7 +136,7 @@ export default class Play {
       this.startBtn = document.querySelector('.btn');
       if (this.startBtn) {
         if (this.startBtn.classList.contains('repeat')) {
-          this.startBtn.classList.remove('repeat')
+          this.startBtn.classList.remove('repeat');
         }
         this.startBtn.addEventListener('click', this.startGame);
       }
