@@ -30,9 +30,11 @@ function writeToLocalStorage() {
 }
 
 
-if (typeof localStorage.getItem('play') !== 'string') {
+if (typeof localStorage.getItem('play') !== 'string' ||
+    localStorage.getItem('play')[3] !== 'A') {
   writeToLocalStorage();
 }
+
 
 function changeBgDependingOnMode() {
   const mainCards = document.querySelectorAll('.main-card');
