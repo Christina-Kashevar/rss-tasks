@@ -35,7 +35,6 @@ if (localStorage.getItem('play') === null ||
   writeToLocalStorage();
 }
 
-
 function changeBgDependingOnMode() {
   const mainCards = document.querySelectorAll('.main-card');
   if (!switcher.checked) {
