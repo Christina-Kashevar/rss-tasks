@@ -8,6 +8,7 @@ const menu = document.querySelector('#menu');
 let currentPage = 'Main page';
 const play = new Play();
 
+
 function writeToLocalStorage() {
   const value = [cards[0]];
   const categoryAmount = 8;
@@ -25,17 +26,13 @@ function writeToLocalStorage() {
     }
     value.push(valueElement);
   }
-  console.log(JSON.stringify(value))
   localStorage.setItem('play', JSON.stringify(value));
 }
 
 
-if (localStorage.getItem('play') === null) {
-  console.log(localStorage.getItem('play'))
+if (typeof localStorage.getItem('play') !== 'string') {
   writeToLocalStorage();
 }
-
-console.log(localStorage.getItem('play'))
 
 function changeBgDependingOnMode() {
   const mainCards = document.querySelectorAll('.main-card');
