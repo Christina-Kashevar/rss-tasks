@@ -30,8 +30,6 @@ function writeToLocalStorage() {
 
 if (!localStorage.getItem('play')) { writeToLocalStorage(); }
 
-let cardsFromStorage = JSON.parse(localStorage.getItem('play'));
-
 function changeBgDependingOnMode() {
   const mainCards = document.querySelectorAll('.main-card');
   if (!switcher.checked) {
@@ -111,47 +109,6 @@ function rotateCard(e) {
   }
 }
 
-function repeatWords() {
-  const difficultWords = [];
-  const categoryAmount = 8;
-  for (let i = 0; i <= categoryAmount; i += 1) {
-    for (let j = 0; j < categoryAmount; j += 1) {
-      if (cardsFromStorage[i][j].errors > 0) {
-        cardsFromStorage[i][j].image = `./assets/img/${cardsFromStorage[i][j].word}.jpg`;
-        if (cardsFromStorage[i][j].word === 'ice cream') {
-          cardsFromStorage[i][j].image = './assets/img/ice-cream.jpg';
-        }
-        difficultWords.push(cardsFromStorage[i][j]);
-      }
-    }
-  }
-  if (difficultWords.length === 0) {
-    document.querySelector('.table').innerHTML = '<p>There are no difficult words</p>';
-    return;
-  }
-  if (difficultWords.length > 8) {
-    difficultWords.sort((a, b) => (a.errors > b.errors ? 1 : -1));
-    difficultWords.splice(8, difficultWords.length - 8);
-  }
-  play.difficultWords = difficultWords;
-  currentPage = 'Difficult words';
-  renderCards(difficultWords);
-}
-
-function resetWords() {
-  const categoryAmount = 8;
-  for (let i = 1; i < categoryAmount; i += 1) {
-    for (let j = 0; j < categoryAmount; j += 1) {
-      cardsFromStorage[i][j].correct = 0;
-      cardsFromStorage[i][j].wrong = 0;
-      cardsFromStorage[i][j].asked = 0;
-      cardsFromStorage[i][j].errors = 0;
-    }
-  }
-  document.querySelector('.table').innerHTML = StatisticComponent.render(cardsFromStorage);
-  localStorage.setItem('play', JSON.stringify(cardsFromStorage));
-}
-
 function renderCards(list) {
   if (currentPage === 'Main page') {
     document.querySelector('.main-wrapper').innerHTML = HomeComponent.render();
@@ -198,6 +155,49 @@ function renderCards(list) {
     });
     document.querySelector('.btn').addEventListener('click', play.startGame);
   }
+}
+
+let cardsFromStorage = JSON.parse(localStorage.getItem('play'));
+
+function repeatWords() {
+  const difficultWords = [];
+  const categoryAmount = 8;
+  for (let i = 0; i <= categoryAmount; i += 1) {
+    for (let j = 0; j < categoryAmount; j += 1) {
+      if (cardsFromStorage[i][j].errors > 0) {
+        cardsFromStorage[i][j].image = `./assets/img/${cardsFromStorage[i][j].word}.jpg`;
+        if (cardsFromStorage[i][j].word === 'ice cream') {
+          cardsFromStorage[i][j].image = './assets/img/ice-cream.jpg';
+        }
+        difficultWords.push(cardsFromStorage[i][j]);
+      }
+    }
+  }
+  if (difficultWords.length === 0) {
+    document.querySelector('.table').innerHTML = '<p>There are no difficult words</p>';
+    return;
+  }
+  if (difficultWords.length > 8) {
+    difficultWords.sort((a, b) => (a.errors > b.errors ? 1 : -1));
+    difficultWords.splice(8, difficultWords.length - 8);
+  }
+  play.difficultWords = difficultWords;
+  currentPage = 'Difficult words';
+  renderCards(difficultWords);
+}
+
+function resetWords() {
+  const categoryAmount = 8;
+  for (let i = 1; i < categoryAmount; i += 1) {
+    for (let j = 0; j < categoryAmount; j += 1) {
+      cardsFromStorage[i][j].correct = 0;
+      cardsFromStorage[i][j].wrong = 0;
+      cardsFromStorage[i][j].asked = 0;
+      cardsFromStorage[i][j].errors = 0;
+    }
+  }
+  document.querySelector('.table').innerHTML = StatisticComponent.render(cardsFromStorage);
+  localStorage.setItem('play', JSON.stringify(cardsFromStorage));
 }
 
 function changePages(e) {
