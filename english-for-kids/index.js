@@ -2,7 +2,6 @@ import cards from './js/cards.js';
 import { HomeComponent, StatisticComponent, CardsComponent } from './js/components.js';
 import Play from './js/play.js';
 
-alert('Если у Вас не корректно работает приложение, попробуйте, пожалуйста, открыть в другом браузере или устройстве. Возможна проблема в редких случаях с local storage')
 const navInput = document.querySelector('#menuToggle > input[type=checkbox]');
 const switcher = document.querySelector('#myonoffswitch');
 const menu = document.querySelector('#menu');
@@ -27,15 +26,13 @@ function writeToLocalStorage() {
     }
     value.push(valueElement);
   }
+
   localStorage.setItem('play', JSON.stringify(value));
 }
 
-
-if (localStorage.getItem('play') === null ||
-    localStorage.getItem('play') === '0 0 0 0') {
+if (localStorage.getItem('play') === null) {
   writeToLocalStorage();
 }
-
 
 function changeBgDependingOnMode() {
   const mainCards = document.querySelectorAll('.main-card');
@@ -276,3 +273,5 @@ document.addEventListener('click', (e) => {
 
 renderCards();
 play.init();
+
+alert('Если у Вас не загружается приложение, попробуйте, пожалуйста, открыть в другом браузере или устройстве. Возможна проблема в редких случаях с local storage')
