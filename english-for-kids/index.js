@@ -30,7 +30,7 @@ function writeToLocalStorage() {
   localStorage.setItem('play', JSON.stringify(value));
 }
 
-if (localStorage.getItem('play') === null) {
+if (localStorage.getItem('play') === null || localStorage.getItem('play').length < 100) {
   writeToLocalStorage();
 }
 
