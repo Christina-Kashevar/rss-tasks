@@ -8,7 +8,7 @@ const menu = document.querySelector('#menu');
 let currentPage = 'Main page';
 const play = new Play();
 
-alert('Если у Вас не загружается приложение, попробуйте, пожалуйста, открыть в другом браузере или устройстве. Возможна проблема в редких случаях с local storage')
+alert('Если у Вас не загружается приложение, попробуйте, пожалуйста, открыть в другом браузере или устройстве. Возможна проблема в редких случаях с local storage');
 
 function writeToLocalStorage() {
   const value = [cards[0]];
