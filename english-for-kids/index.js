@@ -35,6 +35,8 @@ if (localStorage.getItem('play') === null || localStorage.getItem('play').length
   writeToLocalStorage();
 }
 
+
+
 function changeBgDependingOnMode() {
   const mainCards = document.querySelectorAll('.main-card');
   if (!switcher.checked) {
@@ -75,7 +77,7 @@ try {
 }
 
 function addTrain(word) {
-  const results = JSON.parse(localStorage.getItem('play'));
+  const results = cardsFromStorage;
   const targetCat = results[play.pageIndex];
   const currentWord = targetCat.find((i) => {
     if (word === 'ice') { word = 'ice cream'; }
