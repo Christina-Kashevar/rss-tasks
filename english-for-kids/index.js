@@ -8,7 +8,7 @@ const menu = document.querySelector('#menu');
 let currentPage = 'Main page';
 const play = new Play();
 
-alert('Если у Вас не загружается приложение, попробуйте, пожалуйста, открыть в другом браузере или устройстве. Возможна проблема в редких случаях с local storage');
+// alert('Если у Вас не загружается приложение, попробуйте, пожалуйста, открыть в другом браузере или устройстве. Возможна проблема в редких случаях с local storage');
 
 function writeToLocalStorage() {
   const value = [cards[0]];
@@ -63,6 +63,15 @@ function addActiveClassToLink() {
       menuLinks[i].classList.remove('active');
     }
   }
+}
+
+let cardsFromStorage;
+
+try {
+  cardsFromStorage = JSON.parse(localStorage.getItem('play'));
+} catch(e) {
+  writeToLocalStorage();
+  cardsFromStorage = JSON.parse(localStorage.getItem('play'))
 }
 
 function addTrain(word) {
@@ -161,8 +170,6 @@ function renderCards(list) {
     document.querySelector('.btn').addEventListener('click', play.startGame);
   }
 }
-
-let cardsFromStorage = JSON.parse(localStorage.getItem('play'));
 
 function repeatWords() {
   const difficultWords = [];
