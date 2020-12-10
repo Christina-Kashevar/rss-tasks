@@ -8,7 +8,10 @@ const menu = document.querySelector('#menu');
 let currentPage = 'Main page';
 const play = new Play();
 
+alert('Если у Вас не загружается приложение, попробуйте, пожалуйста, открыть в другом браузере или устройстве. Возможна проблема в редких случаях с local storage')
 
+
+alert(`${localStorage.getItem('play')}\n ${localStorage.getItem('play').length}`)
 function writeToLocalStorage() {
   const value = [cards[0]];
   const categoryAmount = 8;
@@ -273,5 +276,3 @@ document.addEventListener('click', (e) => {
 
 renderCards();
 play.init();
-
-alert('Если у Вас не загружается приложение, попробуйте, пожалуйста, открыть в другом браузере или устройстве. Возможна проблема в редких случаях с local storage')
