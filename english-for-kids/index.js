@@ -10,8 +10,11 @@ const play = new Play();
 
 alert('Если у Вас не загружается приложение, попробуйте, пожалуйста, открыть в другом браузере или устройстве. Возможна проблема в редких случаях с local storage')
 
+var mobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
+if (mobile) {
+    alert(`${localStorage.getItem('play')}\n ${localStorage.getItem('play').length}`);
+} 
 
-alert(`${localStorage.getItem('play')}\n ${localStorage.getItem('play').length}`)
 function writeToLocalStorage() {
   const value = [cards[0]];
   const categoryAmount = 8;
