@@ -106,7 +106,7 @@ export default class Play {
       this.audioStar.src = './assets/audio/error.mp3';
       this.mistakes += 1;
     }
-    currentWord.errors = Math.round(+currentWord.wrong/+currentWord.asked*100)
+    currentWord.errors = Math.round(+currentWord.wrong + +currentWord.correct/+currentWord.wrong*100)
     document.querySelector('.rating').append(star);
     this.audioStar.play();
   }
