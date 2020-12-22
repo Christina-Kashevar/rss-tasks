@@ -1,70 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="style.css" rel="stylesheet">
-  <title>Document</title>
-</head>
-<body> 
-  <div class="switch-wrapper">
-    <div class="switch">
-      <input type="checkbox" name="switch" class="switch-checkbox" id="myswitch" checked>
-      <label class="switch-label" for="myswitch">
-        <span class="switch-inner"></span>
-        <span class="switch-switch"></span>
-      </label>
-    </div>
-    <div class="switch switcher-period">
-      <input type="checkbox" name="switch2" class="switch-checkbox" id="myswitch2" checked>
-      <label class="switch-label" for="myswitch2">
-        <span class="switch-inner"></span>
-        <span class="switch-switch"></span>
-      </label>
-    </div>
-  </div>
-    <!-- <input type="search" list="cities" >
-    <datalist id="cities">
-      <option value="New York City"></option>
-      <option value="Tokyo"></option>
-      <option value="Barcelona"></option>
-      <option value="Mexico City"></option>
-      <option value="Melbourne"></option>
-      <option value="New Orlean"></option> 
-    </datalist> -->
-  
-    <div class="table">
-      <div class="table-country">ffff</div>
-      <div class="table-cases-header">Cases</div>
-      <div class="table-recovery-header">Recovered</div>
-      <div class="table-dead-header">Deaths</div>
-      <div class="table-cases">ggggg</div>
-      <div class="table-recovery">222</div>
-      <div class="table-dead">33333</div>
-    </div>
-
-    <div class="switch-wrapper">
-      <div class="switch">
-        <input type="checkbox" name="switch" class="switch-checkbox" id="myswitchlist" checked>
-        <label class="switch-label" for="myswitchlist">
-          <span class="switch-inner"></span>
-          <span class="switch-switch"></span>
-        </label>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../assets/static/favicon.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+    
+    <title>COVID 19 Dashboard</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <header class="header">
+          <div class="keyboard__btn"></div>
+          <input type='text' list='countries' class="use-keyboard-input" placeholder="Enter country"></input>
+          <datalist id='countries'></datalist>
+        </header>
+        <div class="table__container">
+          <div class="switch-wrapper">
+            <div class="switch">
+              <input type="checkbox"
+                name="switch"
+                class="switch-checkbox population"
+                id="myswitch"
+                checked />
+              <label class="switch-label" for="myswitch">
+                <span class="switch-inner"></span>
+                <span class="switch-switch"></span>
+              </label>
+            </div>
+            <div class="switch switcher-period">
+              <input
+                type="checkbox"
+                name="switch2"
+                class="switch-checkbox period"
+                id="myswitch2"
+                checked
+              />
+              <label class="switch-label" for="myswitch2">
+                <span class="switch-inner"></span>
+                <span class="switch-switch"></span>
+              </label>
+            </div>
+            <div class="fullscreen__btn"></div>
+          </div>
+          <div class="table">
+            <div class="table-country"></div>
+            <div class="table-cases-header border">Cases</div>
+            <div class="table-recovery-header border">Recovered</div>
+            <div class="table-dead-header">Deaths</div>
+            <div class="table-cases border"></div>
+            <div class="table-recovery border"></div>
+            <div class="table-dead"></div>
+          </div>
+        </div>
+        <div class="map__container">
+          <div class="switch-wrapper">
+            <div class="switch">
+              <input
+                type="checkbox"
+                name="switch"
+                class="switch-checkbox population"
+                id="myswitchlist"
+                checked
+              />
+              <label class="switch-label" for="myswitchlist">
+                <span class="switch-inner"></span>
+                <span class="switch-switch"></span>
+              </label>
+            </div>
+            <div class="switch switcher-period">
+              <input
+                type="checkbox"
+                name="switch2"
+                class="switch-checkbox period"
+                id="myswitch2list"
+                checked
+              />
+              <label class="switch-label" for="myswitch2list">
+                <span class="switch-inner"></span>
+                <span class="switch-switch"></span>
+              </label>
+            </div>
+            <div class="fullscreen__btn"></div>
+          </div>
+          <div class="map__menu menu">
+            <div class="tab tab_map">
+              <span class="active">Cases</span>
+              <span>Recovered</span>
+              <span>Deaths</span>
+            </div>
+          </div>
+          <div id="map"></div>
+        </div>
+        <div class="list__container">
+          <div class="switch-wrapper">
+            <div class="switch">
+              <input
+                type="checkbox"
+                name="switch"
+                class="switch-checkbox population"
+                id="myswitchlist"
+                checked
+              />
+              <label class="switch-label" for="myswitchlist">
+                <span class="switch-inner"></span>
+                <span class="switch-switch"></span>
+              </label>
+            </div>
+            <div class="switch switcher-period">
+              <input
+                type="checkbox"
+                name="switch2"
+                class="switch-checkbox period"
+                id="myswitch2list"
+                checked
+              />
+              <label class="switch-label" for="myswitch2list">
+                <span class="switch-inner"></span>
+                <span class="switch-switch"></span>
+              </label>
+            </div>
+            <div class="fullscreen__btn"></div>
+          </div>
+          <div class="tab tab_list">
+            <span class="active">Cases</span>
+            <span>Recovered</span>
+            <span>Deaths</span>
+          </div>
+         <div class = "list">
+           <div class = "list__heading"></div>
+           <div class = "list__main"></div>
+         </div>
+        </div>
+        <div class="chart__container">
+          <div class="switch-wrapper">
+            <div class="switch">
+              <input
+                type="checkbox"
+                name="switch"
+                class="switch-checkbox population"
+                id="myswitchChart"
+                checked
+              />
+              <label class="switch-label" for="myswitchChart">
+                <span class="switch-inner"></span>
+                <span class="switch-switch"></span>
+              </label>
+            </div>
+            <div class="switch switcher-period">
+              <input
+                type="checkbox"
+                name="switch2"
+                class="switch-checkbox period"
+                id="myswitch2Chart"
+                checked
+              />
+              <label class="switch-label" for="myswitch2Chart">
+                <span class="switch-inner"></span>
+                <span class="switch-switch"></span>
+              </label>
+            </div>
+            <div class="fullscreen__btn"></div>
+          </div>
+          <div class="tab tab_chart">
+            <span class="active">Cases</span>
+            <span>Recovered</span>
+            <span>Deaths</span>
+          </div>
+          <div class="canvas-wrapper"></div>
+        </div>
+        <footer class="footer">
+          <a href="https://github.com/bakin-dima" target="_blank" class="footer__link">
+            <img class="footer__link_img" src="../assets/static/github.svg" alt="github icon" />
+          </a>
+          <a href="https://github.com/Christina-Kashevar" target="_blank" class="footer__link"
+            ><img class="footer__link_img" src="../assets/static/github.svg" alt="github icon" />
+          </a>
+          <span>2020Q3</span>
+          <a href="https://rs.school/js/" target="_blank" class="footer__link">
+            <img class="footer__link_img" src="../assets/static/rsschool.svg" alt="rsschool icon" />
+          </a>
+          <a href="https://www.who.int/ru/emergencies/diseases/novel-coronavirus-2019/donate" target="_blank" class="footer__link">
+            <img class="footer__link_img who" src="../assets/static/WHO.svg" alt="rsschool icon" />
+          </a>
+        </footer>
       </div>
-      <div class="switch switcher-period">
-        <input type="checkbox" name="switch2" class="switch-checkbox" id="myswitch2list" checked>
-        <label class="switch-label" for="myswitch2list">
-          <span class="switch-inner"></span>
-          <span class="switch-switch"></span>
-        </label>
-      </div>
     </div>
-    <div class="tab">
-      <span class="active">Cases</span>
-      <span>Recovered</span>
-      <span>Deaths</span>
-    </div>
-   <div class= "list"></div>
-    <script src="index.js" type="module"></script>
-</body>
+  </body>
 </html>
