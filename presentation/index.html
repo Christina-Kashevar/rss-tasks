@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js – The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+        <section>
+          <h1>TypeScript</h1>
+          <br>
+          <small>by <a href="https://github.com/Christina-Kashevar">Christina Kashevar</a> for <a href="https://rs.school/js/">RS School</a> 2020</small>
+        </section>
+
+        <section>
+          <section>
+            <img src="./examples/assets/what-is-typescript.png">
+          </section>
+          <section>
+            <p><span style="color:rgb(234, 0, 255)">TypeScript</span> has been increasing in its popularity for the last couple of years. It’s mentioned among the <span style="color:rgb(234, 0, 255)">five most promising languages</span> in 2020. Angular, one of the largest frontend frameworks, is using TypeScript. About <span style="color:rgb(234, 0, 255)">60% of JS programmers already use</span> TypeScript, and 22% wish to try.</p>
+          </section>
+        </section>
+
+        <section>
+          <p>The development of TypeScript began at the end of 2012. Although it originated in Microsoft, and its actual creator is programmer Anders Hejlsberg, but this project immediately began to develop as <span style="color:rgb(234, 0, 255)">OpenSource.</span></p>
+        </section>
+         
+        <section>
+          <section>
+            <h2>Why TypeScript?</h2>
+          <ul>
+            <li>a strongly typed language => reduces the potential for errors </li>
+            <li class="fragment fade-up">implements many of the concepts that are inherent in object-oriented languages</li>
+            <li class="fragment fade-up">faster and easier development of complex programs</li>
+            <li class="fragment fade-up">an open source project. <a href="https://github.com/Microsoft/TypeScript">Github</a></li>
+            <li class="fragment fade-up">provides planned features from future JavaScript editions </li>
+          </ul>
+          </section>
+          <section>
+            <img src="./examples/assets/image.png">
+          </section>
+        </section>
+
+        <section>
+          <img src="./examples/assets/install.png">
+        </section>
+
+        <section>
+          <section>
+            <h1>Types</h1>
+            <p>TypeScript has a variety of basic types, like:</p>
+            <ul>
+              <li style="font-size: 24px;">Boolean</li>
+              <li style="font-size: 24px;">Number</li>
+              <li style="font-size: 24px;">String</li>
+              <li style="font-size: 24px;">Array</li>
+              <li style="font-size: 24px;">Tuple</li>
+              <li style="font-size: 24px;">Enum</li>
+              <li style="font-size: 24px;">Any</li>
+              <li style="font-size: 24px;">Unknown</li>
+              <li style="font-size: 24px;">Null</li>
+              <li style="font-size: 24px;">Undefined</li>
+              <li style="font-size: 24px;">Void</li>
+              <li style="font-size: 24px;">Never</li>
+              <li style="font-size: 24px;">Object</li>
+            </ul>
+          </section>
+          <section>
+            <p>The <span style="color:rgb(234, 0, 255)">colon</span> character is used to set the type. Examples of creating variables:</p>
+            <pre><code class="fragment fade-up">
+              let x: number = 10; 
+              let hello: string = "hello world";
+              let isValid: boolean = true;
+              let a: undefined = undefined;
+              let b: null = null;
+              let person: object = {name:"Tom", age:23};
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <p><span style="color:yellow">Arrays</span> are defined using the [ ] expression and are also strongly typed. That is, if the array initially contains strings, then in the future it will only be able to work with strings.</p>
+          <pre><code>
+            let colors: string[] = ["red", "green", "blue"];
+          </code></pre>
+        </section>
+
+        <section>
+          <p><span style="color:yellow">Tuple</span> types allow us to express an array with a fixed number of elements whose types are known, but need not be the same. </p>
+          <pre><code>
+            let userInfo: [string, number];
+            userInfo = ["Tom", 28];
+
+            userInfo = [28, "Tom"]; // ERROR
+          </code></pre>
+        </section>
+
+        <section>
+          <p><span style="color:yellow">Enum</span> is intended to describe a set of numeric data using string constants. </p>
+          <pre><code>
+            enum Season { Winter, Spring, Summer, Autumn };
+            let current: Season = Season.Summer;
+            console.log(current); // 2
+          </code></pre>
+        </section>
+
+        <section>
+          <p><span style="color:yellow">Any</span> is specified data, the type of which may not be known at the time of writing the application.</p>
+          <pre><code>
+            let someVar: any = "hello";
+            someVar = 20;
+          </code></pre>
+        </section>
+
+        <section>
+          <section>
+            <p>We may need to describe the type of variables that we do not know when we are writing an application. In these cases, we use the <span style="color:yellow">unknown</span> type.</p>
+            <pre><code>
+              let notSure: unknown = 4;
+              notSure = "maybe a string instead";
+              // OK, definitely a boolean
+              notSure = false;
+            </code></pre>
+          </section>
+          <section>
+            <p>Unknown is a lot like any, but it won’t let us perform operations on the variable before it is explicitly type-checked</p>
+            <pre><code>
+  let looselyTyped: any = 4;
+  looselyTyped.toFixed();
+
+  let strictlyTyped: unknown = 4;
+  strictlyTyped.toFixed(); // ERROR: Object is of type 'unknown'
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <p><span style="color:yellow">Void</span> is the absence of having any type at all. We may commonly see this as the return type of functions that do not return a value:</p>
+          <pre><code>
+            function warnUser(): void {
+              console.log("This is my warning message");
+            }
+          </code></pre>
+        </section>
+
+        <section>
+          <p>The <span style="color:yellow">never</span> type represents the type of values that never occur.</p>
+          <pre><code>
+// Function returning never must not have a reachable end point
+function error(message: string): never {
+  throw new Error(message);
+}
+
+// Inferred return type is never
+function fail() {
+  return error("Something failed");
+}
+
+// Function returning never must not have a reachable end point
+function infiniteLoop(): never {
+  while (true) {}
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <p>TypeScript allows to define type aliases using the <span style="color: green">type</span> keyword:</p>
+          <pre><code>
+            type stringOrNumberType = number | string;
+          </code></pre>
+        </section>
+
+        <section>
+          <section>
+            <h2>Functions</h2>
+            <p>When we define a function we can specify the types of each one of the parameters as well as the type of the returned value.</p>
+            <pre><code>
+              function add(a: number, b: number): number {
+                return a + b;
+              }
+            </code></pre>
+          </section>
+          <section>
+            <p>When defining a function we can specify default values for any of its parameters.</p>
+            <pre><code>
+function getName(firstName: string, lastName: string = "Geller ") {
+  return firstName + " " + lastName;
+}
+            </code></pre>
+          </section>
+          <section>
+            <p>If it is necessary for the function to accept a set of parameters of the same type, then the spread operator is used, followed by an array: </p>
+            <pre><code>
+function addNumbers(firstNumber: number, ...numberArray: number[]): number {
+  let result = firstNumber;
+  for (let i = 0; i < numberArray.length; i++) {
+      result+= numberArray[i];
+  }
+  return result;
+}
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>classes</h2>
+            <p>TypeScript takes an object-oriented approach and has full class support. The class represents a template for creating objects and encapsulates the functionality that an object must have.</p>
+          <pre><code>
+            class User {
+              id: number;
+              name: string;
+              getInfo(): string {
+                  return "id:" + this.id + " name:" + this.name;
+              }
+            }
+          </code></pre>
+          </section>
+          <section>
+            <p>After defining the class, we can create its objects:</p>
+            <pre><code>
+              let alice: User = new User();
+              alice.id = 2;
+              alice.name = "Alice";
+            </code></pre>
+          </section>
+          <section>
+            <p>In addition to ordinary functions, classes have special functions - constructors, which are defined using the <span style="color:green">constructor</span> keyword.</p>
+            <pre><code>
+class User {
+
+  id: number;
+  name: string;
+  constructor(userId: number, userName: string) {
+
+      this.id = userId;
+      this.name = userName;
+  }
+  getInfo(): string {
+      return "id:" + this.id + " name:" + this.name;
+  }
+}
+let alice: User = new User(2, "Alice");
+            </code></pre>
+          </section>
+          <section>
+            <p><span style="color:green">Access modifiers</span> allow you to hide the state of an object from external access and control access to that state. There are three modifiers in TypeScript: public, protected, and private.</p>
+            <p class="fragment fade-up">If no modifier is applied to properties and functions of classes, then such properties and functions are treated as if they were defined with the <span style="color:green">public</span> modifier.</p>
+          </section>
+          <section>
+            <p>If the <span style="color:green">private</span> modifier is applied to properties and methods, then they cannot be accessed from the outside when creating an object of this class.</p>
+            <p class="fragment fade-up">The <span style="color:green">protected</span> modifier is in many ways similar to private - properties and methods with this modifier are not visible from the outside, but they can be accessed from inherited classes</p>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Interface</h2>
+            <p>An interface defines the properties and methods that an object must implement. In other words, an interface is a definition of a custom data type, but without implementation. </p>
+            <pre><code>
+              interface IUser {
+                id: number;
+                name: string;
+              }
+            
+              let employee: IUser = {
+                id: 1, 
+                name: "Tom"
+               }
+            </code></pre>
+          </section>
+          <section>
+            <p>When defining an interface, we can set some properties as optional using a question mark. It is not necessary to implement such properties:</p>
+            <pre><code>
+              interface IUser {
+                id: number;
+                name: string;
+                age?: number;
+              }
+
+              let employee: IUser = {
+                id: 1, 
+                name: "Alice",
+                age: 23
+              }
+
+              let manager: IUser = {
+                id: 2, 
+                name: "Tom"
+              }
+            </code></pre>
+          </section>
+          <section>
+            <p>Also, an interface can contain read-only properties whose value cannot be changed. Such properties are defined using the <span style="color:green">readonly</span> keyword:</p>
+            <pre><code>
+              interface Point {
+                readonly x: number;
+                readonly y: number;
+              }
+
+              let p: Point = { x: 10, y: 20 };
+              p.x = 5; // error
+            </code></pre>
+          </section>
+          <section>
+            <p>Interfaces can be implemented not only by objects, but also by classes. The <span style="color:green">implements</span> keyword is used for this:</p>
+            <pre><code>
+interface IUser {
+  id: number;
+  name: string;
+  getFullName(surname: string): string;
+}
+
+class User implements IUser{
+
+  id: number;
+  name: string;
+  age: number;
+  constructor(userId: number, userName: string, userAge: number) {
+
+      this.id = userId;
+      this.name = userName;
+      this.age = userAge;
+  }
+  getFullName(surname: string): string {
+
+      return this.name + " " + surname;
+  }
+}
+
+let tom = new User(1, "Tom", 23);
+console.log(tom.getFullName("Simpson"));
+            
+            </code></pre>
+          </section>
+        </section>
+
+        <section data-background-image="./examples/assets/THANk.jpg" data-background-size="50%">
+          <!-- <p>THANK YOU FOR ATTENTION!</p> -->
+        </section>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/zoom/zoom.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/search/search.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+
+			// Also available as an ES module, see:
+			// https://revealjs.com/initialization/
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				center: true,
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight ]
+			});
+
+		</script>
+
+	</body>
+</html>
