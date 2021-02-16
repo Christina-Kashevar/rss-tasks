@@ -1,0 +1,104 @@
+table,
+.table-heading {
+  width: 800px;
+  margin: 0 auto;
+
+  @include media-tablet {
+    width: 700px;
+  }
+
+  @include media-mobile {
+    width: 500px;
+  }
+}
+
+.stat-wrapper {
+  @include media-mobile {
+    width: 500px;
+    margin: 0 auto;
+    overflow-x: scroll;
+  }
+}
+
+td {
+  padding: 0.5rem;
+  padding-right: 1rem;
+  min-width: 10.1rem;
+  &:nth-child(3),
+  &:nth-child(4),
+  &:nth-child(5),
+  &:nth-child(6) {
+    text-align: center;
+  }
+
+  @include media-mobile {
+    padding: 0;
+    min-width: 6rem;
+  }
+}
+
+tr:hover {
+  background: $color-train;
+}
+
+.table-heading {
+  margin-top: 3rem;
+  background-color: $color-stat;
+  color: $color-light;
+  font-size: 2.4rem;
+  display: flex;
+  justify-content: space-around;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  & div {
+    padding: 0.5rem 0;
+    @include media-mobile {
+      padding: 0;
+    }
+  }
+
+  & div::after {
+    content: '\2BC6';
+    transform: rotate(90deg);
+    font-size: 1.6rem;
+    padding-left: 2px;
+    text-decoration: none;
+  }
+
+  @include media-mobile {
+    font-size: 1.6rem;
+  }
+}
+
+.stat-translation {
+  flex-basis: 20%;
+}
+
+.cat-heading {
+  text-align: center;
+  background-color: #ccc;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.active-td {
+  &::after {
+    color: yellow;
+  }
+}
+
+.reverse {
+  &::after {
+    content: '\2BC5' !important;
+  }
+}
+
+.table p {
+  text-align: center;
+  font-size: 36px;
+  margin-top: 30px;
+  height: 60vh;
+}

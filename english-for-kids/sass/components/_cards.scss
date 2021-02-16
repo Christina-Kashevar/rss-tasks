@@ -1,0 +1,147 @@
+.card-container {
+    -webkit-perspective: 500px;
+    perspective: 500px;
+}
+
+.card {
+    position: relative;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    display: flex;
+    justify-content: flex-end;
+    width: 300px;
+    height: 250px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 20px 25px;
+    box-shadow: 0 1px 3px 0 #ccc;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.4);
+    -webkit-transition: box-shadow .25s linear,-webkit-transform .7s;
+    transition: box-shadow .25s linear,-webkit-transform .7s;
+    transition: box-shadow .25s linear,transform .7s;
+    transition: box-shadow .25s linear,transform .7s,-webkit-transform .7s;
+
+    &:hover {
+      box-shadow: -1px 5px 15px 0 rgba(0,0,0,.5);
+  }
+
+  @include media-mobile {
+    width: 270px;
+    height: 225px;
+  }
+}
+
+div.page {
+  margin-top: 10px;
+}
+
+.back, .front {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    -webkit-transition: .3s;
+    transition: .3s;
+}
+
+
+.card-header {
+    margin-top: 200px;
+    padding: 0 15px;
+    font-family: "Roboto";
+    font-size: 24px;
+    line-height: 45px;
+    text-align: center;
+    width: 100%;
+    pointer-events: none;
+    background: #fff;
+    color: #212529;
+
+    @include media-mobile {
+      margin-top: 180px;
+    }
+}
+
+.back,
+.front,
+.rotate {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.back {
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.translate {
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.rotate {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-image: url(../assets/img/rotate.png);
+  background-size: 3.2rem;
+  background-repeat: no-repeat;
+  background-position: center 1.6rem;
+  bottom: 5px;
+  right: 5px;
+  -webkit-transition: .3s;
+  transition: .3s;
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+
+  &:hover {
+    filter: none;
+  }
+
+  @include media-mobile {
+    background-position: center 2rem;
+  }
+}
+
+.card-cover .back,
+.card-cover .front {
+  background-size: cover;
+  background-position: 50%;
+}
+
+.rating {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  max-width: 1350px;
+  margin: 0 auto;
+  height: 40px;
+  overflow-x: hidden;
+  line-height: 3.6rem;
+  font-size: 3.6rem;
+  color: $color-play;
+}
+
+.star-error,
+.star-win {
+  flex-shrink: 0;
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  background-size: 40px 40px;
+}
+
+.star-error {
+  background-image: url(../assets/img/star.svg);
+}
+
+.star-win {
+  background-image: url(../assets/img/star-win.svg);
+}
+
+.inactive {
+  opacity: 0.5;
+}

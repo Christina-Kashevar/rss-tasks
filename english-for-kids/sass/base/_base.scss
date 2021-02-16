@@ -1,0 +1,42 @@
+html {
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 1.6rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+.header-wrapper {
+  padding-top: $padding-top-header-1350;
+  padding-right: $padding-right-1350;
+
+  @include media-mobile {
+    padding-right: 20px;
+  }
+}
+
+footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  & span,
+  & a {
+    margin-right: 3rem;
+    color: $color-stat;
+    font-weight: bold;
+  }
+
+  & a {
+    text-decoration: none;
+    color: $color-stat;
+  }
+
+  & img {
+    width: 10rem;
+  }
+}
